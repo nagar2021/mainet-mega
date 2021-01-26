@@ -265,21 +265,6 @@ void loop() {
 }
 
 /*
- * 
- * 
- Serial.println("Serial.print is OK");
-  myNex.writeNum("B.n0.bco", 63488);
-  myNex.writeNum("B.n0.val", 55);
-  myNex.writeNum("C.n0.val", 1509);
-
-  
-printh 23
-prints C.t3.txt,0
-printh 23
-prints C.t4.txt,0
-printh 46 46 46
-prints C.n0.val,0
-
   reiniciarConteo();
   checkUpperClutchDown();
   checkLowerClutchUp();
@@ -366,22 +351,6 @@ prints C.n0.val,0
 
 */
 
-
-/*
-  Serial.println("Introduzca el ancho de la etiqueta en mm:");
-  if (Serial.available()) {
-    longitudEtiqueta = Serial.read();
-  }
-
-  Serial.println("Introduzca el espaCio entre etiquetas en mm:");
-  espacioEntreEtiquetas = Serial.read();
-  Serial.print("longitudEtiqueta = ");
-  Serial.print(longitudEtiqueta);
-  Serial.print(" mm     Espacio entre etiquetas: ");
-  Serial.print(espacioEntreEtiquetas);
-  Serial.print(" mm");
-*/
-
 /*
   Button countEnable = Button(2, PULLUP);
   int energyEnable = 13;               // output
@@ -415,144 +384,5 @@ prints C.n0.val,0
   } else {
     pwm(brakeUnwindControl, 0);
   }
-  }
-  }
-
-*/
-
-/*
-  void reiniciarConteo() {
-  if (upperClutchUp.isPressed() == true)
-  {
-    numPulsos = 0;
-    //lastValue = LOW;
-    //currentValue = LOW;
-    longitudDelMaterial = 0;
-    numeroDeEtiquetas = 0;
-    Serial.println("Conteo habilitado...");
-  }
-  }
-
-// Registro de objetos Nextion en la lista de eventos táctiles
-NexTouch *components[] = {
-  &b00,
-  &b01,
-  //&longitud,
-  &n11,
-  &n21,
-  &n31,
-  &sw0,  
-  NULL
-};
-
-// Definición objetos Nextion
-//(page id, component id, component name)
-NexNumber conteo = NexNumber(0, 5, "n5"); // Conteo
-NexNumber longitud = NexNumber(1, 5, "n0"); // Longitud de la etiqueta
-NexNumber n21 = NexNumber(1, 7, "n1"); // Número de etiquetas por rollo
-
-NexDSButton sw0 = NexDSButton(0, 4, "sw0"); // Para habilitar el conteo
-NexButton b00 = NexButton(0, 13, "b0");     // Para ir a la pantalla de settings
-NexButton b01 = NexButton(1, 9, "b0");     // Para ir a la pántalla principal
-
-NexGauge z0 = NexGauge(0, 11, "z0"); // Brake Unwind Gauge
-NexGauge z1 = NexGauge(0,  9, "z1"); // Lower Clutch Gauge
-NexGauge z2 = NexGauge(0, 10, "z2"); // Upper Clutch gauge
-NexGauge z3 = NexGauge(0,  7, "z3"); // Velocity Gauge
-
-
-  void sw0Push(void *ptr) {
-  uint32_t sw0State;
-  sw0State = &ptr;
-  sw0.getValue(&sw0State);
-  countEnable = sw0State;
-}
-
-void b00Push(void *ptr) {
-  uint32_t b00State;
-  b00State = &ptr;
-  db.println("Setting values...");
-}
-
-void b01Push(void *ptr) {
-  uint32_t number = 2828;
-  uint32_t another;
-  db.println("reading values...........................");  
-    
-  db.println(number);  
-  db.println(another);     
-  db.println("writing values..."); 
-  
-  conteo.setValue(8888);
-  conteo.getValue(&number);
-  db.println(number);  
-  db.println(another);   
-  
-  longitud.setValue(7777);
-  longitud.getValue(&another);
-  db.println(number);  
-  db.println(another); 
-
-  n11.setValue(1111);
-  n11.getValue(&another);
-  db.println(number);  
-  db.println(another); 
-
-  n21.setValue(2222);
-  n21.getValue(&another);
-  db.println(number);  
-  db.println(another); 
-
-  n31.setValue(3333);
-  n31.getValue(&another);
-  db.println(number);  
-  db.println(another); 
-  
-  z0.setValue(35);
-  z1.setValue(90);
-  z2.setValue(135);
-  z3.setValue(180); 
-}
-
-void longitudPush(void *ptr) {
-  db.print("ejecutando n01Push...");
-  
-  longitud.getValue(&number);  
-  longitudDeEtiqueta = number; 
-  db.print("longitud de etiqueta push...");
-  db.println(longitudDeEtiqueta); 
-}
-void n11Push(void *ptr) {
-  uint32_t num1;
-    
-  n11.getValue(&num1);
-  espacioEntreEtiquetas = num1;
-  db.print("espacio entre etiquetas push...");
-  db.println(espacioEntreEtiquetas);
-}
-void n21Push(void *ptr) {
-  uint32_t nepr;
-    
-  n21.getValue(&nepr);
-  numeroDeEtiquetasPorRollo = nepr;
-  db.print("número de etiquetas por rollo push...");
-  db.println(numeroDeEtiquetasPorRollo);
-}
-void n31Push(void *ptr) {
-  n31.setValue(2828);
-  uint32_t ife;
-    
-  n31.getValue(&ife);
-  iniciarFrenadoEn = ife;
-  db.print("iniciarfrenado en...");
-  db.println(iniciarFrenadoEn);
-}
-
-  sw0.attachPush(sw0Push, &sw0);
-  b00.attachPush(b00Push, &b00);
-  b01.attachPush(b01Push, &b01);
-  longitud.attachPush(longitudPush, &longitud);
-  n11.attachPush(n11Push, &n11);
-  n21.attachPush(n21Push, &n21);
-  n31.attachPush(n31Push, &n31);
+ 
 */
