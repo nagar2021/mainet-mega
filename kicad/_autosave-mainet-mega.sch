@@ -762,8 +762,8 @@ F0 "mainet-mega-rotary-pulse" 50
 F1 "mainet-mega-rotary-pulse.sch" 50
 F2 "rotaryPulseInput" I L 6100 4550 50 
 $EndSheet
-Text Label 5650 4550 2    50   ~ 0
-D24
+Text Label 5550 4550 2    50   ~ 0
+D26
 Text Notes 1250 1200 0    50   ~ 0
 +\n12V\n-\n
 NoConn ~ 3750 4700
@@ -816,6 +816,8 @@ F1 "mainet-mega-emergencyStopRelay.sch" 50
 $EndSheet
 Text Notes 10600 7650 0    50   ~ 0
 27/01/2021
+Wire Wire Line
+	5600 4550 6100 4550
 $Sheet
 S 6100 900  1500 1150
 U 5FC1C2EF
@@ -839,7 +841,7 @@ Wire Notes Line
 Wire Notes Line
 	7900 600  7900 3950
 Text Label 8600 2900 2    50   ~ 0
-D17
+D21
 Wire Wire Line
 	8600 2900 9100 2900
 Wire Wire Line
@@ -851,13 +853,13 @@ Wire Wire Line
 Wire Wire Line
 	8600 2300 9100 2300
 Text Label 8600 2750 2    50   ~ 0
-D18
+D22
 Text Label 8600 2600 2    50   ~ 0
-D19
+D23
 Text Label 8600 2450 2    50   ~ 0
-D20
+D24
 Text Label 8600 2300 2    50   ~ 0
-D21
+D25
 $Sheet
 S 9100 2100 1500 1400
 U 5FC25793
@@ -927,6 +929,4 @@ Wire Wire Line
 	5650 1650 6100 1650
 Wire Wire Line
 	5650 1800 6100 1800
-Wire Wire Line
-	5650 4550 6100 4550
 $EndSCHEMATC

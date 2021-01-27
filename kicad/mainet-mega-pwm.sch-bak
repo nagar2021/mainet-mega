@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 17
+Sheet 17 17
 Title ""
 Date ""
 Rev ""
@@ -14,12 +14,12 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 2350 1700 0    50   Input ~ 0
+Text HLabel 2350 1700 2    50   Input ~ 0
 brakeUnwindControl
-Text HLabel 2250 2700 0    50   Input ~ 0
+Text HLabel 2250 2700 2    50   Input ~ 0
 lowerClutchControl
-Text HLabel 2250 3500 0    50   Input ~ 0
+Text HLabel 2250 3500 2    50   Input ~ 0
 upperClutchControl
-Text HLabel 2250 4700 0    50   Input ~ 0
+Text HLabel 2250 4700 2    50   Input ~ 0
 frequencyRefControl
 $EndSCHEMATC

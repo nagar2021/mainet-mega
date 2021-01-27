@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 17
+Sheet 8 17
 Title ""
 Date ""
 Rev ""
@@ -217,8 +217,6 @@ No conectar a la tierra del Arduino Mega\n
 NoConn ~ 6300 3900
 Wire Wire Line
 	4450 4100 5150 4100
-Text HLabel 4450 4100 0    50   Input ~ 0
-machineEnable
 $Comp
 L power:GND #PWR?
 U 1 1 5FEF9646
@@ -250,6 +248,6 @@ Text GLabel 4450 2950 0    50   Input ~ 0
 VCC
 Text GLabel 4450 3050 0    50   Input ~ 0
 GND
-Text Label 4500 4100 0    50   ~ 0
+Text HLabel 4450 4100 0    50   Input ~ 0
 IN1
 $EndSCHEMATC
