@@ -1,5 +1,5 @@
  /* Nelson A. garcía Rodríguez
- * 26/01/2021
+ * 27/01/2021
  * mainet-mega V1.00
 */
 
@@ -15,14 +15,14 @@ EasyNex myNex(Serial2);
 
 
 //Definición de pines digitales de entrada
-Button emergencyStop = Button(31, PULLUP); // input push button no
 Button machineEnable = Button(30, PULLUP); // input push button no
 Button runForward    = Button(29, PULLUP); // input push button no
 Button stopRun       = Button(28, PULLUP); // input push button no
 Button jogForward    = Button(27, PULLUP); // input push button no
-
+Button clutchChuck   = Button(26, PULLUP); // input push button no
+Button brakeChuck    = Button(25, PULLUP); // input push button no
 // Entrada del generador de pulsos de rotación convertida a 5V
-int rotaryPulseInput = 26;           // input
+int rotaryPulseInput = 24;           // input
 
 
 //Definición de pines digitales de salida
@@ -33,11 +33,13 @@ int upperClutchControl  = 12;        // Arduino output pwm
     // (Entradas al M400)
 int frequencyRefControl = 13;        // Arduino output pwm
     // Salidas de control de relés
-int machineEnable            = 25    
-int runForwardControl        = 24;   // output relay
-int runReverseControl        = 23;   // output relay
-int analogInputSelectControl = 22;   // output relay
-int jogForwardControl        = 21;   // output relay
+int machineEnableControl     = 21;    // output relay
+int runForwardControl        = 20;   // output relay
+int runReverseControl        = 19;   // output relay
+int analogInputSelectControl = 18;   // output relay
+int jogForwardControl        = 17;   // output relay
+int clutchChuckControl       = 16;   // output relay
+int brakeChuckControl        = 15;   // output relay
 
 // Definición de pines analógicos de entrada
 // Potenciómetros de control de las tarjetas MP
@@ -163,6 +165,7 @@ void readUpperClutchPot() {
   pwm(upperClutchControl, dutyCycleUpperClutch);
 }
 
+/*
 void checkEmergencyStop() {
   // Chequear botón que no hay parada de emergencia
   if (emergencyStop.isPressed() == true)
@@ -171,6 +174,8 @@ void checkEmergencyStop() {
     myNex.writeNum("E.t8.x", 300);
   }
 }
+*/
+
 void checkMachineEnable() {
   // Chequear que la mainet está energizada
   if (machineEnable.isPressed() == true) {
