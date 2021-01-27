@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 17
+Sheet 7 17
 Title ""
 Date ""
 Rev ""
@@ -19,7 +19,7 @@ S 4950 650  1550 500
 U 5FD90D3E
 F0 "mainet-mega-relay-driver-1" 50
 F1 "mainet-mega-relay-driver-1.sch" 50
-F2 "machineEnable" I L 4950 900 50 
+F2 "IN1" I L 4950 900 50 
 $EndSheet
 $Sheet
 S 4950 1500 1550 500 
@@ -133,20 +133,26 @@ runForwardControl
 Text HLabel 4950 2650 0    50   Input ~ 0
 runReverseControl
 Text HLabel 4950 900  0    50   Input ~ 0
-machineEnable
+machineEnableControl
 Text HLabel 4950 4500 0    50   Input ~ 0
 jogForwardControl
 Text HLabel 4950 3550 0    50   Input ~ 0
 analogInputSelectControl
-NoConn ~ 4950 6400
 NoConn ~ 4950 7350
 Text Notes 7550 1550 0    50   ~ 0
 NOTA:\n\nJD-VCC = +5V es una fuente de poder diferente a la salida de +5V del Arduino Mega.\nNo debe unirse las tierras.
-NoConn ~ 4950 5450
-$Sheet
-S 8450 4000 1500 2350
-U 5FF5E17E
-F0 "mainet-mega-m400" 50
-F1 "mainet-mega-m400.sch" 50
-$EndSheet
+Wire Notes Line
+	3750 550  3750 7650
+Wire Notes Line
+	3750 7650 6800 7650
+Wire Notes Line
+	6800 7650 6800 550 
+Wire Notes Line
+	6800 550  3750 550 
+Text Notes 3900 700  0    50   ~ 0
+8 Relay Module
+Text HLabel 4950 5450 0    50   Input ~ 0
+clutchChuckControl
+Text HLabel 4950 6400 0    50   Input ~ 0
+breakChuckControl
 $EndSCHEMATC
