@@ -154,5 +154,5 @@ Text Notes 3900 700  0    50   ~ 0
 Text HLabel 4950 5450 0    50   Input ~ 0
 clutchChuckControl
 Text HLabel 4950 6400 0    50   Input ~ 0
-breakChuckControl
+brakeChuckControl
 $EndSCHEMATC

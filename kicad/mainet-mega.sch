@@ -869,7 +869,7 @@ F4 "runReverseControl" I L 9100 2600 50
 F5 "machineEnableControl" I L 9100 2300 50 
 F6 "jogForwardControl" I L 9100 2900 50 
 F7 "clutchChuckControl" I L 9100 3050 50 
-F8 "breakChuckControl" I L 9100 3200 50 
+F8 "brakeChuckControl" I L 9100 3200 50 
 $EndSheet
 Wire Wire Line
 	8600 1500 9100 1500
@@ -908,9 +908,9 @@ Wire Wire Line
 Wire Wire Line
 	9100 3200 8600 3200
 Text Label 8600 3050 2    50   ~ 0
-D20
+D16
 Text Label 8600 3200 2    50   ~ 0
-D19
+D15
 Wire Wire Line
 	5650 1050 6100 1050
 Wire Wire Line
