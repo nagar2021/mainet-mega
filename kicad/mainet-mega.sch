@@ -1,5 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:mainet-mega-cache
+LIBS:mainet-mega-rotary-pulse-generator-24v-to-mega-5v-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -755,13 +756,6 @@ Wire Wire Line
 	5650 5950 6100 5950
 Wire Wire Line
 	5650 6150 6100 6150
-$Sheet
-S 6100 4300 1500 500 
-U 5FC3A1C1
-F0 "mainet-mega-rotary-pulse" 50
-F1 "mainet-mega-rotary-pulse.sch" 50
-F2 "rotaryPulseInput" I L 6100 4550 50 
-$EndSheet
 Text Label 5650 4550 2    50   ~ 0
 D24
 Text Notes 1250 1200 0    50   ~ 0
@@ -929,4 +923,11 @@ Wire Wire Line
 	5650 1800 6100 1800
 Wire Wire Line
 	5650 4550 6100 4550
+$Sheet
+S 6100 4300 1500 500 
+U 5FC3A1C1
+F0 "mainet-mega-rotary-pulse" 50
+F1 "mainet-mega-rotary-pulse.sch" 50
+F2 "rotaryPulseInput" I L 6100 4550 50 
+$EndSheet
 $EndSCHEMATC
