@@ -1,11 +1,11 @@
 EESchema Schematic File Version 4
 LIBS:mainet-mega-cache
-LIBS:mainet-mega-rotary-pulse-generator-24v-to-mega-5v-cache
+LIBS:mainet-mega-5V-to-mp-10v-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 14 17
+Sheet 14 21
 Title ""
 Date ""
 Rev ""
