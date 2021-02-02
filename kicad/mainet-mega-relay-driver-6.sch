@@ -1,13 +1,12 @@
 EESchema Schematic File Version 4
 LIBS:mainet-mega-cache
-LIBS:mainet-mega-5V-to-mp-10v-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 13 21
-Title ""
-Date ""
+Sheet 12 21
+Title "Relay driver 6"
+Date "2021-02-02"
 Rev ""
 Comp ""
 Comment1 ""
@@ -210,8 +209,6 @@ F 3 "" H 6800 4600 50  0001 C CNN
 	1    6800 4600
 	1    0    0    -1  
 $EndComp
-Text Notes 6250 2750 0    50   ~ 0
-Fuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
 Text Notes 6950 4700 0    50   ~ 0
 Relay Ground\n
 Text Notes 6950 4800 0    50   ~ 0
@@ -253,4 +250,10 @@ Text GLabel 4000 3250 0    50   Input ~ 0
 VCC
 Text GLabel 4000 3350 0    50   Input ~ 0
 GND
+Text Notes 6250 2800 0    50   ~ 0
+JD-VCC:\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+Text Notes 3650 2650 0    50   ~ 0
+VCC:\nSalida +5V del Arduino
+Text Notes 3950 4550 0    50   ~ 0
+D16-clutchChuckControl
 $EndSCHEMATC

@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
 LIBS:mainet-mega-cache
-LIBS:mainet-mega-5V-to-mp-10v-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -141,7 +140,7 @@ Text HLabel 4950 3550 0    50   Input ~ 0
 analogInputSelectControl
 NoConn ~ 4950 7350
 Text Notes 7550 1550 0    50   ~ 0
-NOTA:\n\nJD-VCC = +5V es una fuente de poder diferente a la salida de +5V del Arduino Mega.\nNo debe unirse las tierras.
+NOTA:\n\nJD-VCC = +5V es una fuente de poder diferente a la salida de +5V del Arduino Mega.\nVCC = +5V es la salida de 5V del Arduino Mega\nGND = 0V de la fuente externa de alimentación de los relés. No es la tierra del Arduino.\nNo debe unirse las tierras.
 Wire Notes Line
 	3750 550  3750 7650
 Wire Notes Line
@@ -156,4 +155,18 @@ Text HLabel 4950 5450 0    50   Input ~ 0
 clutchChuckControl
 Text HLabel 4950 6400 0    50   Input ~ 0
 brakeChuckControl
+Text Notes 4050 850  0    50   ~ 0
+D21
+Text Notes 4200 1700 0    50   ~ 0
+D20
+Text Notes 4200 2600 0    50   ~ 0
+D19
+Text Notes 3950 3500 0    50   ~ 0
+D18
+Text Notes 4200 4450 0    50   ~ 0
+D17
+Text Notes 4150 5400 0    50   ~ 0
+D16
+Text Notes 4200 6350 0    50   ~ 0
+D15
 $EndSCHEMATC

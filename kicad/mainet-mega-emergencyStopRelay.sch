@@ -1,9 +1,5 @@
 EESchema Schematic File Version 4
 LIBS:mainet-mega-cache
-<<<<<<< HEAD
-=======
-LIBS:mainet-mega-5V-to-mp-10v-cache
->>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268

@@ -1,21 +1,12 @@
 EESchema Schematic File Version 4
 LIBS:mainet-mega-cache
-<<<<<<< HEAD
-LIBS:mainet-mega-5V-to-mp-10v-cache
-=======
-LIBS:mainet-mega-rotary-pulse-generator-24v-to-mega-5v-cache
->>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-<<<<<<< HEAD
-Sheet 8 21
-=======
-Sheet 8 17
->>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
-Title ""
-Date ""
+Sheet 7 21
+Title "Relay driver 1"
+Date "2021-02-02"
 Rev ""
 Comp ""
 Comment1 ""
@@ -218,7 +209,7 @@ F 3 "" H 7250 4300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 6700 2450 0    50   ~ 0
-Fuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+JD-VCC:\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
 Text Notes 7400 4400 0    50   ~ 0
 Relay Ground\n
 Text Notes 7400 4500 0    50   ~ 0
@@ -259,4 +250,8 @@ Text GLabel 4450 3050 0    50   Input ~ 0
 GND
 Text HLabel 4450 4100 0    50   Input ~ 0
 IN1
+Text Notes 4250 4250 0    50   ~ 0
+D21-machineEnableControl
+Text Notes 4100 2300 0    50   ~ 0
+VCC:\nSalida +5V del Arduino
 $EndSCHEMATC
