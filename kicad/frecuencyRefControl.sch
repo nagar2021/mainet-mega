@@ -1,5 +1,9 @@
 EESchema Schematic File Version 4
 LIBS:mainet-mega-cache
+<<<<<<< HEAD
+=======
+LIBS:mainet-mega-5V-to-mp-10v-cache
+>>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -21,8 +25,12 @@ P 7100 3800
 AR Path="/601F45DD" Ref="Q?"  Part="1" 
 AR Path="/5F888A13/601F45DD" Ref="Q?"  Part="1" 
 AR Path="/5FBD1D9A/601F45DD" Ref="Q?"  Part="1" 
+<<<<<<< HEAD
 AR Path="/5FBD1D9A/601C4CB6/601F45DD" Ref="Q15"  Part="1" 
 F 0 "Q15" H 7304 3846 50  0000 L CNN
+=======
+F 0 "Q?" H 7304 3846 50  0000 L CNN
+>>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 F 1 "BUK9518-55" H 7304 3755 50  0000 L CNN
 F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 7350 3725 50  0001 L CIN
 F 3 "http://www.irf.com/product-info/datasheets/data/irlz44n.pdf" H 7100 3800 50  0001 L CNN
@@ -36,8 +44,12 @@ P 5800 3700
 AR Path="/601F45E3" Ref="U?"  Part="1" 
 AR Path="/5F888A13/601F45E3" Ref="U?"  Part="1" 
 AR Path="/5FBD1D9A/601F45E3" Ref="U?"  Part="1" 
+<<<<<<< HEAD
 AR Path="/5FBD1D9A/601C4CB6/601F45E3" Ref="U14"  Part="1" 
 F 0 "U14" H 5800 4025 50  0000 C CNN
+=======
+F 0 "U?" H 5800 4025 50  0000 C CNN
+>>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 F 1 "4N38" H 5800 3934 50  0000 C CNN
 F 2 "Package_DIP:DIP-6_W7.62mm" H 5600 3500 50  0001 L CIN
 F 3 "https://www.vishay.com/docs/81181/4n35.pdf" H 5800 3700 50  0001 L CNN
@@ -51,8 +63,12 @@ P 6900 4100
 AR Path="/601F45E9" Ref="R?"  Part="1" 
 AR Path="/5F888A13/601F45E9" Ref="R?"  Part="1" 
 AR Path="/5FBD1D9A/601F45E9" Ref="R?"  Part="1" 
+<<<<<<< HEAD
 AR Path="/5FBD1D9A/601C4CB6/601F45E9" Ref="R37"  Part="1" 
 F 0 "R37" V 6800 4100 50  0000 C CNN
+=======
+F 0 "R?" V 6800 4100 50  0000 C CNN
+>>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 F 1 "1.5K" V 6900 4100 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 6830 4100 50  0001 C CNN
 F 3 "~" H 6900 4100 50  0001 C CNN
@@ -68,8 +84,12 @@ P 6500 3800
 AR Path="/601F45F0" Ref="R?"  Part="1" 
 AR Path="/5F888A13/601F45F0" Ref="R?"  Part="1" 
 AR Path="/5FBD1D9A/601F45F0" Ref="R?"  Part="1" 
+<<<<<<< HEAD
 AR Path="/5FBD1D9A/601C4CB6/601F45F0" Ref="R36"  Part="1" 
 F 0 "R36" V 6600 3800 50  0000 C CNN
+=======
+F 0 "R?" V 6600 3800 50  0000 C CNN
+>>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 F 1 "1K" V 6500 3800 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 6430 3800 50  0001 C CNN
 F 3 "~" H 6500 3800 50  0001 C CNN
@@ -88,8 +108,12 @@ P 6100 4400
 AR Path="/601F45F9" Ref="D?"  Part="1" 
 AR Path="/5F888A13/601F45F9" Ref="D?"  Part="1" 
 AR Path="/5FBD1D9A/601F45F9" Ref="D?"  Part="1" 
+<<<<<<< HEAD
 AR Path="/5FBD1D9A/601C4CB6/601F45F9" Ref="D19"  Part="1" 
 F 0 "D19" H 6093 4617 50  0000 C CNN
+=======
+F 0 "D?" H 6093 4617 50  0000 C CNN
+>>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 F 1 "LED" H 6093 4526 50  0000 C CNN
 F 2 "LED_THT:LED_D5.0mm" H 6100 4400 50  0001 C CNN
 F 3 "~" H 6100 4400 50  0001 C CNN
@@ -103,8 +127,12 @@ P 5500 3250
 AR Path="/601F45FF" Ref="R?"  Part="1" 
 AR Path="/5F888A13/601F45FF" Ref="R?"  Part="1" 
 AR Path="/5FBD1D9A/601F45FF" Ref="R?"  Part="1" 
+<<<<<<< HEAD
 AR Path="/5FBD1D9A/601C4CB6/601F45FF" Ref="R34"  Part="1" 
 F 0 "R34" V 5400 3250 50  0000 C CNN
+=======
+F 0 "R?" V 5400 3250 50  0000 C CNN
+>>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 F 1 "330" V 5500 3250 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 5430 3250 50  0001 C CNN
 F 3 "~" H 5500 3250 50  0001 C CNN
@@ -126,8 +154,12 @@ P 6100 4100
 AR Path="/601F4609" Ref="R?"  Part="1" 
 AR Path="/5F888A13/601F4609" Ref="R?"  Part="1" 
 AR Path="/5FBD1D9A/601F4609" Ref="R?"  Part="1" 
+<<<<<<< HEAD
 AR Path="/5FBD1D9A/601C4CB6/601F4609" Ref="R35"  Part="1" 
 F 0 "R35" V 6000 4100 50  0000 C CNN
+=======
+F 0 "R?" V 6000 4100 50  0000 C CNN
+>>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 F 1 "2K" V 6100 4100 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 6030 4100 50  0001 C CNN
 F 3 "~" H 6100 4100 50  0001 C CNN
@@ -143,8 +175,12 @@ P 8250 3550
 AR Path="/601F4610" Ref="J?"  Part="1" 
 AR Path="/5F888A13/601F4610" Ref="J?"  Part="1" 
 AR Path="/5FBD1D9A/601F4610" Ref="J?"  Part="1" 
+<<<<<<< HEAD
 AR Path="/5FBD1D9A/601C4CB6/601F4610" Ref="J72"  Part="1" 
 F 0 "J72" H 8250 3250 50  0000 C CNN
+=======
+F 0 "J?" H 8250 3250 50  0000 C CNN
+>>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 F 1 "Screw_Terminal_01x03" H 8168 3316 50  0001 C CNN
 F 2 "TerminalBlock_Altech:Altech_AK300_1x03_P5.00mm_45-Degree" H 8250 3550 50  0001 C CNN
 F 3 "~" H 8250 3550 50  0001 C CNN
@@ -160,8 +196,12 @@ P 4900 4050
 AR Path="/601F4617" Ref="R?"  Part="1" 
 AR Path="/5F888A13/601F4617" Ref="R?"  Part="1" 
 AR Path="/5FBD1D9A/601F4617" Ref="R?"  Part="1" 
+<<<<<<< HEAD
 AR Path="/5FBD1D9A/601C4CB6/601F4617" Ref="R33"  Part="1" 
 F 0 "R33" H 4800 4050 50  0000 C CNN
+=======
+F 0 "R?" H 4800 4050 50  0000 C CNN
+>>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 F 1 "4,3K" V 4900 4050 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 4830 4050 50  0001 C CNN
 F 3 "~" H 4900 4050 50  0001 C CNN
@@ -191,8 +231,12 @@ P 7200 3150
 AR Path="/601F4626" Ref="R?"  Part="1" 
 AR Path="/5F888A13/601F4626" Ref="R?"  Part="1" 
 AR Path="/5FBD1D9A/601F4626" Ref="R?"  Part="1" 
+<<<<<<< HEAD
 AR Path="/5FBD1D9A/601C4CB6/601F4626" Ref="R38"  Part="1" 
 F 0 "R38" V 7300 3150 50  0000 C CNN
+=======
+F 0 "R?" V 7300 3150 50  0000 C CNN
+>>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 F 1 "20k" V 7200 3150 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 7130 3150 50  0001 C CNN
 F 3 "~" H 7200 3150 50  0001 C CNN
@@ -214,9 +258,13 @@ $Comp
 L Transistor_BJT:2N3906 Q?
 U 1 1 601F4632
 P 5400 4200
+<<<<<<< HEAD
 AR Path="/5FBD1D9A/601F4632" Ref="Q?"  Part="1" 
 AR Path="/5FBD1D9A/601C4CB6/601F4632" Ref="Q14"  Part="1" 
 F 0 "Q14" H 5590 4154 50  0000 L CNN
+=======
+F 0 "Q?" H 5590 4154 50  0000 L CNN
+>>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 F 1 "2N3906" H 5590 4245 50  0000 L CNN
 F 2 "Package_TO_SOT_THT:TO-92_Inline" H 5600 4125 50  0001 L CIN
 F 3 "https://www.fairchildsemi.com/datasheets/2N/2N3906.pdf" H 5400 4200 50  0001 L CNN
@@ -233,8 +281,12 @@ P 3850 3800
 AR Path="/601F463A" Ref="J?"  Part="1" 
 AR Path="/5F888A13/601F463A" Ref="J?"  Part="1" 
 AR Path="/5FBD1D9A/601F463A" Ref="J?"  Part="1" 
+<<<<<<< HEAD
 AR Path="/5FBD1D9A/601C4CB6/601F463A" Ref="J71"  Part="1" 
 F 0 "J71" H 3850 4100 50  0000 C CNN
+=======
+F 0 "J?" H 3850 4100 50  0000 C CNN
+>>>>>>> 3a390cd659d0642852be24b7c872ce2c11022a52
 F 1 "Screw_Terminal_01x03" H 3768 3566 50  0001 C CNN
 F 2 "TerminalBlock_Altech:Altech_AK300_1x03_P5.00mm_45-Degree" H 3850 3800 50  0001 C CNN
 F 3 "~" H 3850 3800 50  0001 C CNN
