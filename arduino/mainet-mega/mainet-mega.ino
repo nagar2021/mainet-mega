@@ -1,5 +1,5 @@
- /* Nelson A. garcía Rodríguez
- * 29/01/2021
+ /* Nelson A. García Rodríguez
+ * 10/03/2021
  * mainet-mega V1.00
 */
 
@@ -9,7 +9,7 @@
 #include <trigger.h>
 
 //#define Serial Serial   // Debug using default Serial over USB towards Arduino Serial Monitor
-//#define DEBUG        // Comment this out if you don't need to see what happens in the Serial Monitor
+//#define DEBUG           // Comment this out if you don't need to see what happens in the Serial Monitor
 
 EasyNex myNex(Serial2);
 
