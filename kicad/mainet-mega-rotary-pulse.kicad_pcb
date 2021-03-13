@@ -10,6 +10,12 @@
   )
 
   (page A4)
+  (title_block
+    (title "PCB - mainet-mega-rotary-pulse")
+    (date 2021-03-12)
+    (rev V0.1)
+  )
+
   (layers
     (0 F.Cu signal hide)
     (31 B.Cu signal)
@@ -500,9 +506,9 @@
   (segment (start 144.78 121.6647) (end 146.1206 120.3241) (width 1) (layer B.Cu) (net 5))
   (segment (start 157.32 135.89) (end 160.02 133.19) (width 1) (layer B.Cu) (net 6))
   (segment (start 160.02 133.19) (end 160.02 123.19) (width 1) (layer B.Cu) (net 6))
-  (segment (start 160.02 120.224) (end 160.02 123.19) (width 1) (layer B.Cu) (net 6))
-  (segment (start 156.423 113.03) (end 160.02 120.224) (width 1) (layer B.Cu) (net 6))
-  (segment (start 156.423 113.03) (end 153.67 113.03) (width 1) (layer B.Cu) (net 6))
+  (segment (start 157.48 119.38) (end 160.02 123.19) (width 1) (layer B.Cu) (net 6))
+  (segment (start 153.67 113.03) (end 157.48 114.3) (width 1) (layer B.Cu) (net 6))
+  (segment (start 157.48 114.3) (end 157.48 119.38) (width 1) (layer B.Cu) (net 6))
   (segment (start 138.43 88.9) (end 138.43 90.4253) (width 1) (layer B.Cu) (net 7))
   (segment (start 144.78 93.98) (end 143.4547 93.98) (width 1) (layer B.Cu) (net 7))
   (segment (start 143.4547 93.98) (end 139.9 90.4253) (width 1) (layer B.Cu) (net 7))
