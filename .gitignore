@@ -47,7 +47,7 @@ out/
 *.bak
 *.bck
 *.kicad_pcb-bak
-    *.kicad_sch-bak
+*.kicad_sch-bak
 *.sch-bak
 _saved_*
 
