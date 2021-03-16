@@ -1,4 +1,0 @@
-(sym_lib_table
-  (lib (name mainet-mega-rescue)(type Legacy)(uri ${KIPRJMOD}/mainet-mega-rescue.lib)(options "")(descr ""))
-  (lib (name mainet-control-M400-relays-5V-24V-rescue)(type Legacy)(uri ${KIPRJMOD}/mainet-control-M400-relays-5V-24V-rescue.lib)(options "")(descr ""))
-)
