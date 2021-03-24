@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 16 21
+Sheet 4 21
 Title ""
 Date ""
 Rev ""
@@ -18,6 +18,8 @@ $Comp
 L mainet-mega-rescue:relay-4p2t-ng-relays K9
 U 1 1 5FE04F1A
 P 4250 4400
+AR Path="/5FE04F1A" Ref="K9"  Part="1" 
+AR Path="/5FF9030A/5FE04F1A" Ref="K9"  Part="1" 
 F 0 "K9" H 3022 4446 50  0000 R CNN
 F 1 "relay-4p2t" H 3022 4355 50  0000 R CNN
 F 2 "" H 4700 5300 50  0001 C CNN
@@ -188,6 +190,8 @@ $Comp
 L mainet-mega-rescue:socket-4p2t-ng-relays U11
 U 1 1 5FDD58E8
 P 2100 5000
+AR Path="/5FDD58E8" Ref="U11"  Part="1" 
+AR Path="/5FF9030A/5FDD58E8" Ref="U11"  Part="1" 
 F 0 "U11" H 2535 5188 50  0000 L CNN
 F 1 "socket-4p2t" H 2535 5097 50  0000 L CNN
 F 2 "" H 2550 5900 50  0001 C CNN
@@ -666,6 +670,8 @@ $Comp
 L mainet-mega-rescue:Transformer_2P_1S-ng-transformadores T1
 U 1 1 5FEB7819
 P 4700 1600
+AR Path="/5FEB7819" Ref="T1"  Part="1" 
+AR Path="/5FF9030A/5FEB7819" Ref="T1"  Part="1" 
 F 0 "T1" H 5400 1500 50  0000 L CNN
 F 1 "Transformer_2P_1S" H 5400 1400 50  0001 L CNN
 F 2 "" V 4800 1450 50  0001 C CNN
