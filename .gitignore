@@ -1,2 +1,68 @@
 # .gitignore
-.DS_Storeadd
+.DS_Store
+
+##################################################
+### .gitignore for VisualStudioCode 24/03/2021 ###
+##################################################
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+# Ignore all local history of files
+**/.history
+.ionide
+
+########################################
+### .gitignore for KiCAD 24/03/2021: ###
+########################################
+# Autosave files
+_autosave-*
+
+# Autorouter files (exported from Pcbnew)
+*.dsn
+*.ses
+
+# BOM plugin output
+*.csv.tmp
+*.csv
+*.tsv
+*.xml
+bom/
+
+# CPL data generated from PCB
+*.pos
+
+# Drill files
+*.drl
+
+# Footprint info cache
+fp-info-cache
+
+# Gerbers
+*.gbr
+out/
+
+# KiCAD backup
+*.000
+*.bak
+*.bck
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*.sch-bak
+_saved_*
+
+*~
+*.tmp
+*-rescue.lib
+*-save.pro
+*-save.kicad_pcb
+*.kicad_prl
+fp-info-cache
+
+# Netlists
+*.net
+
+# Reports
+*.rpt
