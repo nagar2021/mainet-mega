@@ -1,7 +1,7 @@
 # .gitignore
 .DS_Store
 ##################################################
-### .gitignore for VisualStudioCode 12/03/2021 ###
+### .gitignore for VisualStudioCode 24/03/2021 ###
 ##################################################
 .vscode/*
 !.vscode/settings.json
@@ -14,7 +14,7 @@
 .ionide
 
 ########################################
-### .gitignore for KiCAD 12/03/2021: ###
+### .gitignore for KiCAD 24/03/2021: ###
 ########################################
 # Autosave files
 _autosave-*
