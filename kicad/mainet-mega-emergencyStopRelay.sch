@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 16 21
+Sheet 4 21
 Title ""
 Date ""
 Rev ""
@@ -15,9 +15,11 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L ng-relays:relay-4p2t K9
+L mainet-mega-rescue:relay-4p2t-ng-relays K9
 U 1 1 5FE04F1A
 P 4250 4400
+AR Path="/5FE04F1A" Ref="K9"  Part="1" 
+AR Path="/5FF9030A/5FE04F1A" Ref="K9"  Part="1" 
 F 0 "K9" H 3022 4446 50  0000 R CNN
 F 1 "relay-4p2t" H 3022 4355 50  0000 R CNN
 F 2 "" H 4700 5300 50  0001 C CNN
@@ -85,9 +87,11 @@ $EndComp
 Wire Wire Line
 	1100 5300 1100 5700
 $Comp
-L ng-contactor-3-poles:Contactor-3-poles K10
+L mainet-mega-rescue:Contactor-3-poles-ng-contactor-3-poles K10
 U 1 1 5FDD10BE
 P 7550 5250
+AR Path="/5FDD10BE" Ref="K10"  Part="1" 
+AR Path="/5FF9030A/5FDD10BE" Ref="K10"  Part="1" 
 F 0 "K10" H 7500 5250 50  0000 L CNN
 F 1 "Contactor-3-poles" H 8388 5205 50  0000 L CNN
 F 2 "" H 7550 5250 50  0001 C CNN
@@ -183,9 +187,11 @@ $EndComp
 Wire Wire Line
 	8750 5550 8750 5700
 $Comp
-L ng-relays:socket-4p2t U11
+L mainet-mega-rescue:socket-4p2t-ng-relays U11
 U 1 1 5FDD58E8
 P 2100 5000
+AR Path="/5FDD58E8" Ref="U11"  Part="1" 
+AR Path="/5FF9030A/5FDD58E8" Ref="U11"  Part="1" 
 F 0 "U11" H 2535 5188 50  0000 L CNN
 F 1 "socket-4p2t" H 2535 5097 50  0000 L CNN
 F 2 "" H 2550 5900 50  0001 C CNN
@@ -661,9 +667,11 @@ L5
 Text Label 4900 1350 0    50   ~ 0
 L4
 $Comp
-L ng-transformadores:Transformer_2P_1S T1
+L mainet-mega-rescue:Transformer_2P_1S-ng-transformadores T1
 U 1 1 5FEB7819
 P 4700 1600
+AR Path="/5FEB7819" Ref="T1"  Part="1" 
+AR Path="/5FF9030A/5FEB7819" Ref="T1"  Part="1" 
 F 0 "T1" H 5400 1500 50  0000 L CNN
 F 1 "Transformer_2P_1S" H 5400 1400 50  0001 L CNN
 F 2 "" V 4800 1450 50  0001 C CNN
