@@ -5,9 +5,9 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 21
-Title ""
-Date ""
-Rev ""
+Title "Mainet-mega -- "
+Date "2021-03-24"
+Rev "1.0"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -807,8 +807,6 @@ U 5FF9030A
 F0 "mainet-mega-emergencyStopRelay" 50
 F1 "mainet-mega-emergencyStopRelay.sch" 50
 $EndSheet
-Text Notes 10600 7650 0    50   ~ 0
-27/01/2021
 $Sheet
 S 6100 900  1500 1150
 U 5FC1C2EF

@@ -4,10 +4,10 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 21
-Title "Rotary pulse traslator 24V to 5V"
-Date ""
-Rev ""
+Sheet 17 21
+Title "Mainet-mega -- "
+Date "2021-03-24"
+Rev "1.0"
 Comp ""
 Comment1 ""
 Comment2 ""
