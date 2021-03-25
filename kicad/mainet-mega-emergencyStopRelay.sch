@@ -5,7 +5,7 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 4 21
-Title "Mainet-mega-emergencyStopRelay"
+Title "Mainet-mega -- "
 Date "2021-03-24"
 Rev "1.0"
 Comp ""
