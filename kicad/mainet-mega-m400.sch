@@ -4,8 +4,8 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 20 21
-Title "Mainet-mega -- "
-Date "2021-04-06"
+Title "Mainet-mega -- Diagrama de Conexiones del M400"
+Date "2021-04-07"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -181,4 +181,34 @@ V
 Text Label 7450 4350 2    50   ~ 0
 W
 NoConn ~ 7450 4450
+NoConn ~ 5800 5150
+NoConn ~ 5800 4950
+NoConn ~ 5800 5050
+NoConn ~ 5800 4850
+NoConn ~ 5800 4750
+NoConn ~ 5800 4650
+Text GLabel 5650 4650 0    50   Input ~ 0
+Analog_input_2
+Wire Wire Line
+	5650 4650 5800 4650
+Text GLabel 5650 4750 0    50   Input ~ 0
+Analog_output_1
+Text GLabel 5650 4850 0    50   Input ~ 0
+Analog_output_2
+Text GLabel 5650 4950 0    50   Input ~ 0
+Digital_I_O_1
+Text GLabel 5650 5050 0    50   Input ~ 0
+Digital_I_O_2
+Text GLabel 5650 5150 0    50   Input ~ 0
+Digital_input_7
+Wire Wire Line
+	5650 4750 5800 4750
+Wire Wire Line
+	5650 4850 5800 4850
+Wire Wire Line
+	5650 4950 5800 4950
+Wire Wire Line
+	5650 5050 5800 5050
+Wire Wire Line
+	5650 5150 5800 5150
 $EndSCHEMATC

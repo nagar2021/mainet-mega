@@ -4,8 +4,8 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 15 21
-Title "Mainet-mega -- "
-Date "2021-04-06"
+Title "Mainet-mega -- Convertidores de Voltaje: 5V a 10V"
+Date "2021-04-07"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -36,8 +36,8 @@ $EndSheet
 $Sheet
 S 5350 4400 950  300 
 U 601C4CB6
-F0 "frecuencyRefControl" 50
-F1 "frecuencyRefControl.sch" 50
+F0 "frequencyRefControl" 50
+F1 "frequencyRefControl.sch" 50
 $EndSheet
 $Sheet
 S 5350 3700 950  300 

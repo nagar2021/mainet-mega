@@ -4,8 +4,8 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 9 21
-Title "Mainet-mega -- "
-Date "2021-04-06"
+Title "Mainet-mega -- runReverseControl"
+Date "2021-04-07"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -193,11 +193,11 @@ Wire Wire Line
 Wire Wire Line
 	7700 4000 8100 4000
 Text Label 7950 3800 0    50   ~ 0
-NO1
+NO3
 Text Label 7950 3900 0    50   ~ 0
-C1
+C3
 Text Label 7950 4000 0    50   ~ 0
-NC1
+NC3
 Wire Wire Line
 	8100 3800 7800 3800
 Wire Wire Line
@@ -266,4 +266,55 @@ Text Notes 3400 2450 0    50   ~ 0
 VCC:\nSalida +5V del Arduino
 Text Notes 3500 4450 0    50   ~ 0
 D19-runReverseControl
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 606F5074
+P 8850 3800
+AR Path="/5FC25793/5FD90A95/606F5074" Ref="J?"  Part="1" 
+AR Path="/5FC25793/5FD90F9D/606F5074" Ref="J77"  Part="1" 
+F 0 "J77" H 8850 3950 50  0000 C CNN
+F 1 "Conn_01x01_Male" H 8958 3890 50  0001 C CNN
+F 2 "" H 8850 3800 50  0001 C CNN
+F 3 "~" H 8850 3800 50  0001 C CNN
+	1    8850 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 606F507A
+P 8850 3900
+AR Path="/5FC25793/5FD90A95/606F507A" Ref="J?"  Part="1" 
+AR Path="/5FC25793/5FD90F9D/606F507A" Ref="J78"  Part="1" 
+F 0 "J78" H 8850 3750 50  0000 C CNN
+F 1 "Conn_01x01_Male" H 8958 3990 50  0001 C CNN
+F 2 "" H 8850 3900 50  0001 C CNN
+F 3 "~" H 8850 3900 50  0001 C CNN
+	1    8850 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+24V #PWR?
+U 1 1 606F5080
+P 9250 3300
+AR Path="/5FC25793/5FD90A95/606F5080" Ref="#PWR?"  Part="1" 
+AR Path="/5FC25793/5FD90F9D/606F5080" Ref="#PWR042"  Part="1" 
+F 0 "#PWR042" H 9250 3150 50  0001 C CNN
+F 1 "+24V" H 9265 3473 50  0000 C CNN
+F 2 "" H 9250 3300 50  0001 C CNN
+F 3 "" H 9250 3300 50  0001 C CNN
+	1    9250 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9250 3300 9250 3800
+Wire Wire Line
+	9250 3800 9050 3800
+Text Label 9050 3800 0    50   ~ 0
+NO3
+Text Label 9050 3900 0    50   ~ 0
+C3
+Wire Wire Line
+	9050 3900 9550 3900
+Text GLabel 9550 3900 2    50   Input ~ 0
+Digital_input_4
 $EndSCHEMATC

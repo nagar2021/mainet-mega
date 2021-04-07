@@ -4,8 +4,8 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 8 21
-Title "Mainet-mega -- "
-Date "2021-04-06"
+Title "Mainet-mega -- runForwardControl"
+Date "2021-04-07"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -255,4 +255,49 @@ Text Notes 5800 2450 0    50   ~ 0
 JD-VCC:\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
 Text Notes 3200 2300 0    50   ~ 0
 VCC:\nSalida +5V del Arduino
+$Comp
+L Connector:Conn_01x01_Male J75
+U 1 1 606EB603
+P 8950 3650
+F 0 "J75" H 8950 3800 50  0000 C CNN
+F 1 "Conn_01x01_Male" H 9058 3740 50  0001 C CNN
+F 2 "" H 8950 3650 50  0001 C CNN
+F 3 "~" H 8950 3650 50  0001 C CNN
+	1    8950 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J76
+U 1 1 606EBE14
+P 8950 3750
+F 0 "J76" H 8950 3600 50  0000 C CNN
+F 1 "Conn_01x01_Male" H 9058 3840 50  0001 C CNN
+F 2 "" H 8950 3750 50  0001 C CNN
+F 3 "~" H 8950 3750 50  0001 C CNN
+	1    8950 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+24V #PWR0101
+U 1 1 606EC3A6
+P 9350 3150
+F 0 "#PWR0101" H 9350 3000 50  0001 C CNN
+F 1 "+24V" H 9365 3323 50  0000 C CNN
+F 2 "" H 9350 3150 50  0001 C CNN
+F 3 "" H 9350 3150 50  0001 C CNN
+	1    9350 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9350 3150 9350 3650
+Wire Wire Line
+	9350 3650 9150 3650
+Text Label 9150 3650 0    50   ~ 0
+NO2
+Text Label 9150 3750 0    50   ~ 0
+C2
+Wire Wire Line
+	9150 3750 9650 3750
+Text GLabel 9650 3750 2    50   Input ~ 0
+Digital_input_3
 $EndSCHEMATC

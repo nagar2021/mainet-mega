@@ -5,7 +5,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 11 21
 Title "Mainet-mega -- "
-Date "2021-04-06"
+Date "2021-04-07"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -255,4 +255,55 @@ Text Notes 3350 2350 0    50   ~ 0
 VCC:\nSalida +5V del Arduino
 Text Notes 3650 4250 0    50   ~ 0
 D17-jogForwardControl
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 60704034
+P 8700 3600
+AR Path="/5FC25793/5FD90A95/60704034" Ref="J?"  Part="1" 
+AR Path="/5FC25793/5FD919F3/60704034" Ref="J81"  Part="1" 
+F 0 "J81" H 8700 3750 50  0000 C CNN
+F 1 "Conn_01x01_Male" H 8808 3690 50  0001 C CNN
+F 2 "" H 8700 3600 50  0001 C CNN
+F 3 "~" H 8700 3600 50  0001 C CNN
+	1    8700 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 6070403A
+P 8700 3700
+AR Path="/5FC25793/5FD90A95/6070403A" Ref="J?"  Part="1" 
+AR Path="/5FC25793/5FD919F3/6070403A" Ref="J82"  Part="1" 
+F 0 "J82" H 8700 3550 50  0000 C CNN
+F 1 "Conn_01x01_Male" H 8808 3790 50  0001 C CNN
+F 2 "" H 8700 3700 50  0001 C CNN
+F 3 "~" H 8700 3700 50  0001 C CNN
+	1    8700 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+24V #PWR?
+U 1 1 60704040
+P 9100 3100
+AR Path="/5FC25793/5FD90A95/60704040" Ref="#PWR?"  Part="1" 
+AR Path="/5FC25793/5FD919F3/60704040" Ref="#PWR044"  Part="1" 
+F 0 "#PWR044" H 9100 2950 50  0001 C CNN
+F 1 "+24V" H 9115 3273 50  0000 C CNN
+F 2 "" H 9100 3100 50  0001 C CNN
+F 3 "" H 9100 3100 50  0001 C CNN
+	1    9100 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 3100 9100 3600
+Wire Wire Line
+	9100 3600 8900 3600
+Text Label 8900 3600 0    50   ~ 0
+NO5
+Text Label 8900 3700 0    50   ~ 0
+C5
+Wire Wire Line
+	8900 3700 9400 3700
+Text GLabel 9400 3700 2    50   Input ~ 0
+Digital_input_6
 $EndSCHEMATC

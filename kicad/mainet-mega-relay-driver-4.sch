@@ -4,8 +4,8 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 10 21
-Title "Mainet-mega -- "
-Date "2021-04-06"
+Title "Mainet-mega -- analogInputSelectControl"
+Date "2021-04-07"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -184,11 +184,11 @@ Wire Wire Line
 Wire Wire Line
 	7600 3900 8000 3900
 Text Label 7850 3700 0    50   ~ 0
-NO1
+NO4
 Text Label 7850 3800 0    50   ~ 0
-C1
+C4
 Text Label 7850 3900 0    50   ~ 0
-NC1
+NC4
 Wire Wire Line
 	8000 3700 7700 3700
 Wire Wire Line
@@ -255,4 +255,55 @@ Text Notes 3250 2450 0    50   ~ 0
 VCC:\nSalida +5V del Arduino
 Text Notes 3550 4350 0    50   ~ 0
 D18-analogInputSelectControl
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 606FB823
+P 8700 3700
+AR Path="/5FC25793/5FD90A95/606FB823" Ref="J?"  Part="1" 
+AR Path="/5FC25793/5FD91471/606FB823" Ref="J79"  Part="1" 
+F 0 "J79" H 8700 3850 50  0000 C CNN
+F 1 "Conn_01x01_Male" H 8808 3790 50  0001 C CNN
+F 2 "" H 8700 3700 50  0001 C CNN
+F 3 "~" H 8700 3700 50  0001 C CNN
+	1    8700 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 606FB829
+P 8700 3800
+AR Path="/5FC25793/5FD90A95/606FB829" Ref="J?"  Part="1" 
+AR Path="/5FC25793/5FD91471/606FB829" Ref="J80"  Part="1" 
+F 0 "J80" H 8700 3650 50  0000 C CNN
+F 1 "Conn_01x01_Male" H 8808 3890 50  0001 C CNN
+F 2 "" H 8700 3800 50  0001 C CNN
+F 3 "~" H 8700 3800 50  0001 C CNN
+	1    8700 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+24V #PWR?
+U 1 1 606FB82F
+P 9100 3200
+AR Path="/5FC25793/5FD90A95/606FB82F" Ref="#PWR?"  Part="1" 
+AR Path="/5FC25793/5FD91471/606FB82F" Ref="#PWR043"  Part="1" 
+F 0 "#PWR043" H 9100 3050 50  0001 C CNN
+F 1 "+24V" H 9115 3373 50  0000 C CNN
+F 2 "" H 9100 3200 50  0001 C CNN
+F 3 "" H 9100 3200 50  0001 C CNN
+	1    9100 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 3200 9100 3700
+Wire Wire Line
+	9100 3700 8900 3700
+Text Label 8900 3700 0    50   ~ 0
+NO4
+Text Label 8900 3800 0    50   ~ 0
+C4
+Wire Wire Line
+	8900 3800 9400 3800
+Text GLabel 9400 3800 2    50   Input ~ 0
+Digital_input_5
 $EndSCHEMATC

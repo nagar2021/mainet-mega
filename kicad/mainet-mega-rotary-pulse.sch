@@ -3,9 +3,9 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 17 21
-Title "Mainet-mega -- "
-Date "2021-04-06"
+Sheet 21 21
+Title "Mainet-mega -- Convertidor de Voltaje: 24V a 5V"
+Date "2021-04-07"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -23,7 +23,7 @@ AR Path="/5F98737A" Ref="Q1"  Part="1"
 AR Path="/5F888A13/5F98737A" Ref="Q?"  Part="1" 
 AR Path="/5F984CFE/5F98737A" Ref="Q?"  Part="1" 
 AR Path="/5FC3A1C1/5F98737A" Ref="Q9"  Part="1" 
-F 0 "Q1" H 6804 3896 50  0000 L CNN
+F 0 "Q9" H 6804 3896 50  0000 L CNN
 F 1 "BUK9518-55" H 6804 3805 50  0000 L CNN
 F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 6850 3775 50  0001 L CIN
 F 3 "http://www.irf.com/product-info/datasheets/data/irlz44n.pdf" H 6600 3850 50  0001 L CNN
@@ -38,7 +38,7 @@ AR Path="/5F987380" Ref="U1"  Part="1"
 AR Path="/5F888A13/5F987380" Ref="U?"  Part="1" 
 AR Path="/5F984CFE/5F987380" Ref="U?"  Part="1" 
 AR Path="/5FC3A1C1/5F987380" Ref="U10"  Part="1" 
-F 0 "U1" H 5300 4075 50  0000 C CNN
+F 0 "U10" H 5300 4075 50  0000 C CNN
 F 1 "4N38" H 5300 3984 50  0000 C CNN
 F 2 "Package_DIP:DIP-6_W7.62mm" H 5100 3550 50  0001 L CIN
 F 3 "https://www.vishay.com/docs/81181/4n35.pdf" H 5300 3750 50  0001 L CNN
@@ -53,7 +53,7 @@ AR Path="/5F987386" Ref="R3"  Part="1"
 AR Path="/5F888A13/5F987386" Ref="R?"  Part="1" 
 AR Path="/5F984CFE/5F987386" Ref="R?"  Part="1" 
 AR Path="/5FC3A1C1/5F987386" Ref="R19"  Part="1" 
-F 0 "R3" V 6300 4150 50  0000 C CNN
+F 0 "R19" V 6300 4150 50  0000 C CNN
 F 1 "6.8K" V 6400 4150 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal" V 6330 4150 50  0001 C CNN
 F 3 "~" H 6400 4150 50  0001 C CNN
@@ -70,7 +70,7 @@ AR Path="/5F987394" Ref="R2"  Part="1"
 AR Path="/5F888A13/5F987394" Ref="R?"  Part="1" 
 AR Path="/5F984CFE/5F987394" Ref="R?"  Part="1" 
 AR Path="/5FC3A1C1/5F987394" Ref="R18"  Part="1" 
-F 0 "R2" V 6100 3850 50  0000 C CNN
+F 0 "R18" V 6100 3850 50  0000 C CNN
 F 1 "1K" V 6000 3850 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal" V 5930 3850 50  0001 C CNN
 F 3 "~" H 6000 3850 50  0001 C CNN
@@ -90,7 +90,7 @@ AR Path="/5F9873B0" Ref="R1"  Part="1"
 AR Path="/5F888A13/5F9873B0" Ref="R?"  Part="1" 
 AR Path="/5F984CFE/5F9873B0" Ref="R?"  Part="1" 
 AR Path="/5FC3A1C1/5F9873B0" Ref="R17"  Part="1" 
-F 0 "R1" V 4900 3300 50  0000 C CNN
+F 0 "R17" V 4900 3300 50  0000 C CNN
 F 1 "2.2K" V 5000 3300 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal" V 4930 3300 50  0001 C CNN
 F 3 "~" H 5000 3300 50  0001 C CNN
@@ -113,7 +113,7 @@ AR Path="/5F9873C9" Ref="J2"  Part="1"
 AR Path="/5F888A13/5F9873C9" Ref="J?"  Part="1" 
 AR Path="/5F984CFE/5F9873C9" Ref="J?"  Part="1" 
 AR Path="/5FC3A1C1/5F9873C9" Ref="J66"  Part="1" 
-F 0 "J2" H 7750 3350 50  0000 C CNN
+F 0 "J66" H 7750 3350 50  0000 C CNN
 F 1 "Screw_Terminal_01x03" H 7668 3366 50  0001 C CNN
 F 2 "TerminalBlock_Altech:Altech_AK300_1x03_P5.00mm_45-Degree" H 7750 3600 50  0001 C CNN
 F 3 "~" H 7750 3600 50  0001 C CNN
@@ -140,7 +140,7 @@ AR Path="/5F9873EB" Ref="R4"  Part="1"
 AR Path="/5F888A13/5F9873EB" Ref="R?"  Part="1" 
 AR Path="/5F984CFE/5F9873EB" Ref="R?"  Part="1" 
 AR Path="/5FC3A1C1/5F9873EB" Ref="R20"  Part="1" 
-F 0 "R4" V 6800 3200 50  0000 C CNN
+F 0 "R20" V 6800 3200 50  0000 C CNN
 F 1 "20k" V 6700 3200 50  0000 C CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6630 3200 50  0001 C CNN
 F 3 "~" H 6700 3200 50  0001 C CNN
@@ -168,7 +168,7 @@ AR Path="/5FABEB04" Ref="J1"  Part="1"
 AR Path="/5F888A13/5FABEB04" Ref="J?"  Part="1" 
 AR Path="/5F984CFE/5FABEB04" Ref="J?"  Part="1" 
 AR Path="/5FC3A1C1/5FABEB04" Ref="J65"  Part="1" 
-F 0 "J1" H 3350 4100 50  0000 C CNN
+F 0 "J65" H 3350 4100 50  0000 C CNN
 F 1 "Screw_Terminal_01x03" H 3268 3616 50  0001 C CNN
 F 2 "TerminalBlock_Altech:Altech_AK300_1x03_P5.00mm_45-Degree" H 3350 3850 50  0001 C CNN
 F 3 "~" H 3350 3850 50  0001 C CNN
