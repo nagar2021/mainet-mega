@@ -1,11 +1,12 @@
 EESchema Schematic File Version 4
+LIBS:mainet-mega-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 7 21
 Title "Mainet-mega -- machineEnableControl"
-Date "2021-04-07"
+Date "2021-06-16"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -130,7 +131,7 @@ AR Path="/5FC25793/5FEF5088" Ref="R?"  Part="1"
 AR Path="/5FC25793/5FEE9D1F/5FEF5088" Ref="R?"  Part="1" 
 AR Path="/5FC25793/5FD90D3E/5FEF5088" Ref="R1"  Part="1" 
 F 0 "R1" V 5493 3550 50  0000 C CNN
-F 1 "R" V 5584 3550 50  0000 C CNN
+F 1 "1K" V 5584 3550 50  0000 C CNN
 F 2 "" V 5630 3550 50  0001 C CNN
 F 3 "~" H 5700 3550 50  0001 C CNN
 	1    5700 3550
@@ -253,4 +254,59 @@ Text Notes 4250 4250 0    50   ~ 0
 D21-machineEnableControl
 Text Notes 4100 2300 0    50   ~ 0
 VCC:\nSalida +5V del Arduino
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 60CABFA8
+P 9500 3600
+AR Path="/5FC25793/5FD90A95/60CABFA8" Ref="J?"  Part="1" 
+AR Path="/5FC25793/5FD90D3E/60CABFA8" Ref="J?"  Part="1" 
+F 0 "J?" H 9500 3750 50  0000 C CNN
+F 1 "Conn_01x01_Male" H 9608 3690 50  0001 C CNN
+F 2 "" H 9500 3600 50  0001 C CNN
+F 3 "~" H 9500 3600 50  0001 C CNN
+	1    9500 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 60CABFAE
+P 9500 3700
+AR Path="/5FC25793/5FD90A95/60CABFAE" Ref="J?"  Part="1" 
+AR Path="/5FC25793/5FD90D3E/60CABFAE" Ref="J?"  Part="1" 
+F 0 "J?" H 9500 3550 50  0000 C CNN
+F 1 "Conn_01x01_Male" H 9608 3790 50  0001 C CNN
+F 2 "" H 9500 3700 50  0001 C CNN
+F 3 "~" H 9500 3700 50  0001 C CNN
+	1    9500 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+24V #PWR?
+U 1 1 60CABFB4
+P 9900 3100
+AR Path="/5FC25793/5FD90A95/60CABFB4" Ref="#PWR?"  Part="1" 
+AR Path="/5FC25793/5FD90D3E/60CABFB4" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 9900 2950 50  0001 C CNN
+F 1 "+24V" H 9915 3273 50  0000 C CNN
+F 2 "" H 9900 3100 50  0001 C CNN
+F 3 "" H 9900 3100 50  0001 C CNN
+	1    9900 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9900 3100 9900 3600
+Wire Wire Line
+	9900 3600 9700 3600
+Text Label 9700 3600 0    50   ~ 0
+NO1
+Text Label 9700 3700 0    50   ~ 0
+C1
+Wire Wire Line
+	9700 3700 10200 3700
+Text GLabel 10200 3700 2    50   Input ~ 0
+User_enable_1
+Text Notes 10200 3850 0    50   ~ 0
+Terminal 34 del M400
+Text Notes 7300 2950 0    50   ~ 0
+Relé más a la izquierda
 $EndSCHEMATC
