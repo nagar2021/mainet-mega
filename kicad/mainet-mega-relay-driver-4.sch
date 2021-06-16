@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:mainet-mega-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -250,9 +251,9 @@ Wire Wire Line
 Text GLabel 3600 3150 0    50   Input ~ 0
 GND
 Text Notes 5850 2600 0    50   ~ 0
-JD-VCC:\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+JD-VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
 Text Notes 3250 2450 0    50   ~ 0
-VCC:\nSalida +5V del Arduino
+VCC:\n\nSalida +5V del Arduino
 Text Notes 3550 4350 0    50   ~ 0
 D18-analogInputSelectControl
 $Comp
@@ -306,4 +307,8 @@ Wire Wire Line
 	8900 3800 9400 3800
 Text GLabel 9400 3800 2    50   Input ~ 0
 Digital_input_5
+Text Notes 10250 4000 2    50   ~ 0
+Terminal 14 del M400
+Text Notes 7750 3050 2    50   ~ 0
+4to relé de izquierda a derecha
 $EndSCHEMATC
