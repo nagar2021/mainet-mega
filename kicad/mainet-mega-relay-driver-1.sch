@@ -304,7 +304,7 @@ C1
 Wire Wire Line
 	9700 3700 10200 3700
 Text GLabel 10200 3700 2    50   Input ~ 0
-User_enable_1
+User_enable_2
 Text Notes 10200 3850 0    50   ~ 0
 Terminal 34 del M400
 Text Notes 7300 2950 0    50   ~ 0
