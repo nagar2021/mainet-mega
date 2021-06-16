@@ -1,11 +1,12 @@
 EESchema Schematic File Version 4
+LIBS:mainet-mega-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 8 21
 Title "Mainet-mega -- runForwardControl"
-Date "2021-04-07"
+Date "2021-06-16"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -251,10 +252,10 @@ Text GLabel 3500 3100 0    50   Input ~ 0
 GND
 Text Notes 3150 4300 0    50   ~ 0
 D20-runForwardControl
-Text Notes 5800 2450 0    50   ~ 0
-JD-VCC:\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
-Text Notes 3200 2300 0    50   ~ 0
-VCC:\nSalida +5V del Arduino
+Text Notes 5800 2500 0    50   ~ 0
+JD-VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+Text Notes 3350 2350 0    50   ~ 0
+VCC:\n\nSalida +5V del Arduino
 $Comp
 L Connector:Conn_01x01_Male J75
 U 1 1 606EB603
@@ -300,4 +301,8 @@ Wire Wire Line
 	9150 3750 9650 3750
 Text GLabel 9650 3750 2    50   Input ~ 0
 Digital_input_3
+Text Notes 7650 2950 2    50   ~ 0
+2do relé de izquierda a derecha
+Text Notes 10500 3900 2    50   ~ 0
+Terminal 12 del M400
 $EndSCHEMATC
