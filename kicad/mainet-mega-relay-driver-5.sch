@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:mainet-mega-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -250,10 +251,10 @@ GND
 Text GLabel 3700 2950 0    50   Input ~ 0
 VCC
 Text Notes 5950 2500 0    50   ~ 0
-JD-VCC:\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+JD-VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
 Text Notes 3350 2350 0    50   ~ 0
-VCC:\nSalida +5V del Arduino
-Text Notes 3650 4250 0    50   ~ 0
+VCC:\n\nSalida +5V del Arduino
+Text Notes 3500 4250 0    50   ~ 0
 D17-jogForwardControl
 $Comp
 L Connector:Conn_01x01_Male J?
@@ -306,4 +307,8 @@ Wire Wire Line
 	8900 3700 9400 3700
 Text GLabel 9400 3700 2    50   Input ~ 0
 Digital_input_6
+Text Notes 8000 2900 2    50   ~ 0
+5to relé de iozquierda a derecha
+Text Notes 10250 3900 2    50   ~ 0
+Terminal 15 del M400
 $EndSCHEMATC
