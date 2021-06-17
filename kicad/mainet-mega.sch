@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 21
+Sheet 1 22
 Title "Mainet-mega -- Diagrama de bloques"
 Date "2021-04-07"
 Rev "1.0"
@@ -926,5 +926,11 @@ U 5FC3A1C1
 F0 "mainet-mega-rotary-pulse" 50
 F1 "mainet-mega-rotary-pulse.sch" 50
 F2 "rotaryPulseInput" I L 6100 4550 50 
+$EndSheet
+$Sheet
+S 9100 4900 1500 500 
+U 60D1F41B
+F0 "mainet-mega-regleta-conexiones-motores" 50
+F1 "mainet-mega-regleta-conexiones-motores.sch" 50
 $EndSheet
 $EndSCHEMATC

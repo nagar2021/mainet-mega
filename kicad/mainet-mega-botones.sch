@@ -1,9 +1,10 @@
 EESchema Schematic File Version 4
+LIBS:mainet-mega-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 21
+Sheet 5 22
 Title "Mainet-mega -- Botonera de Control"
 Date "2021-04-07"
 Rev "1.0"

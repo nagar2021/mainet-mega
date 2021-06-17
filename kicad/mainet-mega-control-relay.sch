@@ -1,9 +1,10 @@
 EESchema Schematic File Version 4
+LIBS:mainet-mega-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 21
+Sheet 6 22
 Title "Mainet-mega -- Diagrama de bloques-Relés de Control-M400"
 Date "2021-04-07"
 Rev "1.0"
@@ -30,8 +31,8 @@ $EndSheet
 $Sheet
 S 4950 2400 1550 500 
 U 5FD90F9D
-F0 "mainet-mega-relay-3" 50
-F1 "mainet-mega-relay-3.sch" 50
+F0 "mainet-mega-relay-driver-3" 50
+F1 "mainet-mega-relay-driver-3.sch" 50
 F2 "IN3" I L 4950 2650 50 
 $EndSheet
 $Sheet
