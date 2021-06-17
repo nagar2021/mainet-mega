@@ -1,9 +1,10 @@
 EESchema Schematic File Version 4
+LIBS:mainet-mega-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 14 21
+Sheet 14 22
 Title "Mainet-mega -- "
 Date "2021-04-07"
 Rev "1.0"
@@ -214,10 +215,6 @@ F 3 "" H 6350 4500 50  0001 C CNN
 	1    6350 4500
 	1    0    0    -1  
 $EndComp
-Text Notes 6500 4600 0    50   ~ 0
-Relay Ground\n
-Text Notes 6500 4700 0    50   ~ 0
-No conectar a la tierra del Arduino Mega\n
 NoConn ~ 5400 4100
 Wire Wire Line
 	3550 4300 4250 4300
@@ -259,4 +256,8 @@ Text Notes 5750 2750 0    50   ~ 0
 JD-VCC:\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
 Text Notes 3150 2600 0    50   ~ 0
 VCC:\nSalida +5V del Arduino
+Text Notes 3600 3900 0    50   ~ 0
+Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
+Text Notes 6000 5000 0    50   ~ 0
+Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
 $EndSCHEMATC

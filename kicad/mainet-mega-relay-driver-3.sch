@@ -4,9 +4,9 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 9 21
+Sheet 9 22
 Title "Mainet-mega -- runReverseControl"
-Date "2021-06-16"
+Date "2021-06-17"
 Rev "1.0"
 Comp ""
 Comment1 ""
@@ -217,10 +217,6 @@ F 3 "" H 6450 4400 50  0001 C CNN
 $EndComp
 Text Notes 5900 2550 0    50   ~ 0
 Fuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
-Text Notes 6600 4500 0    50   ~ 0
-Relay Ground\n
-Text Notes 6600 4600 0    50   ~ 0
-No conectar a la tierra del Arduino Mega\n
 NoConn ~ 5500 4000
 Wire Wire Line
 	3650 4200 4350 4200
@@ -256,7 +252,7 @@ U 1 1 60D05CF4
 P 8750 3700
 AR Path="/5FC25793/5FD90A95/60D05CF4" Ref="J?"  Part="1" 
 AR Path="/5FC25793/5FD90F9D/60D05CF4" Ref="J86"  Part="1" 
-F 0 "J86" H 8750 3850 50  0000 C CNN
+F 0 "J86" H 8650 3700 50  0000 C CNN
 F 1 "Conn_01x01_Male" H 8858 3790 50  0001 C CNN
 F 2 "" H 8750 3700 50  0001 C CNN
 F 3 "~" H 8750 3700 50  0001 C CNN
@@ -269,7 +265,7 @@ U 1 1 60D05CFA
 P 8750 3800
 AR Path="/5FC25793/5FD90A95/60D05CFA" Ref="J?"  Part="1" 
 AR Path="/5FC25793/5FD90F9D/60D05CFA" Ref="J87"  Part="1" 
-F 0 "J87" H 8750 3650 50  0000 C CNN
+F 0 "J87" H 8650 3800 50  0000 C CNN
 F 1 "Conn_01x01_Male" H 8858 3890 50  0001 C CNN
 F 2 "" H 8750 3800 50  0001 C CNN
 F 3 "~" H 8750 3800 50  0001 C CNN
@@ -315,4 +311,8 @@ Text GLabel 3650 3050 0    50   Input ~ 0
 VCC
 Text Notes 7750 3050 2    50   ~ 0
 3er relé de izquierda a derecha
+Text Notes 6100 4900 0    50   ~ 0
+Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
+Text Notes 3700 3800 0    50   ~ 0
+Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
 $EndSCHEMATC
