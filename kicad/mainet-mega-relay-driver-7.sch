@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 13 22
 Title "Mainet-mega -- brakeChunkControl"
-Date "2021-04-07"
+Date "2021-06-18"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -291,7 +291,7 @@ F 3 "" H 8300 3200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8300 3200 8300 3700
+	8300 3200 8300 3250
 Wire Wire Line
 	8300 3700 8100 3700
 Text Label 8100 3700 0    50   ~ 0
@@ -321,4 +321,15 @@ F 3 "" H 3200 3300 50  0001 C CNN
 $EndComp
 Text Notes 2950 3800 0    50   ~ 0
 Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
+Text GLabel 8600 3250 2    50   Input ~ 0
+24V_user
+Wire Wire Line
+	8300 3250 8600 3250
+Text Notes 8600 3400 0    50   ~ 0
+Terminal 9 del M400
+Text Notes 8600 3650 0    50   ~ 0
+Nota:\nEsta tensión de 24V la proporciona el M400, \nen los terminales 9 y 17.
+Connection ~ 8300 3250
+Wire Wire Line
+	8300 3250 8300 3700
 $EndSCHEMATC

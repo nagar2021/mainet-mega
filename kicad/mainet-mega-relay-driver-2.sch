@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 8 22
 Title "Mainet-mega -- runForwardControl"
-Date "2021-06-17"
+Date "2021-06-18"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -286,7 +286,7 @@ F 3 "" H 8600 3150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8600 3150 8600 3650
+	8600 3150 8600 3250
 Wire Wire Line
 	8600 3650 8400 3650
 Text Label 8400 3650 0    50   ~ 0
@@ -305,4 +305,15 @@ Text Notes 2800 3750 0    50   ~ 0
 Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
 Text Notes 5200 4850 0    50   ~ 0
 Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
+Text GLabel 8900 3250 2    50   Input ~ 0
+24V_user
+Wire Wire Line
+	8600 3250 8900 3250
+Connection ~ 8600 3250
+Wire Wire Line
+	8600 3250 8600 3650
+Text Notes 8900 3400 0    50   ~ 0
+Terminal 9 del M400
+Text Notes 8900 3650 0    50   ~ 0
+Nota:\nEsta tensión de 24V la proporciona el M400, \nen los terminales 9 y 17.
 $EndSCHEMATC

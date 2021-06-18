@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 12 22
 Title "Mainet-mega -- clutchChunkControl"
-Date "2021-06-17"
+Date "2021-06-18"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -295,7 +295,7 @@ F 3 "" H 8700 3250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8700 3250 8700 3750
+	8700 3250 8700 3300
 Wire Wire Line
 	8700 3750 8500 3750
 Text Label 8500 3750 0    50   ~ 0
@@ -314,4 +314,15 @@ Text Notes 5550 4950 0    50   ~ 0
 Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
 Text GLabel 5250 1650 2    50   Input ~ 0
 clutchChunkActivation
+Text GLabel 9000 3300 2    50   Input ~ 0
+24V_user
+Wire Wire Line
+	8700 3300 9000 3300
+Text Notes 9000 3450 0    50   ~ 0
+Terminal 9 del M400
+Text Notes 9000 3700 0    50   ~ 0
+Nota:\nEsta tensión de 24V la proporciona el M400, \nen los terminales 9 y 17.
+Connection ~ 8700 3300
+Wire Wire Line
+	8700 3300 8700 3750
 $EndSCHEMATC

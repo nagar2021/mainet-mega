@@ -292,7 +292,7 @@ F 3 "" H 8400 3250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8400 3250 8400 3750
+	8400 3250 8400 3300
 Wire Wire Line
 	8400 3750 8200 3750
 Text Label 8200 3750 0    50   ~ 0
@@ -311,4 +311,15 @@ Text Notes 2950 3850 0    50   ~ 0
 Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
 Text Notes 5350 4950 0    50   ~ 0
 Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
+Text GLabel 8700 3300 2    50   Input ~ 0
+24V_user
+Wire Wire Line
+	8400 3300 8700 3300
+Text Notes 8700 3450 0    50   ~ 0
+Terminal 9 del M400
+Text Notes 8700 3700 0    50   ~ 0
+Nota:\nEsta tensión de 24V la proporciona el M400, \nen los terminales 9 y 17.
+Connection ~ 8400 3300
+Wire Wire Line
+	8400 3300 8400 3750
 $EndSCHEMATC

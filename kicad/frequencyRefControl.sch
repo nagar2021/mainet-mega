@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 18 22
 Title "Mainet-mega -- frequencyRefControl"
-Date "2021-04-07"
+Date "2021-06-18"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -320,4 +320,8 @@ Wire Wire Line
 	9050 3550 10100 3550
 Wire Wire Line
 	9050 3650 10100 3650
+Text Notes 10100 3900 0    50   ~ 0
+Terminales 4, 2 y 3 \ndel M400
+Text Notes 9050 3300 0    50   ~ 0
+Nota:\nEsta tensión de 10V es generada por el M400
 $EndSCHEMATC
