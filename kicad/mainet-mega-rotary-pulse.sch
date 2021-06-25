@@ -140,7 +140,6 @@ Text Label 7650 3600 2    50   ~ 0
 rotaryPulseOutput5V
 Text Label 6700 4450 0    50   ~ 0
 0V
-NoConn ~ 3550 3950
 Text Notes 1350 3800 0    50   ~ 0
 Esta señal es la salida del generador \nde pulsos por rotación a 24VDC\n
 Text Notes 9100 3650 0    50   ~ 0
