@@ -1,4 +1,4 @@
-update=07/04/2021 12:08:28
+update=25/06/2021 12:00:14
 version=1
 last_client=kicad
 [general]
@@ -34,7 +34,7 @@ LibDir=
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
-PlotDirectoryName=pdf/
+PlotDirectoryName=pdf/new/
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=Pcbnew
