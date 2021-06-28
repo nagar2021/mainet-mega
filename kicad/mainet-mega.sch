@@ -921,16 +921,16 @@ Wire Wire Line
 Wire Wire Line
 	5650 4550 6100 4550
 $Sheet
-S 6100 4300 1500 500 
-U 5FC3A1C1
-F0 "mainet-mega-rotary-pulse" 50
-F1 "mainet-mega-rotary-pulse.sch" 50
-F2 "rotaryPulseOutput24V" I L 6100 4550 50 
-$EndSheet
-$Sheet
 S 9100 4900 1500 500 
 U 60D1F41B
 F0 "mainet-mega-regleta-conexiones-motores" 50
 F1 "mainet-mega-regleta-conexiones-motores.sch" 50
+$EndSheet
+$Sheet
+S 6100 4300 1500 500 
+U 5FC3A1C1
+F0 "mainet-mega-rotary-pulse" 50
+F1 "mainet-mega-rotary-pulse.sch" 50
+F2 "rotaryPulseOutput5V" I L 6100 4550 50 
 $EndSheet
 $EndSCHEMATC

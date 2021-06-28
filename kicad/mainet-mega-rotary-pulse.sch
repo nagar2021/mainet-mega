@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 21 22
+Sheet 22 22
 Title "Mainet-mega -- Convertidor de Voltaje: 24V a 5V"
 Date "2021-06-25"
 Rev "1.0"
@@ -14,8 +14,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 3550 3750 2    50   Input ~ 0
-rotaryPulseOutput24V
+Text HLabel 6800 3600 2    50   Input ~ 0
+rotaryPulseOutput5V
 $Comp
 L Transistor_FET:IRLZ44N Q1
 U 1 1 5F98737A
@@ -136,14 +136,12 @@ Wire Wire Line
 Wire Wire Line
 	6700 4050 6700 4450
 Connection ~ 6700 4450
-Text Label 7650 3600 2    50   ~ 0
-rotaryPulseOutput5V
 Text Label 6700 4450 0    50   ~ 0
 0V
-Text Notes 1350 3800 0    50   ~ 0
-Esta señal es la salida del generador \nde pulsos por rotación a 24VDC\n
-Text Notes 9100 3650 0    50   ~ 0
-Esta señal es la salida del generafor\nde pulsos por rotación trasladada a 5V
+Text Notes 3550 4300 0    50   ~ 0
+Esta señal es la salida a colector abierto\ndel RPG (Rotary Pulse Generator),\ngenerador de pulsos por rotación,\na 24VDC\n
+Text Notes 9150 3900 0    50   ~ 0
+Esta señal es la salida del generafor\nde pulsos por rotación trasladada a 5V.\nVa a la entrada D24 del Arduino-Mega
 $Comp
 L power:GNDD #PWR040
 U 1 1 601BAD38
@@ -264,4 +262,58 @@ Wire Wire Line
 	3550 3750 4600 3750
 Wire Wire Line
 	4600 3050 5000 3050
+Text Notes 6500 5900 0    50   ~ 0
++24V
+Text Notes 3550 3750 0    50   ~ 0
++24V
+Text Notes 3550 3850 0    50   ~ 0
+RPG Output
+$Comp
+L Connector:Conn_01x01_Male J99
+U 1 1 60DC2EE7
+P 2600 3750
+F 0 "J99" H 2700 3650 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 2572 3773 50  0001 R CNN
+F 2 "" H 2600 3750 50  0001 C CNN
+F 3 "~" H 2600 3750 50  0001 C CNN
+	1    2600 3750
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J100
+U 1 1 60DC43F7
+P 2600 3850
+F 0 "J100" H 2750 3950 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 2572 3873 50  0001 R CNN
+F 2 "" H 2600 3850 50  0001 C CNN
+F 3 "~" H 2600 3850 50  0001 C CNN
+	1    2600 3850
+	-1   0    0    1   
+$EndComp
+Wire Notes Line
+	800  3900 1700 3900
+Wire Notes Line
+	1700 3900 1700 4700
+Wire Notes Line
+	1700 4700 800  4700
+Wire Notes Line
+	800  4700 800  3900
+Text Notes 900  4000 0    50   ~ 0
+RPG
+Wire Wire Line
+	1250 3900 1250 3750
+Wire Wire Line
+	1250 3750 2400 3750
+Wire Wire Line
+	2400 3850 1850 3850
+Wire Wire Line
+	1850 3850 1850 4250
+Wire Wire Line
+	1850 4250 1550 4250
+Wire Wire Line
+	1250 4700 1250 4850
+Text Notes 1850 3750 0    50   ~ 0
+Rojo
+Text Notes 1850 3850 0    50   ~ 0
+Blanco
 $EndSCHEMATC
