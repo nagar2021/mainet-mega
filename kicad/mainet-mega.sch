@@ -250,8 +250,6 @@ Text Label 4000 7350 1    50   ~ 0
 RST
 Text Label 4100 7350 1    50   ~ 0
 3V3
-Text Label 4500 7350 1    50   ~ 0
-VIN
 Text Label 1100 7350 1    50   ~ 0
 D44
 Text Label 1200 7350 1    50   ~ 0
@@ -717,8 +715,6 @@ F 3 "~" H 750 900 50  0001 C CNN
 	1    750  900 
 	1    0    0    -1  
 $EndComp
-Text Label 1200 900  0    50   ~ 0
-VIN
 Wire Wire Line
 	750  900  1200 900 
 Text Label 5650 1050 2    50   ~ 0
@@ -933,4 +929,11 @@ F0 "mainet-mega-rotary-pulse" 50
 F1 "mainet-mega-rotary-pulse.sch" 50
 F2 "rotaryPulseOutput5V" I L 6100 4550 50 
 $EndSheet
+Text GLabel 4500 7350 1    50   Input ~ 0
+VIN
+Text GLabel 1400 900  2    50   Input ~ 0
+VIN
+Wire Wire Line
+	1400 900  1200 900 
+Connection ~ 1200 900 
 $EndSCHEMATC
