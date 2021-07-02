@@ -26,20 +26,22 @@ int rotaryPulseInput = 24;           // input
 
 
 //Definición de pines digitales de salida
-    // (Entradas de las tarjetas MP1, MP2 y MP3)
+// (Entradas de las tarjetas MP1, MP2 y MP3)
 int brakeUnwindControl  = 10;        // Arduino output pwm
 int lowerClutchControl  = 11;        // Arduino output pwm
 int upperClutchControl  = 12;        // Arduino output pwm
     // (Entradas al M400)
 int frequencyRefControl = 13;        // Arduino output pwm
-    // Salidas de control de relés
-int machineEnableControl     = 21;    // output relay
-int runForwardControl        = 20;   // output relay
-int runReverseControl        = 19;   // output relay
-int analogInputSelectControl = 18;   // output relay
-int jogForwardControl        = 17;   // output relay
-int clutchChuckControl       = 16;   // output relay
-int brakeChuckControl        = 15;   // output relay
+
+
+// Salidas de control de relés
+int machineEnableControl     = 0;    // output relay 
+int runForwardControl        = 1;   // output relay  
+int runReverseControl        = 2;   // output relay  
+int analogInputSelectControl = 3;   // output relay  
+int jogForwardControl        = 4;   // output relay  
+int clutchChuckControl       = 5;   // output relay  
+int brakeChuckControl        = 6;   // output relay  
 
 // Definición de pines analógicos de entrada
 // Potenciómetros de control de las tarjetas MP
