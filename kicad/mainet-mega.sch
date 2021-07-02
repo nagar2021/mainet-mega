@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 22
 Title "Mainet-mega -- Diagrama de bloques"
-Date "2021-06-18"
+Date "2021-07-02"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -704,20 +704,15 @@ F0 "mainet-mega-display" 50
 F1 "mainet-mega-display.sch" 50
 F2 "TX" I L 6450 5750 50 
 F3 "RX" I L 6450 5950 50 
-F4 "GNDD" I L 6450 6150 50 
 $EndSheet
 Text Label 6000 5750 2    50   ~ 0
-SDA
+D17
 Text Label 6000 5950 2    50   ~ 0
-SCL
-Text Label 6000 6150 2    50   ~ 0
-GNDD
+D16
 Wire Wire Line
 	6000 5750 6450 5750
 Wire Wire Line
 	6000 5950 6450 5950
-Wire Wire Line
-	6000 6150 6450 6150
 Text Label 6000 4550 2    50   ~ 0
 D24
 NoConn ~ 4800 4700
@@ -788,7 +783,7 @@ Wire Notes Line
 Wire Notes Line
 	8250 600  8250 3950
 Text Label 8600 2900 2    50   ~ 0
-D17
+D4
 Wire Wire Line
 	8600 2900 9100 2900
 Wire Wire Line
@@ -800,13 +795,13 @@ Wire Wire Line
 Wire Wire Line
 	8600 2300 9100 2300
 Text Label 8600 2750 2    50   ~ 0
-D18
+D3
 Text Label 8600 2600 2    50   ~ 0
-D19
+D2
 Text Label 8600 2450 2    50   ~ 0
-D20
+D1
 Text Label 8600 2300 2    50   ~ 0
-D21
+D0
 $Sheet
 S 9100 2100 1500 1400
 U 5FC25793
@@ -857,9 +852,9 @@ Wire Wire Line
 Wire Wire Line
 	9100 3200 8600 3200
 Text Label 8600 3050 2    50   ~ 0
-D16
+D5
 Text Label 8600 3200 2    50   ~ 0
-D15
+D6
 Wire Wire Line
 	6000 1050 6450 1050
 Wire Wire Line

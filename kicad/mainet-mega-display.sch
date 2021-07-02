@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 3 22
 Title "Mainet-mega -- Diagrama de Conexiones Pantalla Nextion"
-Date "2021-04-07"
+Date "2021-07-02"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -311,10 +311,10 @@ Wire Notes Line
 Wire Notes Line
 	6600 4350 6600 5800
 $Comp
-L power:GNDD #PWR?
+L power:GNDD #PWR0111
 U 1 1 60E37013
 P 1800 5400
-F 0 "#PWR?" H 1800 5150 50  0001 C CNN
+F 0 "#PWR0111" H 1800 5150 50  0001 C CNN
 F 1 "GNDD" H 1804 5245 50  0000 C CNN
 F 2 "" H 1800 5400 50  0001 C CNN
 F 3 "" H 1800 5400 50  0001 C CNN
@@ -322,10 +322,10 @@ F 3 "" H 1800 5400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L nagar-power:+5V_Nextion #PWR?
+L nagar-power:+5V_Nextion #PWR0112
 U 1 1 60E37DCC
 P 1800 4650
-F 0 "#PWR?" H 1800 4500 50  0001 C CNN
+F 0 "#PWR0112" H 1800 4500 50  0001 C CNN
 F 1 "+5V_Nextion" H 1815 4823 50  0000 C CNN
 F 2 "" H 1800 4650 50  0001 C CNN
 F 3 "" H 1800 4650 50  0001 C CNN
@@ -338,4 +338,16 @@ Text Notes 2250 4650 0    50   ~ 0
 Rojo
 Text Notes 2250 5400 0    50   ~ 0
 Negro
+Text Notes 2250 4900 0    50   ~ 0
+Azul
+Text Notes 2250 5150 0    50   ~ 0
+Amarillo
+Text Notes 3500 5150 0    50   ~ 0
+RX
+Text Notes 3500 4900 0    50   ~ 0
+TX
+Text Notes 3500 4650 0    50   ~ 0
++5V
+Text Notes 3500 5400 0    50   ~ 0
+GND
 $EndSCHEMATC
