@@ -14,14 +14,10 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 2850 4800 2    50   Input ~ 0
-VCC
-Text HLabel 2800 5200 2    50   Input ~ 0
-SDA
-Text HLabel 2800 5650 2    50   Input ~ 0
-SCL
-Text HLabel 2800 6050 2    50   Input ~ 0
-GND
+Text HLabel 1800 4900 0    50   Input ~ 0
+TX
+Text HLabel 1800 5150 0    50   Input ~ 0
+RX
 $Comp
 L nagar-power:+5V_Nextion #PWR048
 U 1 1 60DDFF96
@@ -71,8 +67,6 @@ F 3 "~" H 2650 1650 50  0001 C CNN
 	1    2650 1650
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2200 1500 2650 1500
 Wire Wire Line
 	3050 1500 2650 1500
 Connection ~ 2650 1500
@@ -217,19 +211,6 @@ $EndComp
 Wire Wire Line
 	6250 1700 6900 1700
 $Comp
-L power:PWR_FLAG #FLG0104
-U 1 1 60E05C43
-P 2200 1250
-F 0 "#FLG0104" H 2200 1325 50  0001 C CNN
-F 1 "PWR_FLAG" H 2200 1423 50  0000 C CNN
-F 2 "" H 2200 1250 50  0001 C CNN
-F 3 "~" H 2200 1250 50  0001 C CNN
-	1    2200 1250
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2200 1250 2200 1500
-$Comp
 L power:+12V #PWR0107
 U 1 1 60E0E64F
 P 2650 1250
@@ -250,7 +231,7 @@ Wire Notes Line
 	7200 2900 1850 2900
 Wire Notes Line
 	1850 2900 1850 950 
-Text Notes 4150 2700 0    50   ~ 0
+Text Notes 1850 850  0    50   ~ 0
 Módulo LM2596
 Text Notes 6100 2200 0    50   ~ 0
 CW
@@ -267,9 +248,6 @@ Wire Wire Line
 	6900 1500 6900 1700
 Wire Wire Line
 	6900 2400 7750 2400
-Wire Wire Line
-	2200 1500 1100 1500
-Connection ~ 2200 1500
 Wire Wire Line
 	2200 2350 1100 2350
 $Comp
@@ -304,4 +282,60 @@ Text Label 1100 2350 2    50   ~ 0
 IN-
 Text Notes 3600 1900 0    50   ~ 0
 Metal Tab GND
+Wire Wire Line
+	1100 1500 2650 1500
+Text Notes 1300 1500 0    50   ~ 0
+Amarillo
+Text Notes 1300 2350 0    50   ~ 0
+Negro
+Text Notes 7350 2400 0    50   ~ 0
+Negro
+Text Notes 7350 1500 0    50   ~ 0
+Rojo
+Wire Notes Line
+	3400 5800 6600 5800
+Wire Notes Line
+	6600 4350 3400 4350
+Wire Wire Line
+	1800 5150 3400 5150
+Wire Wire Line
+	3400 5400 1800 5400
+Text Notes 8000 1950 0    50   ~ 0
++5V_Nextion\nSuministrados por el módulo LM2596\npara alimentar la pantalla Nextion
+Text Notes 950  2000 0    50   ~ 0
++12V\nSuministrados por\nEDR-120-12
+Wire Wire Line
+	1800 4900 3400 4900
+Wire Notes Line
+	3400 4350 3400 5800
+Wire Notes Line
+	6600 4350 6600 5800
+$Comp
+L power:GNDD #PWR?
+U 1 1 60E37013
+P 1800 5400
+F 0 "#PWR?" H 1800 5150 50  0001 C CNN
+F 1 "GNDD" H 1804 5245 50  0000 C CNN
+F 2 "" H 1800 5400 50  0001 C CNN
+F 3 "" H 1800 5400 50  0001 C CNN
+	1    1800 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L nagar-power:+5V_Nextion #PWR?
+U 1 1 60E37DCC
+P 1800 4650
+F 0 "#PWR?" H 1800 4500 50  0001 C CNN
+F 1 "+5V_Nextion" H 1815 4823 50  0000 C CNN
+F 2 "" H 1800 4650 50  0001 C CNN
+F 3 "" H 1800 4650 50  0001 C CNN
+	1    1800 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1800 4650 3400 4650
+Text Notes 2250 4650 0    50   ~ 0
+Rojo
+Text Notes 2250 5400 0    50   ~ 0
+Negro
 $EndSCHEMATC
