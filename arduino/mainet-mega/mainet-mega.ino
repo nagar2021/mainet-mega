@@ -1,5 +1,5 @@
- /* Nelson A. García Rodríguez
- * 10/03/2021
+/* Nelson A. García Rodríguez
+ * 02/07/2021
  * mainet-mega V1.00
 */
 
@@ -30,7 +30,7 @@ int rotaryPulseInput = 24;           // input
 int brakeUnwindControl  = 10;        // Arduino output pwm
 int lowerClutchControl  = 11;        // Arduino output pwm
 int upperClutchControl  = 12;        // Arduino output pwm
-    // (Entradas al M400)
+// (Entradas al M400)
 int frequencyRefControl = 13;        // Arduino output pwm
 
 
@@ -49,9 +49,6 @@ int brakeUnwindPot   = A15;           // input
 int lowerClutchPot   = A14;           // input
 int upperClutchPot   = A13;           // input
 int frequencyRefPot  = A12;           // input
-
-
-
 
 // Definición de variables
 int dutyCycleUpperClutch = 0;
