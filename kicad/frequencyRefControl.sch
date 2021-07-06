@@ -107,8 +107,6 @@ Wire Wire Line
 	3650 3250 3650 3350
 NoConn ~ 4250 3850
 Wire Wire Line
-	6950 3800 6400 3800
-Wire Wire Line
 	5350 3800 5350 3850
 $Comp
 L Device:R R?
@@ -188,14 +186,14 @@ $EndComp
 $Comp
 L Connector:Screw_Terminal_01x04 J?
 U 1 1 60DF1363
-P 7150 3600
+P 7250 3600
 AR Path="/5FC3A1C1/60DF1363" Ref="J?"  Part="1" 
 AR Path="/5FBD1D9A/601C4CB6/60DF1363" Ref="J72"  Part="1" 
-F 0 "J72" H 7100 3850 50  0000 L CNN
-F 1 "Screw_Terminal_01x04" H 7230 3501 50  0001 L CNN
-F 2 "" H 7150 3600 50  0001 C CNN
-F 3 "~" H 7150 3600 50  0001 C CNN
-	1    7150 3600
+F 0 "J72" H 7200 3850 50  0000 L CNN
+F 1 "Screw_Terminal_01x04" H 7330 3501 50  0001 L CNN
+F 2 "" H 7250 3600 50  0001 C CNN
+F 3 "~" H 7250 3600 50  0001 C CNN
+	1    7250 3600
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -206,18 +204,11 @@ Wire Wire Line
 	4350 2900 4350 3950
 Wire Wire Line
 	5350 2900 6400 2900
-Wire Wire Line
-	6950 2900 6950 3500
 Connection ~ 5350 2900
-Wire Wire Line
-	6950 3600 6650 3600
 Wire Wire Line
 	6650 3600 6650 4650
 Wire Wire Line
 	5350 4650 6650 4650
-Connection ~ 6950 3500
-Wire Wire Line
-	6950 3500 6950 3600
 Text Notes 7350 3500 0    50   ~ 0
 DC+
 Text Notes 7350 3600 0    50   ~ 0
@@ -344,9 +335,21 @@ Text GLabel 9150 3600 2    50   Input ~ 0
 0V
 Wire Wire Line
 	8100 3600 9150 3600
-Connection ~ 6950 3600
 Wire Wire Line
 	6950 3600 6950 3700
 Text Notes 8100 3600 0    50   ~ 0
 0V
+Wire Wire Line
+	6950 2900 6950 3500
+Wire Wire Line
+	7050 3500 6950 3500
+Connection ~ 6950 3500
+Wire Wire Line
+	6950 3500 6950 3600
+Wire Wire Line
+	6650 3600 7050 3600
+Wire Wire Line
+	6950 3700 7050 3700
+Wire Wire Line
+	6400 3800 7050 3800
 $EndSCHEMATC
