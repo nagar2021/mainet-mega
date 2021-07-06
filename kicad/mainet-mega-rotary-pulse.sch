@@ -361,8 +361,6 @@ Wire Wire Line
 Wire Wire Line
 	2150 3850 3350 3850
 Wire Wire Line
-	2150 3950 3350 3950
-Wire Wire Line
 	2450 3650 2450 4200
 Connection ~ 2450 3650
 Wire Wire Line
@@ -371,4 +369,10 @@ Text Notes 3850 3650 0    50   ~ 0
 GNDREF\n
 Text Notes 1150 3800 0    50   ~ 0
 Conecta al RPG
+Text Notes 5000 3750 0    50   ~ 0
+(+24V)
+Text Notes 5000 3850 0    50   ~ 0
+(RPG Output)
+Wire Wire Line
+	2150 3950 3350 3950
 $EndSCHEMATC
