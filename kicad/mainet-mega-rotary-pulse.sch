@@ -127,8 +127,6 @@ Wire Wire Line
 Connection ~ 7850 3600
 Wire Wire Line
 	6750 3850 7000 3850
-Text Label 7850 2700 0    50   ~ 0
-+5V
 Wire Wire Line
 	7550 4300 7550 4450
 Wire Wire Line
@@ -312,9 +310,6 @@ Wire Wire Line
 Connection ~ 2750 3750
 Wire Wire Line
 	2750 3750 3350 3750
-Connection ~ 9450 3400
-Wire Wire Line
-	9450 3400 9450 3500
 Text Notes 2950 3650 0    50   ~ 0
 Negro
 Text Notes 7850 2600 0    50   ~ 0
@@ -375,4 +370,17 @@ Text Notes 5000 3850 0    50   ~ 0
 (RPG Output)
 Wire Wire Line
 	2150 3950 3350 3950
+Text GLabel 10450 4450 2    50   Input ~ 0
+GNDD
+Text GLabel 10450 2700 2    50   Input ~ 0
+VCC
+Wire Wire Line
+	9450 2700 10450 2700
+Connection ~ 9450 2700
+Wire Wire Line
+	10450 4450 9150 4450
+Connection ~ 9150 4450
+Connection ~ 9450 3300
+Wire Wire Line
+	9450 3300 9450 3500
 $EndSCHEMATC
