@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 17 22
 Title "Mainet-mega -- lowerClutchControl"
-Date "2021-04-07"
+Date "2021-07-09"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -267,4 +267,10 @@ Wire Wire Line
 	6850 3850 6850 4300
 Text Label 7800 4300 0    50   ~ 0
 0V
+Text Label 7250 3150 0    50   ~ 0
+lowerClutchControl
+Text Notes 8350 3050 0    50   ~ 0
+Naranja
+Text Notes 8350 3250 0    50   ~ 0
+Blanco/Naranja
 $EndSCHEMATC
