@@ -242,4 +242,9 @@ Text Notes 3900 2250 2    50   ~ 0
 Text Notes 4050 2250 2    50   ~ 0
 42
 NoConn ~ 4000 5150
+Text GLabel 5650 4550 0    50   Input ~ 0
+Analog_input_1-
+NoConn ~ 5800 4550
+Wire Wire Line
+	5650 4550 5800 4550
 $EndSCHEMATC
