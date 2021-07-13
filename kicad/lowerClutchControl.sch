@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 17 22
 Title "Mainet-mega -- lowerClutchControl"
-Date "2021-07-09"
+Date "2021-07-13"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -273,4 +273,10 @@ Text Notes 8350 3050 0    50   ~ 0
 Naranja
 Text Notes 8350 3250 0    50   ~ 0
 Blanco/Naranja
+Text Notes 2650 3450 0    50   ~ 0
+D11 (lowerClutchControl)
+Text Notes 2650 3550 0    50   ~ 0
+GNDD
+Text Notes 2650 3350 0    50   ~ 0
+VCC
 $EndSCHEMATC

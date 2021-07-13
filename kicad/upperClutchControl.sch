@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 16 22
 Title "Mainet-mega -- upperClutchControl"
-Date "2021-07-09"
+Date "2021-07-13"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -273,4 +273,10 @@ Text Notes 8650 3650 0    50   ~ 0
 Blanco/Verde
 Text Notes 7450 3550 0    50   ~ 0
 upperClutchControl
+Text Notes 2850 3800 0    50   ~ 0
+D10 (upperClutchControl)
+Text Notes 2850 3900 0    50   ~ 0
+GNDD
+Text Notes 2850 3700 0    50   ~ 0
+VCC
 $EndSCHEMATC
