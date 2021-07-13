@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 22 22
 Title "Mainet-mega -- Convertidor de Voltaje: 24V a 5V"
-Date "2021-06-25"
+Date "2021-07-13"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -383,4 +383,6 @@ Connection ~ 9150 4450
 Connection ~ 9450 3300
 Wire Wire Line
 	9450 3300 9450 3500
+Text Notes 10450 3600 0    50   ~ 0
+D24
 $EndSCHEMATC
