@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 13 22
 Title "Mainet-mega -- brakeChunkControl"
-Date "2021-06-18"
+Date "2021-07-14"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -322,7 +322,7 @@ $EndComp
 Text Notes 2950 3800 0    50   ~ 0
 Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
 Text GLabel 8600 3250 2    50   Input ~ 0
-24V_user
++24V
 Wire Wire Line
 	8300 3250 8600 3250
 Text Notes 8600 3400 0    50   ~ 0
