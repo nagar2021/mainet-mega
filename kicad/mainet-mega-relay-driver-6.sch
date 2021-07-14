@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 12 22
 Title "Mainet-mega -- clutchChunkControl"
-Date "2021-06-18"
+Date "2021-07-14"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -315,7 +315,7 @@ Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
 Text GLabel 5250 1650 2    50   Input ~ 0
 clutchChunkActivation
 Text GLabel 9000 3300 2    50   Input ~ 0
-24V_user
++24V
 Wire Wire Line
 	8700 3300 9000 3300
 Text Notes 9000 3450 0    50   ~ 0
