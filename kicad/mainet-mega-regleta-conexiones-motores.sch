@@ -17,432 +17,610 @@ $EndDescr
 $Comp
 L Connector:Screw_Terminal_01x15 J94
 U 1 1 60D2032C
-P 4200 4150
-F 0 "J94" H 4150 5200 50  0000 L CNN
-F 1 "Screw_Terminal_01x15" H 4280 4101 50  0001 L CNN
-F 2 "" H 4200 4150 50  0001 C CNN
-F 3 "~" H 4200 4150 50  0001 C CNN
-	1    4200 4150
+P 3750 6400
+F 0 "J94" H 3700 7450 50  0000 L CNN
+F 1 "Screw_Terminal_01x15" H 3830 6351 50  0001 L CNN
+F 2 "" H 3750 6400 50  0001 C CNN
+F 3 "~" H 3750 6400 50  0001 C CNN
+	1    3750 6400
 	1    0    0    -1  
 $EndComp
 $Comp
 L Connector:Screw_Terminal_01x15 J93
 U 1 1 60D212C4
-P 3800 4150
-F 0 "J93" H 3800 5200 50  0000 C CNN
-F 1 "Regleta de Conexiones" H 3600 5100 50  0000 C CNN
-F 2 "" H 3800 4150 50  0001 C CNN
-F 3 "~" H 3800 4150 50  0001 C CNN
-	1    3800 4150
+P 3350 6400
+F 0 "J93" H 3350 7450 50  0000 C CNN
+F 1 "Regleta de Conexiones" H 3150 7350 50  0000 C CNN
+F 2 "" H 3350 6400 50  0001 C CNN
+F 3 "~" H 3350 6400 50  0001 C CNN
+	1    3350 6400
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x01_Male J95
 U 1 1 60D24D4F
-P 3600 3450
-F 0 "J95" H 3650 3500 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 3572 3383 50  0001 R CNN
-F 2 "" H 3600 3450 50  0001 C CNN
-F 3 "~" H 3600 3450 50  0001 C CNN
-	1    3600 3450
+P 3150 5700
+F 0 "J95" H 3200 5750 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 5633 50  0001 R CNN
+F 2 "" H 3150 5700 50  0001 C CNN
+F 3 "~" H 3150 5700 50  0001 C CNN
+	1    3150 5700
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x01_Male J96
 U 1 1 60D25979
-P 3600 3550
-F 0 "J96" H 3650 3600 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 3572 3483 50  0001 R CNN
-F 2 "" H 3600 3550 50  0001 C CNN
-F 3 "~" H 3600 3550 50  0001 C CNN
-	1    3600 3550
+P 3150 5800
+F 0 "J96" H 3200 5850 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 5733 50  0001 R CNN
+F 2 "" H 3150 5800 50  0001 C CNN
+F 3 "~" H 3150 5800 50  0001 C CNN
+	1    3150 5800
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x01_Male J97
 U 1 1 60D25BC5
-P 3600 3650
-F 0 "J97" H 3650 3700 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 3572 3583 50  0001 R CNN
-F 2 "" H 3600 3650 50  0001 C CNN
-F 3 "~" H 3600 3650 50  0001 C CNN
-	1    3600 3650
+P 3150 5900
+F 0 "J97" H 3200 5950 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 5833 50  0001 R CNN
+F 2 "" H 3150 5900 50  0001 C CNN
+F 3 "~" H 3150 5900 50  0001 C CNN
+	1    3150 5900
 	-1   0    0    -1  
 $EndComp
-Text GLabel 3400 3450 0    50   Input ~ 0
+Text GLabel 2750 5700 0    50   Input ~ 0
 clutchChunkActivation
-Text GLabel 3400 3550 0    50   Input ~ 0
+Text GLabel 2750 5800 0    50   Input ~ 0
 GNDREF+24V
-Text GLabel 3400 3650 0    50   Input ~ 0
+Text GLabel 2750 5900 0    50   Input ~ 0
 brakeChunkActivation
-Text GLabel 3400 4850 0    50   Input ~ 0
+Text GLabel 2750 6800 0    50   Input ~ 0
 Neutro
-Text GLabel 3400 4750 0    50   Input ~ 0
+Text GLabel 2750 6300 0    50   Input ~ 0
 120VAC
-Text GLabel 3400 3850 0    50   Input ~ 0
-upperClutch_+
-Text GLabel 3400 4050 0    50   Input ~ 0
-lowerClutch_+
-Text GLabel 3400 4250 0    50   Input ~ 0
-brake_+
-Text GLabel 3400 3950 0    50   Input ~ 0
-upperClutch_-
-Text GLabel 3400 4150 0    50   Input ~ 0
-lowerClutch_-
-Text GLabel 3400 4350 0    50   Input ~ 0
-brake_-
-$Comp
-L Connector:Conn_01x01_Male J98
-U 1 1 60F2CEBE
-P 3600 3850
-F 0 "J98" H 3650 3900 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 3572 3783 50  0001 R CNN
-F 2 "" H 3600 3850 50  0001 C CNN
-F 3 "~" H 3600 3850 50  0001 C CNN
-	1    3600 3850
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x01_Male J102
-U 1 1 60F2D179
-P 3600 3950
-F 0 "J102" H 3650 4000 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 3572 3883 50  0001 R CNN
-F 2 "" H 3600 3950 50  0001 C CNN
-F 3 "~" H 3600 3950 50  0001 C CNN
-	1    3600 3950
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x01_Male J106
-U 1 1 60F2D3ED
-P 3600 4050
-F 0 "J106" H 3650 4100 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 3572 3983 50  0001 R CNN
-F 2 "" H 3600 4050 50  0001 C CNN
-F 3 "~" H 3600 4050 50  0001 C CNN
-	1    3600 4050
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x01_Male J107
-U 1 1 60F2D66D
-P 3600 4150
-F 0 "J107" H 3650 4200 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 3572 4083 50  0001 R CNN
-F 2 "" H 3600 4150 50  0001 C CNN
-F 3 "~" H 3600 4150 50  0001 C CNN
-	1    3600 4150
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x01_Male J108
-U 1 1 60F2D8A5
-P 3600 4250
-F 0 "J108" H 3650 4300 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 3572 4183 50  0001 R CNN
-F 2 "" H 3600 4250 50  0001 C CNN
-F 3 "~" H 3600 4250 50  0001 C CNN
-	1    3600 4250
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x01_Male J109
-U 1 1 60F2DAD0
-P 3600 4350
-F 0 "J109" H 3650 4400 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 3572 4283 50  0001 R CNN
-F 2 "" H 3600 4350 50  0001 C CNN
-F 3 "~" H 3600 4350 50  0001 C CNN
-	1    3600 4350
-	-1   0    0    -1  
-$EndComp
 $Comp
 L Connector:Conn_01x01_Male J110
 U 1 1 60F2DDC9
-P 3600 4750
-F 0 "J110" H 3650 4800 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 3572 4683 50  0001 R CNN
-F 2 "" H 3600 4750 50  0001 C CNN
-F 3 "~" H 3600 4750 50  0001 C CNN
-	1    3600 4750
+P 3150 6300
+F 0 "J110" H 3200 6350 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 6233 50  0001 R CNN
+F 2 "" H 3150 6300 50  0001 C CNN
+F 3 "~" H 3150 6300 50  0001 C CNN
+	1    3150 6300
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x01_Male J111
 U 1 1 60F2E154
-P 3600 4850
-F 0 "J111" H 3650 4900 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 3572 4783 50  0001 R CNN
-F 2 "" H 3600 4850 50  0001 C CNN
-F 3 "~" H 3600 4850 50  0001 C CNN
-	1    3600 4850
+P 3150 6400
+F 0 "J111" H 3200 6450 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 6333 50  0001 R CNN
+F 2 "" H 3150 6400 50  0001 C CNN
+F 3 "~" H 3150 6400 50  0001 C CNN
+	1    3150 6400
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Motor:Fan M5
 U 1 1 60F5FD46
-P 7650 2600
-F 0 "M5" H 7492 2696 50  0000 R CNN
-F 1 "Upper Clutch Fan" H 7492 2605 50  0000 R CNN
-F 2 "" H 7650 2610 50  0001 C CNN
-F 3 "~" H 7650 2610 50  0001 C CNN
-	1    7650 2600
+P 7750 1150
+F 0 "M5" H 7592 1246 50  0000 R CNN
+F 1 "Upper Clutch Fan" H 7592 1155 50  0000 R CNN
+F 2 "" H 7750 1160 50  0001 C CNN
+F 3 "~" H 7750 1160 50  0001 C CNN
+	1    7750 1150
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Motor:Fan M6
 U 1 1 60F60F5B
-P 7650 3250
-F 0 "M6" H 7492 3346 50  0000 R CNN
-F 1 "Lower Clutch 1 Fan" H 7492 3255 50  0000 R CNN
-F 2 "" H 7650 3260 50  0001 C CNN
-F 3 "~" H 7650 3260 50  0001 C CNN
-	1    7650 3250
+P 7750 1800
+F 0 "M6" H 7592 1896 50  0000 R CNN
+F 1 "Lower Clutch 1 Fan" H 7592 1805 50  0000 R CNN
+F 2 "" H 7750 1810 50  0001 C CNN
+F 3 "~" H 7750 1810 50  0001 C CNN
+	1    7750 1800
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Motor:Fan M7
 U 1 1 60F6D6CB
-P 7650 3850
-F 0 "M7" H 7492 3946 50  0000 R CNN
-F 1 "Lower Clutch 2 Fan" H 7492 3855 50  0000 R CNN
-F 2 "" H 7650 3860 50  0001 C CNN
-F 3 "~" H 7650 3860 50  0001 C CNN
-	1    7650 3850
+P 7750 2400
+F 0 "M7" H 7592 2496 50  0000 R CNN
+F 1 "Lower Clutch 2 Fan" H 7592 2405 50  0000 R CNN
+F 2 "" H 7750 2410 50  0001 C CNN
+F 3 "~" H 7750 2410 50  0001 C CNN
+	1    7750 2400
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Motor:Fan M8
 U 1 1 60F6DB3D
-P 7650 4450
-F 0 "M8" H 7492 4546 50  0000 R CNN
-F 1 "Brake Fan" H 7492 4455 50  0000 R CNN
-F 2 "" H 7650 4460 50  0001 C CNN
-F 3 "~" H 7650 4460 50  0001 C CNN
-	1    7650 4450
+P 7750 3000
+F 0 "M8" H 7592 3096 50  0000 R CNN
+F 1 "Brake Fan" H 7592 3005 50  0000 R CNN
+F 2 "" H 7750 3010 50  0001 C CNN
+F 3 "~" H 7750 3010 50  0001 C CNN
+	1    7750 3000
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x01_Male J112
 U 1 1 60F6E9B1
-P 4450 4750
-F 0 "J112" H 4500 4800 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 4422 4683 50  0001 R CNN
-F 2 "" H 4450 4750 50  0001 C CNN
-F 3 "~" H 4450 4750 50  0001 C CNN
-	1    4450 4750
-	1    0    0    -1  
+P 3150 6500
+F 0 "J112" H 3200 6550 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 6433 50  0001 R CNN
+F 2 "" H 3150 6500 50  0001 C CNN
+F 3 "~" H 3150 6500 50  0001 C CNN
+	1    3150 6500
+	-1   0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x01_Male J113
 U 1 1 60F6F18B
-P 4450 4850
-F 0 "J113" H 4500 4900 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 4422 4783 50  0001 R CNN
-F 2 "" H 4450 4850 50  0001 C CNN
-F 3 "~" H 4450 4850 50  0001 C CNN
-	1    4450 4850
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x01_Male J114
-U 1 1 60FC27CE
-P 4450 3850
-F 0 "J114" H 4500 3900 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 4422 3783 50  0001 R CNN
-F 2 "" H 4450 3850 50  0001 C CNN
-F 3 "~" H 4450 3850 50  0001 C CNN
-	1    4450 3850
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x01_Male J115
-U 1 1 60FC2DE5
-P 4450 3950
-F 0 "J115" H 4500 4000 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 4422 3883 50  0001 R CNN
-F 2 "" H 4450 3950 50  0001 C CNN
-F 3 "~" H 4450 3950 50  0001 C CNN
-	1    4450 3950
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x01_Male J116
-U 1 1 60FC3183
-P 4450 4050
-F 0 "J116" H 4500 4100 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 4422 3983 50  0001 R CNN
-F 2 "" H 4450 4050 50  0001 C CNN
-F 3 "~" H 4450 4050 50  0001 C CNN
-	1    4450 4050
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x01_Male J117
-U 1 1 60FC34FE
-P 4450 4150
-F 0 "J117" H 4500 4200 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 4422 4083 50  0001 R CNN
-F 2 "" H 4450 4150 50  0001 C CNN
-F 3 "~" H 4450 4150 50  0001 C CNN
-	1    4450 4150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x01_Male J118
-U 1 1 60FC38AA
-P 4450 4250
-F 0 "J118" H 4500 4300 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 4422 4183 50  0001 R CNN
-F 2 "" H 4450 4250 50  0001 C CNN
-F 3 "~" H 4450 4250 50  0001 C CNN
-	1    4450 4250
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x01_Male J119
-U 1 1 60FC3CDA
-P 4450 4350
-F 0 "J119" H 4500 4400 50  0000 R CNN
-F 1 "Conn_01x01_Male" H 4422 4283 50  0001 R CNN
-F 2 "" H 4450 4350 50  0001 C CNN
-F 3 "~" H 4450 4350 50  0001 C CNN
-	1    4450 4350
-	1    0    0    -1  
+P 3150 6600
+F 0 "J113" H 3200 6650 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 6533 50  0001 R CNN
+F 2 "" H 3150 6600 50  0001 C CNN
+F 3 "~" H 3150 6600 50  0001 C CNN
+	1    3150 6600
+	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	4650 3950 4800 3950
+	7050 850  5450 850 
 Wire Wire Line
-	4800 3950 4800 2800
+	7050 1350 5350 1350
 Wire Wire Line
-	4650 4050 4950 4050
-Wire Wire Line
-	4650 4150 5100 4150
-Wire Wire Line
-	6950 2300 4650 2300
-Wire Wire Line
-	4650 2300 4650 3850
-Wire Wire Line
-	6950 2800 4800 2800
-Wire Wire Line
-	6950 2950 4950 2950
-Wire Wire Line
-	6950 3450 5100 3450
-Wire Wire Line
-	5100 3450 5100 4050
-Wire Wire Line
-	4950 2950 4950 3550
-Wire Wire Line
-	4950 3550 6950 3550
-Connection ~ 4950 3550
-Wire Wire Line
-	4950 3550 4950 4050
-Connection ~ 5100 4050
-Wire Wire Line
-	5100 4050 5100 4150
-Wire Wire Line
-	4650 4250 5250 4250
-Wire Wire Line
-	5250 4250 5250 4150
-Wire Wire Line
-	5250 4150 6950 4150
-Wire Wire Line
-	5100 4050 6950 4050
-Wire Wire Line
-	4650 4350 5250 4350
-Wire Wire Line
-	5250 4350 5250 4650
-Wire Wire Line
-	5250 4650 6950 4650
+	5350 3200 7050 3200
 $Comp
 L Motor:Motor_DC M1
 U 1 1 61046C1A
-P 6950 2500
-F 0 "M1" H 6300 2600 50  0000 L CNN
-F 1 "Upper Clutch" H 6100 2500 50  0000 L CNN
-F 2 "" H 6950 2410 50  0001 C CNN
-F 3 "~" H 6950 2410 50  0001 C CNN
-	1    6950 2500
+P 7050 1050
+F 0 "M1" H 6400 1150 50  0000 L CNN
+F 1 "Upper Clutch" H 6200 1050 50  0000 L CNN
+F 2 "" H 7050 960 50  0001 C CNN
+F 3 "~" H 7050 960 50  0001 C CNN
+	1    7050 1050
 	1    0    0    -1  
 $EndComp
 $Comp
 L Motor:Motor_DC M2
 U 1 1 6104FD5C
-P 6950 3150
-F 0 "M2" H 6300 3250 50  0000 L CNN
-F 1 "Lower Clutch 1" H 6100 3150 50  0000 L CNN
-F 2 "" H 6950 3060 50  0001 C CNN
-F 3 "~" H 6950 3060 50  0001 C CNN
-	1    6950 3150
+P 7050 1700
+F 0 "M2" H 6400 1800 50  0000 L CNN
+F 1 "Lower Clutch 1" H 6200 1700 50  0000 L CNN
+F 2 "" H 7050 1610 50  0001 C CNN
+F 3 "~" H 7050 1610 50  0001 C CNN
+	1    7050 1700
 	1    0    0    -1  
 $EndComp
 $Comp
 L Motor:Motor_DC M3
 U 1 1 61054FD1
-P 6950 3750
-F 0 "M3" H 6300 3850 50  0000 L CNN
-F 1 "Lower Clutch 2" H 6100 3750 50  0000 L CNN
-F 2 "" H 6950 3660 50  0001 C CNN
-F 3 "~" H 6950 3660 50  0001 C CNN
-	1    6950 3750
+P 7050 2300
+F 0 "M3" H 6400 2400 50  0000 L CNN
+F 1 "Lower Clutch 2" H 6200 2300 50  0000 L CNN
+F 2 "" H 7050 2210 50  0001 C CNN
+F 3 "~" H 7050 2210 50  0001 C CNN
+	1    7050 2300
 	1    0    0    -1  
 $EndComp
 $Comp
 L Motor:Motor_DC M4
 U 1 1 61055D9D
-P 6950 4350
-F 0 "M4" H 6300 4450 50  0000 L CNN
-F 1 "Brake" H 6250 4350 50  0000 L CNN
-F 2 "" H 6950 4260 50  0001 C CNN
-F 3 "~" H 6950 4260 50  0001 C CNN
-	1    6950 4350
+P 7050 2900
+F 0 "M4" H 6400 3000 50  0000 L CNN
+F 1 "Brake" H 6350 2900 50  0000 L CNN
+F 2 "" H 7050 2810 50  0001 C CNN
+F 3 "~" H 7050 2810 50  0001 C CNN
+	1    7050 2900
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4650 4750 8900 4750
+	9000 850  7750 850 
 Wire Wire Line
-	8900 4750 8900 4150
+	7750 1500 9000 1500
 Wire Wire Line
-	8900 2300 7650 2300
+	7750 2100 9000 2100
 Wire Wire Line
-	7650 2950 8900 2950
-Connection ~ 8900 2950
+	7750 2700 9000 2700
 Wire Wire Line
-	8900 2950 8900 2300
+	7750 1350 9000 1350
 Wire Wire Line
-	7650 3550 8900 3550
-Connection ~ 8900 3550
+	7750 2000 9000 2000
 Wire Wire Line
-	8900 3550 8900 2950
+	7750 2600 9000 2600
 Wire Wire Line
-	7650 4150 8900 4150
-Connection ~ 8900 4150
+	7750 3200 9000 3200
+$Comp
+L Connector:Screw_Terminal_01x02 J98
+U 1 1 60F32FA2
+P 4550 950
+F 0 "J98" H 4550 700 50  0000 C CNN
+F 1 "Screw_Terminal_01x02" H 4468 716 50  0001 C CNN
+F 2 "" H 4550 950 50  0001 C CNN
+F 3 "~" H 4550 950 50  0001 C CNN
+	1    4550 950 
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector:Screw_Terminal_01x02 J102
+U 1 1 60F33DCE
+P 4550 1600
+F 0 "J102" H 4550 1350 50  0000 C CNN
+F 1 "Screw_Terminal_01x02" H 4468 1366 50  0001 C CNN
+F 2 "" H 4550 1600 50  0001 C CNN
+F 3 "~" H 4550 1600 50  0001 C CNN
+	1    4550 1600
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector:Screw_Terminal_01x02 J106
+U 1 1 60F38B9C
+P 4550 2800
+F 0 "J106" H 4550 2550 50  0000 C CNN
+F 1 "Screw_Terminal_01x02" H 4468 2566 50  0001 C CNN
+F 2 "" H 4550 2800 50  0001 C CNN
+F 3 "~" H 4550 2800 50  0001 C CNN
+	1    4550 2800
+	-1   0    0    1   
+$EndComp
 Wire Wire Line
-	8900 4150 8900 3550
+	4750 1500 7050 1500
 Wire Wire Line
-	7650 2800 9000 2800
+	4750 2700 7050 2700
 Wire Wire Line
-	9000 2800 9000 3450
+	5350 1350 5350 950 
 Wire Wire Line
-	9000 4850 4650 4850
+	5350 950  4750 950 
 Wire Wire Line
-	7650 3450 9000 3450
-Connection ~ 9000 3450
+	5350 1600 5350 2000
 Wire Wire Line
-	9000 3450 9000 4050
+	5350 2000 7050 2000
 Wire Wire Line
-	7650 4050 9000 4050
-Connection ~ 9000 4050
+	4750 1600 5350 1600
 Wire Wire Line
-	9000 4050 9000 4650
+	5350 2600 7050 2600
 Wire Wire Line
-	7650 4650 9000 4650
-Connection ~ 9000 4650
+	4750 2800 5350 2800
 Wire Wire Line
-	9000 4650 9000 4850
-Text Notes 8350 4750 0    50   ~ 0
-120VAC
-Text Notes 8350 4850 0    50   ~ 0
-Neutro
+	5350 2800 5350 3200
+Text Label 4800 850  0    50   ~ 0
+upperClutch_+
+Text Label 4800 950  0    50   ~ 0
+upperClutch_-
+Connection ~ 5350 2000
+Wire Wire Line
+	5350 2000 5350 2600
+Wire Wire Line
+	5450 2100 5450 850 
+Wire Wire Line
+	5450 2100 7050 2100
+Connection ~ 5450 850 
+Wire Wire Line
+	5450 850  4750 850 
+Text Label 4800 2700 0    50   ~ 0
+brake_+
+Text Label 4800 2800 0    50   ~ 0
+brake_-
+Wire Notes Line
+	3500 700  4500 700 
+Wire Notes Line
+	4500 700  4500 1100
+Wire Notes Line
+	4500 1100 3500 1100
+Wire Notes Line
+	3500 1100 3500 700 
+Text Notes 3550 800  0    50   ~ 0
+Tarjeta MP3
+Wire Notes Line
+	3500 2550 4500 2550
+Wire Notes Line
+	4500 2950 3500 2950
+Wire Notes Line
+	3500 2950 3500 2550
+Text Notes 3550 2650 0    50   ~ 0
+Tarjeta MP1
+Wire Notes Line
+	4500 2550 4500 2950
+$Comp
+L Connector:Conn_01x01_Male J117
+U 1 1 60F5D1E3
+P 4050 7000
+F 0 "J117" H 4100 7050 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 6933 50  0001 R CNN
+F 2 "" H 4050 7000 50  0001 C CNN
+F 3 "~" H 4050 7000 50  0001 C CNN
+	1    4050 7000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J116
+U 1 1 60F5DBD5
+P 4050 6900
+F 0 "J116" H 4100 6950 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 6833 50  0001 R CNN
+F 2 "" H 4050 6900 50  0001 C CNN
+F 3 "~" H 4050 6900 50  0001 C CNN
+	1    4050 6900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J115
+U 1 1 60F5DDC5
+P 4050 6800
+F 0 "J115" H 4100 6850 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 6733 50  0001 R CNN
+F 2 "" H 4050 6800 50  0001 C CNN
+F 3 "~" H 4050 6800 50  0001 C CNN
+	1    4050 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J114
+U 1 1 60F5DFFF
+P 4050 6600
+F 0 "J114" H 4100 6650 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 6533 50  0001 R CNN
+F 2 "" H 4050 6600 50  0001 C CNN
+F 3 "~" H 4050 6600 50  0001 C CNN
+	1    4050 6600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J118
+U 1 1 60F5E2B3
+P 4050 7100
+F 0 "J118" H 4100 7150 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 7033 50  0001 R CNN
+F 2 "" H 4050 7100 50  0001 C CNN
+F 3 "~" H 4050 7100 50  0001 C CNN
+	1    4050 7100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J109
+U 1 1 60F5E515
+P 4050 6500
+F 0 "J109" H 4100 6550 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 6433 50  0001 R CNN
+F 2 "" H 4050 6500 50  0001 C CNN
+F 3 "~" H 4050 6500 50  0001 C CNN
+	1    4050 6500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J108
+U 1 1 60F67FDE
+P 4050 6400
+F 0 "J108" H 4100 6450 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 6333 50  0001 R CNN
+F 2 "" H 4050 6400 50  0001 C CNN
+F 3 "~" H 4050 6400 50  0001 C CNN
+	1    4050 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J107
+U 1 1 60F6827D
+P 4050 6300
+F 0 "J107" H 4100 6350 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 6233 50  0001 R CNN
+F 2 "" H 4050 6300 50  0001 C CNN
+F 3 "~" H 4050 6300 50  0001 C CNN
+	1    4050 6300
+	1    0    0    -1  
+$EndComp
+Text Label 9000 850  0    50   ~ 0
+UpperClutchFan+
+Text Label 9000 1350 0    50   ~ 0
+UpperClutchFan-
+Text Label 9000 1500 0    50   ~ 0
+LowerClutch1Fan+
+Text Label 9000 2000 0    50   ~ 0
+LowerClutch1Fan-
+Text Label 9000 2100 0    50   ~ 0
+LowerClutch2Fan+
+Text Label 9000 2600 0    50   ~ 0
+LowerClutch2Fan-
+Text Label 9000 2700 0    50   ~ 0
+brake+
+Text Label 9000 3200 0    50   ~ 0
+brake-
+Text Label 4250 6300 0    50   ~ 0
+UpperClutchFan+
+Text Label 4250 6800 0    50   ~ 0
+UpperClutchFan-
+Text Label 4250 6400 0    50   ~ 0
+LowerClutch1Fan+
+Text Label 4250 6900 0    50   ~ 0
+LowerClutch1Fan-
+Text Label 4250 6500 0    50   ~ 0
+LowerClutch2Fan+
+Text Label 4250 7000 0    50   ~ 0
+LowerClutch2Fan-
+Text Label 4250 6600 0    50   ~ 0
+brake+
+Text Label 4250 7100 0    50   ~ 0
+brake-
+$Comp
+L Connector:Conn_01x01_Male J119
+U 1 1 60FB19F0
+P 3150 6800
+F 0 "J119" H 3200 6850 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 6733 50  0001 R CNN
+F 2 "" H 3150 6800 50  0001 C CNN
+F 3 "~" H 3150 6800 50  0001 C CNN
+	1    3150 6800
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J120
+U 1 1 60FB1CF3
+P 3150 6900
+F 0 "J120" H 3200 6950 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 6833 50  0001 R CNN
+F 2 "" H 3150 6900 50  0001 C CNN
+F 3 "~" H 3150 6900 50  0001 C CNN
+	1    3150 6900
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J121
+U 1 1 60FB1FC8
+P 3150 7000
+F 0 "J121" H 3200 7050 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 6933 50  0001 R CNN
+F 2 "" H 3150 7000 50  0001 C CNN
+F 3 "~" H 3150 7000 50  0001 C CNN
+	1    3150 7000
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J122
+U 1 1 60FB22D3
+P 3150 7100
+F 0 "J122" H 3200 7150 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 7033 50  0001 R CNN
+F 2 "" H 3150 7100 50  0001 C CNN
+F 3 "~" H 3150 7100 50  0001 C CNN
+	1    3150 7100
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	2950 6300 2950 6400
+Connection ~ 2950 6400
+Wire Wire Line
+	2950 6400 2950 6500
+Connection ~ 2950 6500
+Wire Wire Line
+	2950 6500 2950 6600
+Wire Wire Line
+	2950 6800 2950 6900
+Connection ~ 2950 6900
+Wire Wire Line
+	2950 6900 2950 7000
+Connection ~ 2950 7000
+Wire Wire Line
+	2950 7000 2950 7100
+$Comp
+L Connector:Conn_01x01_Male J123
+U 1 1 60FCCD12
+P 3150 6000
+F 0 "J123" H 3200 6050 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 5933 50  0001 R CNN
+F 2 "" H 3150 6000 50  0001 C CNN
+F 3 "~" H 3150 6000 50  0001 C CNN
+	1    3150 6000
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	2950 5800 2750 5800
+Connection ~ 2950 5800
+Wire Wire Line
+	2750 5700 2950 5700
+Wire Wire Line
+	2750 5900 2950 5900
+Wire Wire Line
+	2950 5800 2950 5900
+$Comp
+L Connector:Conn_01x01_Male J124
+U 1 1 60FD9734
+P 4050 5700
+F 0 "J124" H 4100 5750 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 5633 50  0001 R CNN
+F 2 "" H 4050 5700 50  0001 C CNN
+F 3 "~" H 4050 5700 50  0001 C CNN
+	1    4050 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J125
+U 1 1 60FD9D80
+P 4050 5800
+F 0 "J125" H 4100 5850 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 5733 50  0001 R CNN
+F 2 "" H 4050 5800 50  0001 C CNN
+F 3 "~" H 4050 5800 50  0001 C CNN
+	1    4050 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J126
+U 1 1 60FDA08C
+P 4050 5900
+F 0 "J126" H 4100 5950 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 5833 50  0001 R CNN
+F 2 "" H 4050 5900 50  0001 C CNN
+F 3 "~" H 4050 5900 50  0001 C CNN
+	1    4050 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J127
+U 1 1 60FDA3D3
+P 4050 6000
+F 0 "J127" H 4100 6050 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 5933 50  0001 R CNN
+F 2 "" H 4050 6000 50  0001 C CNN
+F 3 "~" H 4050 6000 50  0001 C CNN
+	1    4050 6000
+	1    0    0    -1  
+$EndComp
+Text Label 9000 3750 0    50   ~ 0
+ValvulaSolenoideBrake+
+Text Label 9000 4050 0    50   ~ 0
+ValvulaSolenoideBrake-
+Text Label 4250 5900 0    50   ~ 0
+ValvulaSolenoideClutch+
+Text Label 4250 6000 0    50   ~ 0
+ValvulaSolenoideClutch-
+$Comp
+L Device:Electromagnetic_Actor L2
+U 1 1 60FF9740
+P 7700 3850
+F 0 "L2" H 7570 3854 50  0000 R CNN
+F 1 "Válvula Solenoide Clutch Chunk" H 7570 3945 50  0000 R CNN
+F 2 "" V 7675 3950 50  0001 C CNN
+F 3 "~" V 7675 3950 50  0001 C CNN
+	1    7700 3850
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:Electromagnetic_Actor L3
+U 1 1 60FFC339
+P 7700 4350
+F 0 "L3" H 7570 4354 50  0000 R CNN
+F 1 "Válvula Solenoide Brake Chunk" H 7570 4445 50  0000 R CNN
+F 2 "" V 7675 4450 50  0001 C CNN
+F 3 "~" V 7675 4450 50  0001 C CNN
+	1    7700 4350
+	-1   0    0    1   
+$EndComp
+Connection ~ 2950 5900
+Wire Wire Line
+	2950 5900 2950 6000
+Wire Wire Line
+	2750 6300 2950 6300
+Connection ~ 2950 6300
+Wire Wire Line
+	2750 6800 2950 6800
+Connection ~ 2950 6800
+Wire Wire Line
+	7700 3750 9000 3750
+Wire Wire Line
+	7700 4050 9000 4050
+Text Label 4250 5700 0    50   ~ 0
+ValvulaSolenoideBrake+
+Text Label 4250 5800 0    50   ~ 0
+ValvulaSolenoideBrake-
+Wire Wire Line
+	7700 4250 9000 4250
+Wire Wire Line
+	7700 4550 9000 4550
+Text Label 9000 4250 0    50   ~ 0
+ValvulaSolenoideClutch+
+Text Label 9000 4550 0    50   ~ 0
+ValvulaSolenoideClutch-
 $EndSCHEMATC
