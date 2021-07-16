@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 21 22
 Title "Regleta de conexiones"
-Date "2021-07-14"
+Date "2021-07-16"
 Rev "1.0"
 Comp ""
 Comment1 ""
@@ -168,8 +168,6 @@ F 3 "~" H 3150 6600 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	7050 850  5450 850 
-Wire Wire Line
 	7050 1350 5350 1350
 Wire Wire Line
 	5350 3200 7050 3200
@@ -245,17 +243,6 @@ F 3 "~" H 4550 950 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Connector:Screw_Terminal_01x02 J102
-U 1 1 60F33DCE
-P 4550 1600
-F 0 "J102" H 4550 1350 50  0000 C CNN
-F 1 "Screw_Terminal_01x02" H 4468 1366 50  0001 C CNN
-F 2 "" H 4550 1600 50  0001 C CNN
-F 3 "~" H 4550 1600 50  0001 C CNN
-	1    4550 1600
-	-1   0    0    1   
-$EndComp
-$Comp
 L Connector:Screw_Terminal_01x02 J106
 U 1 1 60F38B9C
 P 4550 2800
@@ -267,8 +254,6 @@ F 3 "~" H 4550 2800 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	4750 1500 7050 1500
-Wire Wire Line
 	4750 2700 7050 2700
 Wire Wire Line
 	5350 1350 5350 950 
@@ -279,31 +264,19 @@ Wire Wire Line
 Wire Wire Line
 	5350 2000 7050 2000
 Wire Wire Line
-	4750 1600 5350 1600
-Wire Wire Line
 	5350 2600 7050 2600
 Wire Wire Line
 	4750 2800 5350 2800
 Wire Wire Line
 	5350 2800 5350 3200
 Text Label 4800 850  0    50   ~ 0
-upperClutch_+
+upperClutch+
 Text Label 4800 950  0    50   ~ 0
-upperClutch_-
-Connection ~ 5350 2000
-Wire Wire Line
-	5350 2000 5350 2600
-Wire Wire Line
-	5450 2100 5450 850 
-Wire Wire Line
-	5450 2100 7050 2100
-Connection ~ 5450 850 
-Wire Wire Line
-	5450 850  4750 850 
+upperClutch-
 Text Label 4800 2700 0    50   ~ 0
-brake_+
+brake+
 Text Label 4800 2800 0    50   ~ 0
-brake_-
+brake-
 Wire Notes Line
 	3500 700  4500 700 
 Wire Notes Line
@@ -623,4 +596,32 @@ Text Label 9000 4250 0    50   ~ 0
 ValvulaSolenoideClutch+
 Text Label 9000 4550 0    50   ~ 0
 ValvulaSolenoideClutch-
+Text GLabel 4600 1500 0    50   Input ~ 0
+lowerClutch1+
+Text GLabel 4600 1600 0    50   Input ~ 0
+lowerClutch1-
+Wire Wire Line
+	4750 850  7050 850 
+Text GLabel 4600 2100 0    50   Input ~ 0
+lowerClutch2+
+Text GLabel 4600 2200 0    50   Input ~ 0
+lowerClutch2-
+Wire Wire Line
+	4600 2100 7050 2100
+Wire Wire Line
+	4600 2200 5350 2200
+Wire Wire Line
+	5350 2200 5350 2600
+Wire Wire Line
+	4600 1500 7050 1500
+Wire Wire Line
+	4600 1600 5350 1600
+Text Notes 4150 850  0    50   ~ 0
+Output+
+Text Notes 4150 1000 0    50   ~ 0
+Output-
+Text Notes 4150 2700 0    50   ~ 0
+Output+
+Text Notes 4150 2850 0    50   ~ 0
+Output-
 $EndSCHEMATC
