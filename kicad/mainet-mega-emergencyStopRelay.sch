@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 4 22
 Title "Mainet-mega -- Diagrama Alimentación AC"
-Date "2021-07-15"
+Date "2021-07-16"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -17,14 +17,14 @@ $EndDescr
 $Comp
 L mainet-mega-rescue:relay-4p2t-ng-relays K9
 U 1 1 5FE04F1A
-P 6950 5600
+P 4200 4900
 AR Path="/5FE04F1A" Ref="K9"  Part="1" 
 AR Path="/5FF9030A/5FE04F1A" Ref="K9"  Part="1" 
-F 0 "K9" H 5722 5646 50  0000 R CNN
-F 1 "relay-4p2t" H 5722 5555 50  0000 R CNN
-F 2 "" H 7400 6500 50  0001 C CNN
-F 3 "" H 7400 6500 50  0001 C CNN
-	1    6950 5600
+F 0 "K9" H 2972 4946 50  0000 R CNN
+F 1 "relay-4p2t" H 2972 4855 50  0001 R CNN
+F 2 "" H 4650 5800 50  0001 C CNN
+F 3 "" H 4650 5800 50  0001 C CNN
+	1    4200 4900
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -64,8 +64,6 @@ F 3 "" H 9550 5550 50  0001 C CNN
 	1    9550 5550
 	1    0    0    -1  
 $EndComp
-Text Label 1050 4500 0    50   ~ 0
-L2
 Text Label 9550 5050 0    50   ~ 0
 L11
 Text Label 10000 5050 0    50   ~ 0
@@ -151,19 +149,6 @@ F 3 "~" H 10750 6200 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	10750 5850 10750 6000
-$Comp
-L mainet-mega-rescue:socket-4p2t-ng-relays U11
-U 1 1 5FDD58E8
-P 1700 5300
-AR Path="/5FDD58E8" Ref="U11"  Part="1" 
-AR Path="/5FF9030A/5FDD58E8" Ref="U11"  Part="1" 
-F 0 "U11" H 2250 6050 50  0000 L CNN
-F 1 "socket-4p2t" H 2250 5900 50  0000 L CNN
-F 2 "" H 2150 6200 50  0001 C CNN
-F 3 "" H 2150 6200 50  0001 C CNN
-	1    1700 5300
-	1    0    0    -1  
-$EndComp
 Text Label 1400 4400 0    50   ~ 0
 4a
 Text Label 1600 4400 0    50   ~ 0
@@ -172,13 +157,13 @@ Text Label 1800 4400 0    50   ~ 0
 2a
 Text Label 2000 4400 0    50   ~ 0
 1a
-Text Label 7950 5300 0    50   ~ 0
+Text Label 5200 4600 0    50   ~ 0
 8a
-Text Label 6750 5300 0    50   ~ 0
+Text Label 4000 4600 0    50   ~ 0
 5a
-Text Label 7150 5300 0    50   ~ 0
+Text Label 4400 4600 0    50   ~ 0
 6a
-Text Label 7550 5300 0    50   ~ 0
+Text Label 4800 4600 0    50   ~ 0
 7a
 Text Label 1400 5000 0    50   ~ 0
 8a
@@ -200,25 +185,25 @@ Text Label 1100 5600 0    50   ~ 0
 14a
 Text Label 2150 5600 0    50   ~ 0
 13a
-Text Label 6950 5300 0    50   ~ 0
+Text Label 4200 4600 0    50   ~ 0
 2a
-Text Label 7350 5300 0    50   ~ 0
+Text Label 4600 4600 0    50   ~ 0
 3a
-Text Label 7750 5300 0    50   ~ 0
+Text Label 5000 4600 0    50   ~ 0
 4a
-Text Label 7050 5900 0    50   ~ 0
+Text Label 4300 5200 0    50   ~ 0
 10a
-Text Label 6650 5900 0    50   ~ 0
+Text Label 3900 5200 0    50   ~ 0
 9a
-Text Label 7450 5900 0    50   ~ 0
+Text Label 4700 5200 0    50   ~ 0
 11a
-Text Label 7850 5900 0    50   ~ 0
+Text Label 5100 5200 0    50   ~ 0
 12a
-Text Label 6550 5300 0    50   ~ 0
+Text Label 3800 4600 0    50   ~ 0
 1a
-Text Label 6050 5300 0    50   ~ 0
+Text Label 3300 4600 0    50   ~ 0
 13a
-Text Label 6050 5900 0    50   ~ 0
+Text Label 3300 5200 0    50   ~ 0
 14a
 Wire Wire Line
 	700  5600 1400 5600
@@ -715,9 +700,7 @@ F 3 "~" H 9150 2450 50  0001 C CNN
 	1    9150 2450
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	9150 2650 9150 3100
-Text Notes 3850 3050 0    50   ~ 0
+Text Notes 9100 3050 1    50   ~ 0
 blanco
 Text Notes 9650 3100 1    50   ~ 0
 rojo
@@ -788,7 +771,7 @@ Text GLabel 3600 6800 2    50   Input ~ 0
 GNDREF+24V
 Text GLabel 9850 3400 2    50   Input ~ 0
 120VAC
-Text GLabel 3400 3100 0    50   Input ~ 0
+Text GLabel 8850 3400 0    50   Input ~ 0
 Neutro
 Connection ~ 9250 1200
 Wire Wire Line
@@ -803,75 +786,60 @@ Wire Wire Line
 $Comp
 L mainet-mega-rescue:socket-4p2t-ng-relays U?
 U 1 1 611478DC
-P 1700 2600
+P 1700 2050
 AR Path="/611478DC" Ref="U?"  Part="1" 
 AR Path="/5FF9030A/611478DC" Ref="U17"  Part="1" 
-F 0 "U17" H 2250 3350 50  0000 L CNN
-F 1 "socket-4p2t" H 2250 3200 50  0000 L CNN
-F 2 "" H 2150 3500 50  0001 C CNN
-F 3 "" H 2150 3500 50  0001 C CNN
-	1    1700 2600
+F 0 "U17" H 900 2750 50  0000 L CNN
+F 1 "socket-4p2t" H 750 2650 50  0000 L CNN
+F 2 "" H 2150 2950 50  0001 C CNN
+F 3 "" H 2150 2950 50  0001 C CNN
+	1    1700 2050
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	700  5600 700  2900
-Wire Wire Line
-	700  2900 1400 2900
+	700  2350 1400 2350
 Connection ~ 700  5600
 $Comp
 L mainet-mega-rescue:relay-4p2t-ng-relays K?
 U 1 1 611801A8
-P 6950 4100
+P 4200 2750
 AR Path="/611801A8" Ref="K?"  Part="1" 
 AR Path="/5FF9030A/611801A8" Ref="K11"  Part="1" 
-F 0 "K11" H 5722 4146 50  0000 R CNN
-F 1 "relay-4p2t" H 5722 4055 50  0000 R CNN
-F 2 "" H 7400 5000 50  0001 C CNN
-F 3 "" H 7400 5000 50  0001 C CNN
-	1    6950 4100
+F 0 "K11" H 2972 2796 50  0000 R CNN
+F 1 "relay-4p2t" H 2972 2705 50  0001 R CNN
+F 2 "" H 4650 3650 50  0001 C CNN
+F 3 "" H 4650 3650 50  0001 C CNN
+	1    4200 2750
 	1    0    0    -1  
 $EndComp
-Text Label 7950 3800 0    50   ~ 0
+Text Label 5200 2450 0    50   ~ 0
 8b
-Text Label 6750 3800 0    50   ~ 0
+Text Label 4000 2450 0    50   ~ 0
 5b
-Text Label 7150 3800 0    50   ~ 0
+Text Label 4400 2450 0    50   ~ 0
 6b
-Text Label 7550 3800 0    50   ~ 0
+Text Label 4800 2450 0    50   ~ 0
 7b
-Text Label 6950 3800 0    50   ~ 0
+Text Label 4200 2450 0    50   ~ 0
 2b
-Text Label 7350 3800 0    50   ~ 0
+Text Label 4600 2450 0    50   ~ 0
 3b
-Text Label 7750 3800 0    50   ~ 0
+Text Label 5000 2450 0    50   ~ 0
 4b
-Text Label 7050 4400 0    50   ~ 0
+Text Label 4300 3050 0    50   ~ 0
 10b
-Text Label 6650 4400 0    50   ~ 0
+Text Label 3900 3050 0    50   ~ 0
 9b
-Text Label 7850 4400 0    50   ~ 0
+Text Label 5100 3050 0    50   ~ 0
 12b
-Text Label 6550 3800 0    50   ~ 0
+Text Label 3800 2450 0    50   ~ 0
 1b
-Text Label 6050 3800 0    50   ~ 0
+Text Label 3300 2450 0    50   ~ 0
 13b
-Text Label 6050 4400 0    50   ~ 0
+Text Label 3300 3050 0    50   ~ 0
 14b
 Wire Wire Line
-	9150 3100 3650 3100
-Wire Wire Line
-	3650 3100 3650 1700
-Wire Wire Line
-	3650 1700 2000 1700
-Wire Wire Line
-	2000 4400 3650 4400
-Connection ~ 3650 3100
-Wire Wire Line
-	3400 3100 3650 3100
-Wire Wire Line
 	2000 6300 9550 6300
-Wire Wire Line
-	3650 3100 3650 4400
 Wire Wire Line
 	2600 7000 2600 6800
 Connection ~ 2600 6800
@@ -885,52 +853,139 @@ Connection ~ 2000 6800
 Wire Wire Line
 	2000 6800 2600 6800
 Wire Wire Line
-	2000 2900 2600 2900
+	2000 2350 2600 2350
 Wire Wire Line
-	2600 2900 2600 2700
+	2600 2350 2600 2150
 $Comp
 L power:+24V #PWR050
 U 1 1 6120B21B
-P 2600 2700
-F 0 "#PWR050" H 2600 2550 50  0001 C CNN
-F 1 "+24V" H 2615 2873 50  0000 C CNN
-F 2 "" H 2600 2700 50  0001 C CNN
-F 3 "" H 2600 2700 50  0001 C CNN
-	1    2600 2700
+P 2600 2150
+F 0 "#PWR050" H 2600 2000 50  0001 C CNN
+F 1 "+24V" H 2615 2323 50  0000 C CNN
+F 2 "" H 2600 2150 50  0001 C CNN
+F 3 "" H 2600 2150 50  0001 C CNN
+	1    2600 2150
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	2600 5450 2600 5600
 Wire Wire Line
 	3050 5450 3050 5600
-Text Label 7450 4400 0    50   ~ 0
+Text Label 4700 3050 0    50   ~ 0
 11b
-Text Label 2150 2900 0    50   ~ 0
+Text Label 2150 2350 0    50   ~ 0
 13b
-Text Label 1100 2900 0    50   ~ 0
+Text Label 1100 2350 0    50   ~ 0
 14b
-Text Label 2000 3500 0    50   ~ 0
+Text Label 2000 2950 0    50   ~ 0
 9b
-Text Label 1800 3500 0    50   ~ 0
+Text Label 1800 2950 0    50   ~ 0
 10b
-Text Label 1600 3500 0    50   ~ 0
+Text Label 1600 2950 0    50   ~ 0
 11b
-Text Label 1400 3500 0    50   ~ 0
+Text Label 1400 2950 0    50   ~ 0
 12b
-Text Label 1400 2300 0    50   ~ 0
+Text Label 1400 1750 0    50   ~ 0
 8b
-Text Label 1600 2300 0    50   ~ 0
+Text Label 1600 1750 0    50   ~ 0
 7b
-Text Label 1800 2300 0    50   ~ 0
+Text Label 1800 1750 0    50   ~ 0
 6b
-Text Label 2000 2300 0    50   ~ 0
+Text Label 2000 1750 0    50   ~ 0
 5b
-Text Label 1400 1700 0    50   ~ 0
+Text Label 1400 1150 0    50   ~ 0
 4b
-Text Label 1600 1700 0    50   ~ 0
+Text Label 1600 1150 0    50   ~ 0
 3b
-Text Label 1800 1700 0    50   ~ 0
+Text Label 1800 1150 0    50   ~ 0
 2b
-Text Label 2000 1700 0    50   ~ 0
+Text Label 2000 1150 0    50   ~ 0
 1b
+Text Notes 3700 3800 0    50   ~ 0
+Tarjeta MP2
+Wire Notes Line
+	3200 3400 4200 3400
+$Comp
+L Connector:Screw_Terminal_01x02 J?
+U 1 1 60F63F1D
+P 3150 3550
+AR Path="/60D1F41B/60F63F1D" Ref="J?"  Part="1" 
+AR Path="/5FF9030A/60F63F1D" Ref="J102"  Part="1" 
+F 0 "J102" H 3050 3700 50  0000 C CNN
+F 1 "Screw_Terminal_01x02" H 3068 3316 50  0001 C CNN
+F 2 "" H 3150 3550 50  0001 C CNN
+F 3 "~" H 3150 3550 50  0001 C CNN
+	1    3150 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L mainet-mega-rescue:socket-4p2t-ng-relays U11
+U 1 1 5FDD58E8
+P 1700 5300
+AR Path="/5FDD58E8" Ref="U11"  Part="1" 
+AR Path="/5FF9030A/5FDD58E8" Ref="U11"  Part="1" 
+F 0 "U11" H 900 6000 50  0000 L CNN
+F 1 "socket-4p2t" H 750 5950 50  0000 L CNN
+F 2 "" H 2150 6200 50  0001 C CNN
+F 3 "" H 2150 6200 50  0001 C CNN
+	1    1700 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	700  2350 700  5600
+Wire Wire Line
+	2000 4400 9150 4400
+Wire Wire Line
+	9150 2650 9150 3400
+Wire Wire Line
+	8850 3400 9150 3400
+Connection ~ 9150 3400
+Wire Wire Line
+	9150 3400 9150 4400
+Wire Notes Line
+	3200 3400 3200 3800
+Wire Notes Line
+	3200 3800 4200 3800
+Wire Notes Line
+	4200 3800 4200 3400
+Wire Wire Line
+	1800 2950 1800 3650
+Wire Wire Line
+	2000 2950 2000 3550
+Text Label 2050 3550 0    50   ~ 0
+lowerClutchControl-
+Text Label 2050 3650 0    50   ~ 0
+lowerClutchControl+
+Wire Wire Line
+	2000 3550 2950 3550
+Wire Wire Line
+	1800 3650 2950 3650
+Text Notes 3250 3550 0    50   ~ 0
+Ouput-
+Text Notes 3250 3700 0    50   ~ 0
+Output+
+Text GLabel 3000 650  2    50   Input ~ 0
+lowerClutch1+
+Text GLabel 3000 750  2    50   Input ~ 0
+lowerClutch1-
+Text GLabel 3000 850  2    50   Input ~ 0
+lowerClutch2+
+Text GLabel 3000 950  2    50   Input ~ 0
+lowerClutch2-
+Wire Wire Line
+	1400 650  3000 650 
+Wire Wire Line
+	1400 650  1400 1150
+Wire Wire Line
+	3000 750  1600 750 
+Wire Wire Line
+	1600 750  1600 1150
+Wire Wire Line
+	3000 850  1800 850 
+Wire Wire Line
+	1800 850  1800 1150
+Wire Wire Line
+	3000 950  2000 950 
+Wire Wire Line
+	2000 950  2000 1150
 $EndSCHEMATC
