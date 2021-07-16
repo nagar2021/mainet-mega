@@ -802,41 +802,41 @@ Connection ~ 700  5600
 $Comp
 L mainet-mega-rescue:relay-4p2t-ng-relays K?
 U 1 1 611801A8
-P 4200 2750
+P 4200 1600
 AR Path="/611801A8" Ref="K?"  Part="1" 
 AR Path="/5FF9030A/611801A8" Ref="K11"  Part="1" 
-F 0 "K11" H 2972 2796 50  0000 R CNN
-F 1 "relay-4p2t" H 2972 2705 50  0001 R CNN
-F 2 "" H 4650 3650 50  0001 C CNN
-F 3 "" H 4650 3650 50  0001 C CNN
-	1    4200 2750
+F 0 "K11" H 2972 1646 50  0000 R CNN
+F 1 "relay-4p2t" H 2972 1555 50  0001 R CNN
+F 2 "" H 4650 2500 50  0001 C CNN
+F 3 "" H 4650 2500 50  0001 C CNN
+	1    4200 1600
 	1    0    0    -1  
 $EndComp
-Text Label 5200 2450 0    50   ~ 0
+Text Label 5200 1300 0    50   ~ 0
 8b
-Text Label 4000 2450 0    50   ~ 0
+Text Label 4000 1300 0    50   ~ 0
 5b
-Text Label 4400 2450 0    50   ~ 0
+Text Label 4400 1300 0    50   ~ 0
 6b
-Text Label 4800 2450 0    50   ~ 0
+Text Label 4800 1300 0    50   ~ 0
 7b
-Text Label 4200 2450 0    50   ~ 0
+Text Label 4200 1300 0    50   ~ 0
 2b
-Text Label 4600 2450 0    50   ~ 0
+Text Label 4600 1300 0    50   ~ 0
 3b
-Text Label 5000 2450 0    50   ~ 0
+Text Label 5000 1300 0    50   ~ 0
 4b
-Text Label 4300 3050 0    50   ~ 0
+Text Label 4300 1900 0    50   ~ 0
 10b
-Text Label 3900 3050 0    50   ~ 0
+Text Label 3900 1900 0    50   ~ 0
 9b
-Text Label 5100 3050 0    50   ~ 0
+Text Label 5100 1900 0    50   ~ 0
 12b
-Text Label 3800 2450 0    50   ~ 0
+Text Label 3800 1300 0    50   ~ 0
 1b
-Text Label 3300 2450 0    50   ~ 0
+Text Label 3300 1300 0    50   ~ 0
 13b
-Text Label 3300 3050 0    50   ~ 0
+Text Label 3300 1900 0    50   ~ 0
 14b
 Wire Wire Line
 	2000 6300 9550 6300
@@ -871,7 +871,7 @@ Wire Wire Line
 	2600 5450 2600 5600
 Wire Wire Line
 	3050 5450 3050 5600
-Text Label 4700 3050 0    50   ~ 0
+Text Label 4700 1900 0    50   ~ 0
 11b
 Text Label 2150 2350 0    50   ~ 0
 13b
@@ -949,9 +949,7 @@ Wire Notes Line
 Wire Notes Line
 	4200 3800 4200 3400
 Wire Wire Line
-	1800 2950 1800 3650
-Wire Wire Line
-	2000 2950 2000 3550
+	1800 2950 1800 3200
 Text Label 2050 3550 0    50   ~ 0
 lowerClutchControl-
 Text Label 2050 3650 0    50   ~ 0
@@ -988,4 +986,28 @@ Wire Wire Line
 	3000 950  2000 950 
 Wire Wire Line
 	2000 950  2000 1150
+Wire Wire Line
+	1800 3200 1400 3200
+Wire Wire Line
+	1400 3200 1400 2950
+Connection ~ 1800 3200
+Wire Wire Line
+	1800 3200 1800 3650
+Text Notes 1800 3200 1    50   ~ 0
+Blanco
+Text Notes 1400 3200 1    50   ~ 0
+Blanco
+Text Notes 2000 3200 1    50   ~ 0
+Negro
+Wire Wire Line
+	2000 2950 2000 3350
+Wire Wire Line
+	1600 3350 2000 3350
+Connection ~ 2000 3350
+Wire Wire Line
+	2000 3350 2000 3550
+Wire Wire Line
+	1600 2950 1600 3350
+Text Notes 1600 3200 1    50   ~ 0
+Negro
 $EndSCHEMATC
