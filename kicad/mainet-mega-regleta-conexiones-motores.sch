@@ -75,9 +75,9 @@ Text GLabel 2750 5250 0    50   Input ~ 0
 GNDREF+24V
 Text GLabel 2750 5350 0    50   Input ~ 0
 brakeChunkActivation
-Text GLabel 2750 6250 0    50   Input ~ 0
+Text GLabel 2750 6150 0    50   Input ~ 0
 Neutro
-Text GLabel 2750 5750 0    50   Input ~ 0
+Text GLabel 2750 5650 0    50   Input ~ 0
 120VAC
 $Comp
 L Connector:Conn_01x01_Male J110
@@ -575,10 +575,10 @@ Connection ~ 2950 5350
 Wire Wire Line
 	2950 5350 2950 5450
 Wire Wire Line
-	2750 5750 2950 5750
+	2750 5650 2950 5650
 Connection ~ 2950 5750
 Wire Wire Line
-	2750 6250 2950 6250
+	2750 6150 2950 6150
 Connection ~ 2950 6250
 Wire Wire Line
 	6900 4400 8200 4400
@@ -624,4 +624,58 @@ Text Notes 3350 3350 0    50   ~ 0
 Output+
 Text Notes 3350 3500 0    50   ~ 0
 Output-
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 60F7D678
+P 3150 5650
+F 0 "J?" H 3200 5700 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 5583 50  0001 R CNN
+F 2 "" H 3150 5650 50  0001 C CNN
+F 3 "~" H 3150 5650 50  0001 C CNN
+	1    3150 5650
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 60F7DA90
+P 3150 6150
+F 0 "J?" H 3200 6200 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 3122 6083 50  0001 R CNN
+F 2 "" H 3150 6150 50  0001 C CNN
+F 3 "~" H 3150 6150 50  0001 C CNN
+	1    3150 6150
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 60F7DEC1
+P 4050 5650
+F 0 "J?" H 4100 5700 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 5583 50  0001 R CNN
+F 2 "" H 4050 5650 50  0001 C CNN
+F 3 "~" H 4050 5650 50  0001 C CNN
+	1    4050 5650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 60F7E2BC
+P 4050 6150
+F 0 "J?" H 4100 6200 50  0000 R CNN
+F 1 "Conn_01x01_Male" H 4022 6083 50  0001 R CNN
+F 2 "" H 4050 6150 50  0001 C CNN
+F 3 "~" H 4050 6150 50  0001 C CNN
+	1    4050 6150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2950 6150 2950 6250
+Wire Wire Line
+	2950 5650 2950 5750
+Connection ~ 2950 5650
+Connection ~ 2950 6150
+Text Label 4250 5650 0    50   ~ 0
+Guía_de_banda+
+Text Label 4250 6150 0    50   ~ 0
+Guía_de_banda-
 $EndSCHEMATC
