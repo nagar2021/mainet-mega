@@ -239,10 +239,6 @@ Wire Wire Line
 	2800 3050 4050 3050
 Text GLabel 2800 3150 0    50   Input ~ 0
 GND
-Text Notes 5050 2650 0    50   ~ 0
-JD-VCC:\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
-Text Notes 2450 2500 0    50   ~ 0
-VCC:\nSalida +5V del Arduino
 Text Notes 2600 4400 0    50   ~ 0
 D15-brakeChuckControl
 $Comp
@@ -332,4 +328,12 @@ Nota:\nEsta tensión de 24V la proporciona el M400, \nen los terminales 9 y 17.
 Connection ~ 8300 3250
 Wire Wire Line
 	8300 3250 8300 3700
+Text Notes 5450 1650 0    50   ~ 0
+JD-VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+Text Notes 2800 1650 0    50   ~ 0
+VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+Text Notes 2800 2100 0    50   ~ 0
+Alimentación de +5V de dispositivos \nmanejados directamente por salidas del \nArduino-Mega.\n\nEl negativo va conectado a la tierra del Arduino-Mega  (GNDD)
+Text Notes 5450 2200 0    50   ~ 0
+Alimentación de +5V del módulo de relés \nNO es manejado directamente por salidas del \nArduino-Mega.\n\nEl negativo NO se conecta a la tierra del \nArduino-Mega
 $EndSCHEMATC

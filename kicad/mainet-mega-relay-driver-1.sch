@@ -208,8 +208,6 @@ F 3 "" H 6000 4400 50  0001 C CNN
 	1    6000 4400
 	1    0    0    -1  
 $EndComp
-Text Notes 5450 2550 0    50   ~ 0
-JD-VCC:\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
 NoConn ~ 5050 4000
 Wire Wire Line
 	3200 4200 3900 4200
@@ -248,8 +246,6 @@ Text HLabel 3200 4200 0    50   Input ~ 0
 IN1
 Text Notes 3000 4350 0    50   ~ 0
 D21-machineEnableControl
-Text Notes 2850 2400 0    50   ~ 0
-VCC:\nSalida +5V del Arduino
 $Comp
 L Connector:Conn_01x01_Male J?
 U 1 1 60CABFA8
@@ -320,4 +316,12 @@ Text Notes 8950 3450 0    50   ~ 0
 Terminal 9 del M400
 Text Notes 8950 3700 0    50   ~ 0
 Nota:\nEsta tensión de 24V la proporciona el M400, \nen los terminales 9 y 17.
+Text Notes 5850 1600 0    50   ~ 0
+JD-VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+Text Notes 3200 1600 0    50   ~ 0
+VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+Text Notes 3200 2050 0    50   ~ 0
+Alimentación de +5V de dispositivos \nmanejados directamente por salidas del \nArduino-Mega.\n\nEl negativo va conectado a la tierra del Arduino-Mega  (GNDD)
+Text Notes 5850 2150 0    50   ~ 0
+Alimentación de +5V del módulo de relés \nNO es manejado directamente por salidas del \nArduino-Mega.\n\nEl negativo NO se conecta a la tierra del \nArduino-Mega
 $EndSCHEMATC

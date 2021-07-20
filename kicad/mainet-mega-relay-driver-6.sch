@@ -246,10 +246,6 @@ Text GLabel 3100 3100 0    50   Input ~ 0
 VCC
 Text GLabel 3100 3200 0    50   Input ~ 0
 GND
-Text Notes 5350 2650 0    50   ~ 0
-JD-VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
-Text Notes 2750 2500 0    50   ~ 0
-VCC:\n\nSalida +5V del Arduino
 Text Notes 2900 4450 0    50   ~ 0
 D16-clutchChuckControl
 $Comp
@@ -312,8 +308,6 @@ Text Notes 3150 3850 0    50   ~ 0
 Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
 Text Notes 5550 4950 0    50   ~ 0
 Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
-Text GLabel 5250 1650 2    50   Input ~ 0
-clutchChunkActivation
 Text GLabel 9000 3300 2    50   Input ~ 0
 +24V
 Wire Wire Line
@@ -325,4 +319,12 @@ Nota:\nEsta tensión de 24V la proporciona el M400, \nen los terminales 9 y 17.
 Connection ~ 8700 3300
 Wire Wire Line
 	8700 3300 8700 3750
+Text Notes 5800 1600 0    50   ~ 0
+JD-VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+Text Notes 3150 1600 0    50   ~ 0
+VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+Text Notes 3150 2050 0    50   ~ 0
+Alimentación de +5V de dispositivos \nmanejados directamente por salidas del \nArduino-Mega.\n\nEl negativo va conectado a la tierra del Arduino-Mega  (GNDD)
+Text Notes 5800 2150 0    50   ~ 0
+Alimentación de +5V del módulo de relés \nNO es manejado directamente por salidas del \nArduino-Mega.\n\nEl negativo NO se conecta a la tierra del \nArduino-Mega
 $EndSCHEMATC

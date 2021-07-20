@@ -246,10 +246,6 @@ Wire Wire Line
 	2900 3100 4150 3100
 Text GLabel 2900 3200 0    50   Input ~ 0
 GND
-Text Notes 5150 2650 0    50   ~ 0
-JD-VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
-Text Notes 2550 2500 0    50   ~ 0
-VCC:\n\nSalida +5V del Arduino
 Text Notes 2850 4400 0    50   ~ 0
 D18-analogInputSelectControl
 $Comp
@@ -322,4 +318,12 @@ Nota:\nEsta tensión de 24V la proporciona el M400, \nen los terminales 9 y 17.
 Connection ~ 8400 3300
 Wire Wire Line
 	8400 3300 8400 3750
+Text Notes 5500 1600 0    50   ~ 0
+JD-VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+Text Notes 2850 1600 0    50   ~ 0
+VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+Text Notes 2850 2050 0    50   ~ 0
+Alimentación de +5V de dispositivos \nmanejados directamente por salidas del \nArduino-Mega.\n\nEl negativo va conectado a la tierra del Arduino-Mega  (GNDD)
+Text Notes 5500 2150 0    50   ~ 0
+Alimentación de +5V del módulo de relés \nNO es manejado directamente por salidas del \nArduino-Mega.\n\nEl negativo NO se conecta a la tierra del \nArduino-Mega
 $EndSCHEMATC

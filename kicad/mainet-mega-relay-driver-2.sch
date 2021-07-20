@@ -234,24 +234,20 @@ Wire Wire Line
 Wire Wire Line
 	3150 3100 3150 3250
 Wire Wire Line
-	2800 3000 4000 3000
-Wire Wire Line
 	4000 3000 4000 3450
 Wire Wire Line
 	4700 2900 2750 2900
 Connection ~ 4700 2900
 Text GLabel 2750 2900 0    50   Input ~ 0
 JD-VCC
-Text GLabel 2800 3000 0    50   Input ~ 0
+Text GLabel 2750 3000 0    50   Input ~ 0
 VCC
 Text GLabel 2750 3100 0    50   Input ~ 0
 GND
 Text Notes 2400 4300 0    50   ~ 0
 D20-runForwardControl
-Text Notes 5050 2500 0    50   ~ 0
+Text Notes 5050 1450 0    50   ~ 0
 JD-VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
-Text Notes 2600 2350 0    50   ~ 0
-VCC:\n\nSalida +5V del Arduino
 $Comp
 L Connector:Conn_01x01_Male J75
 U 1 1 606EB603
@@ -316,4 +312,12 @@ Text Notes 8900 3400 0    50   ~ 0
 Terminal 9 del M400
 Text Notes 8900 3650 0    50   ~ 0
 Nota:\nEsta tensión de 24V la proporciona el M400, \nen los terminales 9 y 17.
+Text Notes 2400 1450 0    50   ~ 0
+VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
+Wire Wire Line
+	2750 3000 4000 3000
+Text Notes 2400 1900 0    50   ~ 0
+Alimentación de +5V de dispositivos \nmanejados directamente por salidas del \nArduino-Mega.\n\nEl negativo va conectado a la tierra del Arduino-Mega  (GNDD)
+Text Notes 5050 2000 0    50   ~ 0
+Alimentación de +5V del módulo de relés \nNO es manejado directamente por salidas del \nArduino-Mega.\n\nEl negativo NO se conecta a la tierra del \nArduino-Mega
 $EndSCHEMATC
