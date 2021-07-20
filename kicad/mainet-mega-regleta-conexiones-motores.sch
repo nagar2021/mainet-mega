@@ -625,10 +625,10 @@ Output+
 Text Notes 3350 3500 0    50   ~ 0
 Output-
 $Comp
-L Connector:Conn_01x01_Male J?
+L Connector:Conn_01x01_Male J128
 U 1 1 60F7D678
 P 3150 5650
-F 0 "J?" H 3200 5700 50  0000 R CNN
+F 0 "J128" H 3200 5700 50  0000 R CNN
 F 1 "Conn_01x01_Male" H 3122 5583 50  0001 R CNN
 F 2 "" H 3150 5650 50  0001 C CNN
 F 3 "~" H 3150 5650 50  0001 C CNN
@@ -636,10 +636,10 @@ F 3 "~" H 3150 5650 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x01_Male J?
+L Connector:Conn_01x01_Male J129
 U 1 1 60F7DA90
 P 3150 6150
-F 0 "J?" H 3200 6200 50  0000 R CNN
+F 0 "J129" H 3200 6200 50  0000 R CNN
 F 1 "Conn_01x01_Male" H 3122 6083 50  0001 R CNN
 F 2 "" H 3150 6150 50  0001 C CNN
 F 3 "~" H 3150 6150 50  0001 C CNN
@@ -647,10 +647,10 @@ F 3 "~" H 3150 6150 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x01_Male J?
+L Connector:Conn_01x01_Male J130
 U 1 1 60F7DEC1
 P 4050 5650
-F 0 "J?" H 4100 5700 50  0000 R CNN
+F 0 "J130" H 4100 5700 50  0000 R CNN
 F 1 "Conn_01x01_Male" H 4022 5583 50  0001 R CNN
 F 2 "" H 4050 5650 50  0001 C CNN
 F 3 "~" H 4050 5650 50  0001 C CNN
@@ -658,10 +658,10 @@ F 3 "~" H 4050 5650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x01_Male J?
+L Connector:Conn_01x01_Male J131
 U 1 1 60F7E2BC
 P 4050 6150
-F 0 "J?" H 4100 6200 50  0000 R CNN
+F 0 "J131" H 4100 6200 50  0000 R CNN
 F 1 "Conn_01x01_Male" H 4022 6083 50  0001 R CNN
 F 2 "" H 4050 6150 50  0001 C CNN
 F 3 "~" H 4050 6150 50  0001 C CNN
@@ -678,4 +678,31 @@ Text Label 4250 5650 0    50   ~ 0
 Guía_de_banda+
 Text Label 4250 6150 0    50   ~ 0
 Guía_de_banda-
+Wire Notes Line
+	6900 5500 6900 6050
+Wire Notes Line
+	6900 6050 8000 6050
+Wire Notes Line
+	8000 6050 8000 5500
+Wire Notes Line
+	8000 5500 6900 5500
+$Comp
+L Connector:Screw_Terminal_01x02 J132
+U 1 1 60FF4B94
+P 8050 5700
+F 0 "J132" H 7968 5825 50  0000 C CNN
+F 1 "Screw_Terminal_01x02" H 7968 5826 50  0001 C CNN
+F 2 "" H 8050 5700 50  0001 C CNN
+F 3 "~" H 8050 5700 50  0001 C CNN
+	1    8050 5700
+	-1   0    0    -1  
+$EndComp
+Text Label 8250 5700 0    50   ~ 0
+Guía_de_banda+
+Text Label 8250 5800 0    50   ~ 0
+Guía_de_banda-
+Text Notes 7000 5650 0    50   ~ 0
+Guía de banda
+Text Notes 7000 5750 0    50   ~ 0
+120VAC
 $EndSCHEMATC
