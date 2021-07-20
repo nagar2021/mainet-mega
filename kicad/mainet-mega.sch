@@ -736,12 +736,8 @@ Text GLabel 5100 7300 1    50   Input ~ 0
 GNDD
 Text GLabel 5100 1600 2    50   Input ~ 0
 GNDD
-Text GLabel 2750 2200 0    50   Input ~ 0
-GNDD
 Text GLabel 2750 2300 0    50   Input ~ 0
 GNDD
-Text GLabel 2750 2100 0    50   Input ~ 0
-VCC
 Text GLabel 4400 7300 1    50   Input ~ 0
 GNDD
 Text GLabel 4900 7300 1    50   Input ~ 0
@@ -1005,4 +1001,7 @@ Text Notes 6050 5950 0    50   ~ 0
 Amarillo
 Text Notes 800  1350 0    50   ~ 0
 +12V\nSuministrados por\nEDR-120-12
+Text GLabel 2750 2200 0    50   Input ~ 0
+GNDD
+NoConn ~ 2750 2100
 $EndSCHEMATC
