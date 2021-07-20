@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 6 22
 Title "Mainet-mega -- Diagrama de bloques-Relés de Control-M400"
-Date "2021-04-07"
+Date "2021-07-20"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""

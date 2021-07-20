@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 3 22
 Title "Mainet-mega -- Diagrama de Conexiones Pantalla Nextion"
-Date "2021-07-02"
+Date "2021-07-20"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""

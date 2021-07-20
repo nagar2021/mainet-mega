@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 21 22
 Title "Regleta de conexiones"
-Date "2021-07-16"
+Date "2021-07-20"
 Rev "1.0"
 Comp ""
 Comment1 ""
