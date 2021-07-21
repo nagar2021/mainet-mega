@@ -298,7 +298,7 @@ Digital_input_4
 Text Notes 10300 3950 2    50   ~ 0
 Terminal 13 del M400
 Text Notes 4350 4450 2    50   ~ 0
-D19-runReverseControl
+D2-runReverseControl
 Wire Wire Line
 	3650 3050 4900 3050
 Text GLabel 3650 2950 0    50   Input ~ 0

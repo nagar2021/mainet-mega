@@ -245,7 +245,7 @@ VCC
 Text GLabel 2750 3100 0    50   Input ~ 0
 GND
 Text Notes 2400 4300 0    50   ~ 0
-D20-runForwardControl
+D1-runForwardControl
 Text Notes 5050 1450 0    50   ~ 0
 JD-VCC:\n\nFuente externa de +5V\n(No es la salida de +5V \ndel Arduino)
 $Comp

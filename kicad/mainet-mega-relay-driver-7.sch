@@ -240,7 +240,7 @@ Wire Wire Line
 Text GLabel 2800 3150 0    50   Input ~ 0
 GND
 Text Notes 2600 4400 0    50   ~ 0
-D15-brakeChuckControl
+D6-brakeChuckControl
 $Comp
 L Connector:Conn_01x01_Male J?
 U 1 1 60CD81F6

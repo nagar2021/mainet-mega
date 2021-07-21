@@ -247,7 +247,7 @@ GND
 Text GLabel 3000 2950 0    50   Input ~ 0
 VCC
 Text Notes 2800 4250 0    50   ~ 0
-D17-jogForwardControl
+D4-jogForwardControl
 $Comp
 L Connector:Conn_01x01_Male J?
 U 1 1 60704034

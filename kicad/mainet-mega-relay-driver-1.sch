@@ -245,7 +245,7 @@ GND
 Text HLabel 3200 4200 0    50   Input ~ 0
 IN1
 Text Notes 3000 4350 0    50   ~ 0
-D21-machineEnableControl
+D0-machineEnableControl
 $Comp
 L Connector:Conn_01x01_Male J?
 U 1 1 60CABFA8

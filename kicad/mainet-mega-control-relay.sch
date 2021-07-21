@@ -156,17 +156,17 @@ clutchChuckControl
 Text HLabel 4950 6400 0    50   Input ~ 0
 brakeChuckControl
 Text Notes 4050 850  0    50   ~ 0
-D21
+D0
 Text Notes 4200 1700 0    50   ~ 0
-D20
+D1
 Text Notes 4200 2600 0    50   ~ 0
-D19
+D2
 Text Notes 3950 3500 0    50   ~ 0
-D18
+D3
 Text Notes 4200 4450 0    50   ~ 0
-D17
+D4
 Text Notes 4150 5400 0    50   ~ 0
-D16
+D5
 Text Notes 4200 6350 0    50   ~ 0
-D15
+D6
 $EndSCHEMATC

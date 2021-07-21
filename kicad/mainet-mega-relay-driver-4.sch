@@ -247,7 +247,7 @@ Wire Wire Line
 Text GLabel 2900 3200 0    50   Input ~ 0
 GND
 Text Notes 2850 4400 0    50   ~ 0
-D18-analogInputSelectControl
+D3-analogInputSelectControl
 $Comp
 L Connector:Conn_01x01_Male J?
 U 1 1 606FB823
