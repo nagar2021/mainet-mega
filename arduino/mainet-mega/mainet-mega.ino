@@ -1,6 +1,6 @@
 /* Nelson A. García Rodríguez
- * 02/07/2021
- * mainet-mega V1.00
+   02/07/2021
+   mainet-mega V1.00
 */
 
 #include <Button.h> // @author Alexander Brevig @version 1.6
@@ -15,12 +15,12 @@ EasyNex myNex(Serial2);
 
 
 //Definición de pines digitales de entrada
-Button machineEnable = Button(30, PULLUP); // input push button no
+Button machineEnable = Button(30, PULLUP); // input sw button no
 Button runForward    = Button(29, PULLUP); // input push button no
 Button stopRun       = Button(28, PULLUP); // input push button no
 Button jogForward    = Button(27, PULLUP); // input push button no
-Button clutchChuck   = Button(26, PULLUP); // input push button no
-Button brakeChuck    = Button(25, PULLUP); // input push button no
+Button clutchChuck   = Button(26, PULLUP); // input sw button no
+Button brakeChuck    = Button(25, PULLUP); // input sw button no
 // Entrada del generador de pulsos de rotación convertida a 5V
 int rotaryPulseInput = 24;           // input
 
@@ -35,13 +35,13 @@ int frequencyRefControl = 13;        // Arduino output pwm
 
 
 // Salidas de control de relés
-int machineEnableControl     = 0;    // output relay 
-int runForwardControl        = 1;   // output relay  
-int runReverseControl        = 2;   // output relay  
-int analogInputSelectControl = 3;   // output relay  
-int jogForwardControl        = 4;   // output relay  
-int clutchChuckControl       = 5;   // output relay  
-int brakeChuckControl        = 6;   // output relay  
+int machineEnableControl     = 7;   // output relay
+int runForwardControl        = 8;   // output relay
+int runReverseControl        = 2;   // output relay
+int analogInputSelectControl = 3;   // output relay
+int jogForwardControl        = 4;   // output relay
+int clutchChuckControl       = 5;   // output relay
+int brakeChuckControl        = 6;   // output relay
 
 // Definición de pines analógicos de entrada
 // Potenciómetros de control de las tarjetas MP
@@ -80,24 +80,24 @@ bool countEnable = false;
 // definición de funciones
 void readRotaryPulse() {
   Serial.println("readRotaryPulse is running...");
-  
+
   currentValue = digitalRead(rotaryPulseInput);
   if (currentValue != lastValue) {
     numPulsos = numPulsos + 1;
     lastValue = currentValue;
-//    Serial.print("NP: ");
-//    Serial.print(numPulsos);    
+    //    Serial.print("NP: ");
+    //    Serial.print(numPulsos);
   }
-    longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
-    /*
+  longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
+  /*
     numPulsos = 14400; // debug
     Serial.print("NP: ");
     Serial.println(numPulsos);
     Serial.print("LE: ");
-    Serial.println(longitudDeEtiqueta); 
-    */  
-    longitudDelMaterial = calcularLongitudDelMaterial(numPulsos);
-    calcularNumeroEtiquetas(longitudDelMaterial, longitudDeEtiqueta);
+    Serial.println(longitudDeEtiqueta);
+  */
+  longitudDelMaterial = calcularLongitudDelMaterial(numPulsos);
+  calcularNumeroEtiquetas(longitudDelMaterial, longitudDeEtiqueta);
 }
 
 int calcularLongitudDelMaterial(int numPulsos) {
@@ -108,7 +108,7 @@ int calcularLongitudDelMaterial(int numPulsos) {
 }
 
 void calcularNumeroEtiquetas(float longitudDelMaterial, int longitudEtiqueta) {
-  numeroDeEtiquetas = int(longitudDelMaterial / (longitudEtiqueta));  
+  numeroDeEtiquetas = int(longitudDelMaterial / (longitudEtiqueta));
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
   //Serial.print("  NE: ");
   //Serial.println(numeroDeEtiquetas);
@@ -164,32 +164,46 @@ void readUpperClutchPot() {
   pwm(upperClutchControl, dutyCycleUpperClutch);
 }
 
+void readFrequencyRefPot(){
+  int valorLeido3 = analogRead(frequencyRefPot);
+  int valorMapeado3 = map(valorLeido3, 0, 1023, 0, 180);
+  myNex.writeNum("B.z3.val", valorMapeado3);
+  dutyCycleUpperClutch = int(valorLeido3 * .249);
+  pwm(upperClutchControl, dutyCycleUpperClutch);  
+}
 /*
-void checkEmergencyStop() {
+  void checkEmergencyStop() {
   // Chequear botón que no hay parada de emergencia
   if (emergencyStop.isPressed() == true)
   {
     Serial.println("emergencyStop  was pressed");
     myNex.writeNum("E.t8.x", 300);
   }
-}
+  }
 */
 
 void checkMachineEnable() {
-  // Chequear que la mainet está energizada
+  // Habilitar funcionamiento de Mainet
   if (machineEnable.isPressed() == true) {
-    Serial.println("machine has energy");
+    //Habilitar funcionamiento
+    digitalWrite(machineEnableControl, LOW);
     myNex.writeNum("E.t4.x", 300);
+  } else {
+    //Deshabilitar funcionamiento de Mainet
+    digitalWrite(machineEnableControl, HIGH);
   }
 }
+
 void checkRunForward() {
-  // Chequear botón DOWN (bajar el ciclo útil)
+  // Chequear pulsador RUN
   if (runForward.isPressed() == true)
   {
     Serial.println("runForward  was pressed");
     myNex.writeNum("E.t5.x", 300);
+    
   }
 }
+
 void checkStopRun() {
   // Chequear botón UP (subir el ciclo útil)
   if (stopRun.isPressed() == true)
@@ -198,6 +212,7 @@ void checkStopRun() {
     myNex.writeNum("E.t6.x", 300);
   }
 }
+
 void checkJogForward() {
   // Chequear botón DOWN (bajar el ciclo útil)
   if (jogForward.isPressed() == true)
@@ -207,65 +222,108 @@ void checkJogForward() {
   }
 }
 
+void checkChunkClutch() {
+  // Chequear el estado del SW clutchChuck
+  if (clutchChuck.isPressed() == true)
+  {
+    //Activar válvula solenoide
+    digitalWrite(clutchChuckControl, LOW);
+    myNex.writeNum("E.t8.x", 300);
+  } else {
+    //Desactivar válvula solenoide
+    digitalWrite(clutchChuckControl, HIGH);
+  }
+}
 
+void checkBrakeClutch() {
+  // Chequear el estado del SW brakeChuck
+  if (brakeChuck.isPressed() == true)
+  {
+    //Activar válvula solenoide
+    digitalWrite(brakeChuckControl, LOW);
+    myNex.writeNum("E.t9.x", 300);
+  } else {
+    //Desactivar válvula solenoide
+    digitalWrite(brakeChuckControl, HIGH);
+  }  
+}
 //ok
+
 void trigger1() {
   myNex.readNumber("B.sw0.val");
   /*
-  // Habilitación de conteo
-  if (countEnable) {    
+    // Habilitación de conteo
+    if (countEnable) {
     Serial.print("countEnable: ");
     Serial.println(countEnable);
     countEnable = false;
-//    readRotaryPulse();    
-  } else {
+    //    readRotaryPulse();
+    } else {
     countEnable = true;
     Serial.print("countEnable: ");
     Serial.println(countEnable);
-  }*/
+    }*/
 }
 //ok
-void trigger2(){ 
+
+void trigger2() {
   // Lectura de longitud de etiqueta en mm. Incluye el espacio entre etiquetas
-  // Lectura de etiquetas por rollo  
+  // Lectura de etiquetas por rollo
   longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
-  EtiquetasPorRollo = myNex.readStr("C.t4.txt").toInt();     
+  EtiquetasPorRollo = myNex.readStr("C.t4.txt").toInt();
   myNex.writeNum("B.n0.val", EtiquetasPorRollo);
-  
-} 
+
+}
 
 
 void setup() {
   Serial.begin(9600);
   myNex.begin(9600); // Begin the object with a baud rate of 9600
-                     // If no parameter was given in the begin(), the default baud rate of 9600 will be used 
-    
+  // If no parameter was given in the begin(), the default baud rate of 9600 will be used
+
   // Declaración de pines digitales en modo salida
   // Pines de salida PWM
-  pinMode(brakeUnwindControl, OUTPUT);
-  pinMode(lowerClutchControl, OUTPUT);
-  pinMode(upperClutchControl, OUTPUT);
+  pinMode(brakeUnwindControl,       OUTPUT);
+  pinMode(lowerClutchControl,       OUTPUT);
+  pinMode(upperClutchControl,       OUTPUT);
+  pinMode(frequencyRefControl,      OUTPUT);
   // Pines de salida para manejo de relés
-  pinMode(runForwardControl, OUTPUT);
-  pinMode(runReverseControl, OUTPUT);
+  pinMode(machineEnableControl,     OUTPUT);
+  pinMode(runForwardControl,        OUTPUT);
+  pinMode(runReverseControl,        OUTPUT);
   pinMode(analogInputSelectControl, OUTPUT);
-  pinMode(jogForwardControl, OUTPUT);
-  pinMode(frequencyRefControl, OUTPUT);
+  pinMode(jogForwardControl,        OUTPUT);
+  pinMode(clutchChuckControl,       OUTPUT);
+  pinMode(brakeChuckControl,        OUTPUT);
+
+  //Establecer valores iniciales
+  digitalWrite(machineEnableControl,     HIGH);
+  digitalWrite(runForwardControl,        HIGH);
+  digitalWrite(runReverseControl,        HIGH);
+  digitalWrite(analogInputSelectControl, HIGH);
+  digitalWrite(jogForwardControl,        HIGH);
+  digitalWrite(clutchChuckControl,       HIGH);
+  digitalWrite(brakeChuckControl,        HIGH);
+
   Serial.println("Running setup()...");
 }
 
 
 void loop() {
-  myNex.NextionListen(); // OK  
-  checkMachineEnable();     
-  checkRunForward();
-  checkStopRun();
-  checkJogForward();
+  myNex.NextionListen(); // OK
+  
+  checkMachineEnable();
+  checkChunkClutch();    // OK
+  checkBrakeClutch();    // OK
+//  checkRunForward();
+//  checkStopRun();
+//  checkJogForward();
 
-  readBrakeUnwindPot();
-  readLowerClutchPot();
-  readUpperClutchPot();  
-//  checkCountEnable();  
+  readBrakeUnwindPot();  // OK
+  readLowerClutchPot();  // OK
+  readUpperClutchPot();  // OK
+  readFrequencyRefPot(); // OK
+  //  checkCountEnable();
 }
 
 /*
@@ -388,5 +446,5 @@ void loop() {
   } else {
     pwm(brakeUnwindControl, 0);
   }
- 
+
 */
