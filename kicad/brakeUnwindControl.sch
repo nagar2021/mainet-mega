@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 19 22
 Title "Mainet-mega -- brakeUnwindControl"
-Date "2021-07-20"
+Date "2021-07-29"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -274,7 +274,7 @@ Azul
 Text Notes 8200 3700 0    50   ~ 0
 Blanco/Azul
 Text Notes 2500 3900 0    50   ~ 0
-D12 (brakeUnwindControl)
+D10 (brakeUnwindControl)
 Text Notes 2500 4000 0    50   ~ 0
 GNDD
 Text Notes 2500 3800 0    50   ~ 0
