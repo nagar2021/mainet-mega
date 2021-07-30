@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 18 22
 Title "Mainet-mega -- frequencyRefControl"
-Date "2021-07-29"
+Date "2021-07-30"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -14,9 +14,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Wire Wire Line
-	7900 3600 8000 3600
-Connection ~ 7900 3600
 Text Notes 9300 3900 0    50   ~ 0
 Terminal 2 del M400
 Text Notes 9300 3600 0    50   ~ 0
@@ -27,8 +24,6 @@ Wire Wire Line
 	7350 3800 8000 3800
 Wire Wire Line
 	7900 3700 8000 3700
-Wire Wire Line
-	7600 3600 7900 3600
 Wire Wire Line
 	7900 3500 7900 3600
 Connection ~ 7900 3500
@@ -350,4 +345,6 @@ Text Notes 1850 3950 0    50   ~ 0
 VCC
 Text Notes 1850 4050 0    50   ~ 0
 D13 (frequencyRefControl)
+Wire Wire Line
+	7600 3600 8000 3600
 $EndSCHEMATC
