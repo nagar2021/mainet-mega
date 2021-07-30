@@ -215,7 +215,7 @@ L Connector:Screw_Terminal_01x04 J88
 U 1 1 60CBF2D5
 P 3800 4950
 F 0 "J88" V 3764 4662 50  0000 R CNN
-F 1 "Screw_Terminal_01x04" V 3673 4662 50  0000 R CNN
+F 1 "Screw_Terminal_01x04" V 3673 4662 50  0001 R CNN
 F 2 "" H 3800 4950 50  0001 C CNN
 F 3 "~" H 3800 4950 50  0001 C CNN
 	1    3800 4950
@@ -241,10 +241,11 @@ Text Notes 3900 2250 2    50   ~ 0
 41
 Text Notes 4050 2250 2    50   ~ 0
 42
-NoConn ~ 4000 5150
 Text GLabel 5650 4550 0    50   Input ~ 0
 Analog_input_1-
 NoConn ~ 5800 4550
 Wire Wire Line
 	5650 4550 5800 4550
+Text GLabel 4000 5150 3    50   Input ~ 0
+User_enable_1
 $EndSCHEMATC
