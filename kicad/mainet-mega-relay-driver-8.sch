@@ -260,4 +260,77 @@ Text Notes 3600 3900 0    50   ~ 0
 Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
 Text Notes 6000 5000 0    50   ~ 0
 Relay Ground\nNo conectar a la tierra\ndel Arduino Mega\n
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 6106E50A
+P 8550 3800
+AR Path="/5FC25793/5FD90A95/6106E50A" Ref="J?"  Part="1" 
+AR Path="/5FC25793/5FD90D3E/6106E50A" Ref="J?"  Part="1" 
+AR Path="/5FC25793/5FD92195/6106E50A" Ref="J133"  Part="1" 
+F 0 "J133" H 8450 3800 50  0000 C CNN
+F 1 "Conn_01x01_Male" H 8658 3890 50  0001 C CNN
+F 2 "" H 8550 3800 50  0001 C CNN
+F 3 "~" H 8550 3800 50  0001 C CNN
+	1    8550 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Male J?
+U 1 1 6106E510
+P 8550 3900
+AR Path="/5FC25793/5FD90A95/6106E510" Ref="J?"  Part="1" 
+AR Path="/5FC25793/5FD90D3E/6106E510" Ref="J?"  Part="1" 
+AR Path="/5FC25793/5FD92195/6106E510" Ref="J134"  Part="1" 
+F 0 "J134" H 8450 3900 50  0000 C CNN
+F 1 "Conn_01x01_Male" H 8658 3990 50  0001 C CNN
+F 2 "" H 8550 3900 50  0001 C CNN
+F 3 "~" H 8550 3900 50  0001 C CNN
+	1    8550 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+24V #PWR?
+U 1 1 6106E516
+P 8950 3300
+AR Path="/5FC25793/5FD90A95/6106E516" Ref="#PWR?"  Part="1" 
+AR Path="/5FC25793/5FD90D3E/6106E516" Ref="#PWR?"  Part="1" 
+AR Path="/5FC25793/5FD92195/6106E516" Ref="#PWR0113"  Part="1" 
+F 0 "#PWR0113" H 8950 3150 50  0001 C CNN
+F 1 "+24V" H 8965 3473 50  0000 C CNN
+F 2 "" H 8950 3300 50  0001 C CNN
+F 3 "" H 8950 3300 50  0001 C CNN
+	1    8950 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8950 3300 8950 3400
+Wire Wire Line
+	8950 3800 8750 3800
+Text Label 8750 3800 0    50   ~ 0
+NO1
+Text Label 8750 3900 0    50   ~ 0
+C1
+Wire Wire Line
+	8750 3900 8950 3900
+Text Notes 9250 4050 0    50   ~ 0
+Terminal 31 del M400
+Text GLabel 9250 3400 2    50   Input ~ 0
+24V_user
+Wire Wire Line
+	8950 3400 9250 3400
+Connection ~ 8950 3400
+Wire Wire Line
+	8950 3400 8950 3800
+Text Notes 9250 3550 0    50   ~ 0
+Terminal 9 del M400
+Text Notes 9250 3800 0    50   ~ 0
+Nota:\nEsta tensión de 24V la proporciona el M400, \nen los terminales 9 y 17.
+Text GLabel 9250 3900 2    50   Input ~ 0
+User_enable_1
+Wire Wire Line
+	8950 3800 8950 3900
+Connection ~ 8950 3800
+Connection ~ 8950 3900
+Wire Wire Line
+	8950 3900 9250 3900
 $EndSCHEMATC
