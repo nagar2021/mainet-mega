@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
-   29/07/2021
+   30/07/2021
    mainet-mega V1.00
 */
 
@@ -13,6 +13,9 @@
 
 EasyNex myNex(Serial2);
 
+/* Definición de pines del Arduino Mega:
+
+ */
 //Definición de pines digitales de entrada
 Button machineEnable = Button(30, PULLUP); // input sw button no
 Button runForward = Button(29, PULLUP);    // input push button no
@@ -51,6 +54,7 @@ int frequencyRefPot = A12; // input
 int dutyCycleUpperClutch = 0;
 int dutyCycleLowerClutch = 0;
 int dutyCycleBrakeUnwind = 0;
+int dutyCycleFrequencyRef = 0;
 
 int tOn = 0;
 int tOff = 0;
@@ -124,18 +128,20 @@ void calcularFrecuencia()
 
 void displayBoardsStatus()
 {
-  Serial.println("UpperClutch  LowerClutch  BrakeUnwind");
-  Serial.print("   ");
-  Serial.print(dutyCycleUpperClutch);
-  Serial.print("             ");
+  Serial.println("UpperClutch  LowerClutch  BrakeUnwind  FrequencyRef");
+  Serial.print("     ");
+  Serial.print(dutyCycleUpperClutch);  
+  Serial.print("           ");
   Serial.print(dutyCycleLowerClutch);
-  Serial.print("             ");
-  Serial.println(dutyCycleBrakeUnwind);
+  Serial.print("           ");
+  Serial.print(dutyCycleBrakeUnwind);
+  Serial.print("           ");
+  Serial.println(dutyCycleFrequencyRef);
 }
 
 void pwm(int deviceToControl, int dutyCycle)
 {
-  displayBoardsStatus();
+  //displayBoardsStatus();
   analogWrite(deviceToControl, dutyCycle);
 }
 
@@ -171,20 +177,9 @@ void readFrequencyRefPot()
   int valorLeido3 = analogRead(frequencyRefPot);
   int valorMapeado3 = map(valorLeido3, 0, 1023, 0, 180);
   myNex.writeNum("B.z3.val", valorMapeado3);
-  dutyCycleUpperClutch = int(valorLeido3 * .249);
-  pwm(upperClutchControl, dutyCycleUpperClutch);
+  dutyCycleFrequencyRef = int(valorLeido3 * .249);
+  pwm(frequencyRefControl, dutyCycleFrequencyRef);
 }
-
-/*
-  void checkEmergencyStop() {
-  // Chequear botón que no hay parada de emergencia
-  if (emergencyStop.isPressed() == true)
-  {
-    Serial.println("emergencyStop  was pressed");
-    myNex.writeNum("E.t8.x", 300);
-  }
-  }
-*/
 
 void checkMachineEnable()
 {
@@ -209,6 +204,7 @@ void checkRunForward()
   {
     Serial.println("runForward  was pressed");
     myNex.writeNum("E.t5.x", 300);
+    digitalWrite(runForwardControl, LOW);
   }
 }
 
@@ -219,6 +215,7 @@ void checkStopRun()
   {
     Serial.println("stopRun was pressed");
     myNex.writeNum("E.t6.x", 300);
+    digitalWrite(runForwardControl, HIGH);
   }
 }
 
@@ -229,6 +226,9 @@ void checkJogForward()
   {
     Serial.println("jogForward was pressed");
     myNex.writeNum("E.t7.x", 300);
+    digitalWrite(jogForwardControl, LOW);
+  } else {
+    digitalWrite(jogForwardControl, HIGH);
   }
 }
 
@@ -294,6 +294,7 @@ void trigger2()
 
 void setup()
 {
+  Serial.println("Running setup()...");
   Serial.begin(9600);
   myNex.begin(9600); // Begin the object with a baud rate of 9600
   // If no parameter was given in the begin(), the default baud rate of 9600 will be used
@@ -321,34 +322,31 @@ void setup()
   digitalWrite(jogForwardControl, HIGH);
   digitalWrite(clutchChuckControl, HIGH);
   digitalWrite(brakeChuckControl, HIGH);
-
-  Serial.println("Running setup()...");
+  Serial.println("Ending setup()...");
+  
 }
 
 void loop()
 {
   myNex.NextionListen(); // OK
 
-  checkMachineEnable(); // OK
-  checkChunkClutch();   // OK
-  checkBrakeClutch();   // OK
-  readUpperClutchPot(); // OK
-  readLowerClutchPot(); // OK
-  readBrakeUnwindPot(); // OK
-  /*if (digitalRead(machineEnableControl) == HIGH)
-    {
-      pwm(upperClutchControl, 125);
-    } else {
-      readUpperClutchPot();  // OK
-    }*/
+  checkMachineEnable();  // OK
+  checkChunkClutch();    // OK
+  checkBrakeClutch();    // OK
+  
+  readUpperClutchPot();  // OK
+  readLowerClutchPot();  // OK
+  readBrakeUnwindPot();  // OK
+  readFrequencyRefPot(); // OK
 
-  //  checkRunForward();
-  //  checkStopRun();
-  //  checkJogForward();
-
-  //  readFrequencyRefPot(); // OK
-  //  checkCountEnable();
+  checkRunForward();     // OK
+  checkStopRun();        // OK
+  checkJogForward();     // OK
+  //checkCountEnable();  // OK
 }
+  
+
+
 
 /*
   reiniciarConteo();
@@ -360,9 +358,7 @@ void loop()
   calcularFrecuencia();
   readCountEnable();
 
-*/
 
-/*
   float calcularTensionRebobinado(T, To, Tc, Sc, Sl, DB, G)
   {
   if ((Sc - Sl) > DB) {
@@ -372,9 +368,7 @@ void loop()
     To = Tc;
   }
   }
-*/
 
-/*
   const bool MANUAL = LOW;
   const bool AUTO = HIGH;
 
@@ -387,9 +381,7 @@ void loop()
   bool counterAutoStop = FALSE;
   bool batchCount = FALSE;
   bool counterMode = MANUAL;
-*/
 
-/*
   clutchUpperControl
   clutchLowerControl
   barkeUnwindControl
@@ -398,9 +390,9 @@ void loop()
   tensionOutput
   tensionCurrent
   DB // Dead Band value
-*/
 
-/*
+
+ 
   void checkUpperClutchUp()
   {
   // Chequear botón UP (subir el ciclo útil)
@@ -434,9 +426,7 @@ void loop()
   }
   }
 
-*/
 
-/*
   Button countEnable = Button(2, PULLUP);
   int energyEnable = 13;               // output
   int velocityControl = ;            // output
