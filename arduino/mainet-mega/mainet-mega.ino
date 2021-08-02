@@ -76,30 +76,6 @@ unsigned int numeroDeEtiquetas = 0;
 bool countEnable = false;
 
 // definición de funciones
-void readRotaryPulse()
-{
-  Serial.println("readRotaryPulse is running...");
-
-  currentValue = digitalRead(rotaryPulseInput);
-  if (currentValue != lastValue)
-  {
-    numPulsos = numPulsos + 1;
-    lastValue = currentValue;
-    //    Serial.print("NP: ");
-    //    Serial.print(numPulsos);
-  }
-  longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
-  /*
-    numPulsos = 14400; // debug
-    Serial.print("NP: ");
-    Serial.println(numPulsos);
-    Serial.print("LE: ");
-    Serial.println(longitudDeEtiqueta);
-  */
-  longitudDelMaterial = calcularLongitudDelMaterial(numPulsos);
-  calcularNumeroEtiquetas(longitudDelMaterial, longitudDeEtiqueta);
-}
-
 int calcularLongitudDelMaterial(int numPulsos)
 {
   longitudDelMaterial = k * numPulsos; // Longitud del material en mm
@@ -130,7 +106,7 @@ void displayBoardsStatus()
 {
   Serial.println("UpperClutch  LowerClutch  BrakeUnwind  FrequencyRef");
   Serial.print("     ");
-  Serial.print(dutyCycleUpperClutch);  
+  Serial.print(dutyCycleUpperClutch);
   Serial.print("           ");
   Serial.print(dutyCycleLowerClutch);
   Serial.print("           ");
@@ -181,6 +157,29 @@ void readFrequencyRefPot()
   pwm(frequencyRefControl, dutyCycleFrequencyRef);
 }
 
+void readRotaryPulse()
+{
+  Serial.println("readRotaryPulse is running...");
+  currentValue = digitalRead(rotaryPulseInput);
+  if (currentValue != lastValue)
+  {
+    numPulsos = numPulsos + 1;
+    lastValue = currentValue;
+    //    Serial.print("NP: ");
+    //    Serial.print(numPulsos);
+  }
+  longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
+  /*
+    numPulsos = 14400; // debug
+    Serial.print("NP: ");
+    Serial.println(numPulsos);
+    Serial.print("LE: ");
+    Serial.println(longitudDeEtiqueta);
+  */
+  longitudDelMaterial = calcularLongitudDelMaterial(numPulsos);
+  calcularNumeroEtiquetas(longitudDelMaterial, longitudDeEtiqueta);
+}
+
 void checkMachineEnable()
 {
   // Habilitar funcionamiento de Mainet
@@ -227,7 +226,9 @@ void checkJogForward()
     Serial.println("jogForward was pressed");
     myNex.writeNum("E.t7.x", 300);
     digitalWrite(jogForwardControl, LOW);
-  } else {
+  }
+  else
+  {
     digitalWrite(jogForwardControl, HIGH);
   }
 }
@@ -263,27 +264,36 @@ void checkBrakeClutch()
     digitalWrite(brakeChuckControl, HIGH);
   }
 }
-//ok
 
-void trigger1()
+void checkCountEnable()
 {
-  myNex.readNumber("B.sw0.val");
-  /*
-    // Habilitación de conteo
-    if (countEnable) {
-    Serial.print("countEnable: ");
-    Serial.println(countEnable);
-    countEnable = false;
-    //    readRotaryPulse();
-    } else {
+  if (countEnable == 1)
+  {
+    readRotaryPulse();
+  }
+}
+
+void trigger1() // Habilita o deshabilita el conteo de etiquetas
+{
+
+  if (myNex.readNumber("B.sw0.val") == 1)
+  {
     countEnable = true;
-    Serial.print("countEnable: ");
-    Serial.println(countEnable);
-    }*/
+//    Serial.print(countEnable);
+//    Serial.print("  ");
+//    Serial.println("Conteo ON: ");
+  }
+  else
+  {
+    countEnable = false;
+ //   Serial.print(countEnable);
+ //   Serial.print("--------");
+ //   Serial.println("Conteo OFF: ");
+  }
 }
 //ok
 
-void trigger2()
+void trigger2() // Lee la longitud de la etiqueta y el No. de etiquetas por rollo
 {
   // Lectura de longitud de etiqueta en mm. Incluye el espacio entre etiquetas
   // Lectura de etiquetas por rollo
@@ -322,42 +332,39 @@ void setup()
   digitalWrite(jogForwardControl, HIGH);
   digitalWrite(clutchChuckControl, HIGH);
   digitalWrite(brakeChuckControl, HIGH);
+
+  myNex.writeNum("B.sw0.val", 0);
+  myNex.writeStr("B.sw0.txt", "ON/OFF");
+  myNex.writeNum("B.n0.val", 0);
+  myNex.writeNum("B.n1.val", 0);
+  myNex.writeStr("C.t3.txt", "");
+  myNex.writeStr("C.t4.txt", "");
+
   Serial.println("Ending setup()...");
-  
 }
 
 void loop()
 {
   myNex.NextionListen(); // OK
 
-  checkMachineEnable();  // OK
-  checkChunkClutch();    // OK
-  checkBrakeClutch();    // OK
-  
+  checkMachineEnable(); // OK
+  checkChunkClutch();   // OK
+  checkBrakeClutch();   // OK
+
   readUpperClutchPot();  // OK
   readLowerClutchPot();  // OK
   readBrakeUnwindPot();  // OK
   readFrequencyRefPot(); // OK
 
-  checkRunForward();     // OK
-  checkStopRun();        // OK
-  checkJogForward();     // OK
-  //checkCountEnable();  // OK
+  checkRunForward();  // OK
+  checkStopRun();     // OK
+  checkJogForward();  // OK
+  checkCountEnable(); // OK
 }
-  
-
-
 
 /*
-  reiniciarConteo();
-  checkUpperClutchDown();
-  checkLowerClutchUp();
-  checkLowerClutchDown();
-  checkBrakeUnwindUp();
-  checkBrakeUnwindDown();
-  calcularFrecuencia();
-  readCountEnable();
 
+  calcularFrecuencia();
 
   float calcularTensionRebobinado(T, To, Tc, Sc, Sl, DB, G)
   {
@@ -381,83 +388,11 @@ void loop()
   bool counterAutoStop = FALSE;
   bool batchCount = FALSE;
   bool counterMode = MANUAL;
-
-  clutchUpperControl
-  clutchLowerControl
-  barkeUnwindControl
+  
   counter
   tension //
   tensionOutput
   tensionCurrent
   DB // Dead Band value
-
-
  
-  void checkUpperClutchUp()
-  {
-  // Chequear botón UP (subir el ciclo útil)
-  if (upperClutchUp.isPressed() == true)
-  {
-    //Serial.println("upperClutch UP");
-    if ( dutyCycleUpperClutch >= 0 && dutyCycleUpperClutch < 250) {
-      dutyCycleUpperClutch = dutyCycleUpperClutch + 5;
-      pwm(upperClutchControl, dutyCycleUpperClutch);
-      delay(250);
-    } else {
-      dutyCycleUpperClutch = 255;
-      pwm(upperClutchControl, dutyCycleUpperClutch);
-    }
-  }
-  }
-
-  void checkUpperClutchDown()
-  {
-  // Chequear botón DOWN (bajar el ciclo útil)
-  if (upperClutchDown.isPressed() == true)
-  {
-    //Serial.println("upperClutch DOWN");
-    if ( dutyCycleUpperClutch > 0 && dutyCycleUpperClutch <= 255) {
-      dutyCycleUpperClutch = dutyCycleUpperClutch - 5;
-      pwm(upperClutchControl, dutyCycleUpperClutch);
-      delay(250);
-    } else {
-      pwm(upperClutchControl, 0);
-    }
-  }
-  }
-
-
-  Button countEnable = Button(2, PULLUP);
-  int energyEnable = 13;               // output
-  int velocityControl = ;            // output
-
-  void checkBrakeUnwindUp() {
-  // Chequear botón UP (subir el ciclo útil)
-  if (brakeUnwindUp.isPressed() == true)
-  {
-  //Serial.println("brakeUnwind UP");
-  if ( dutyCycleBrakeUnwind >= 0 && dutyCycleBrakeUnwind < 250) {
-    dutyCycleBrakeUnwind = dutyCycleBrakeUnwind + 5;
-    pwm(brakeUnwindControl, dutyCycleBrakeUnwind);
-    //delay(150);
-  } else {
-    dutyCycleBrakeUnwind = 255;
-    pwm(brakeUnwindControl, dutyCycleBrakeUnwind);
-  }
-  }
-  }
-
-  void checkBrakeUnwindDown() {
-  // Chequear botón DOWN (bajar el ciclo útil)
-  if (brakeUnwindDown.isPressed() == true)
-  {
-  //Serial.println("brakeUnwind DOWN");
-  if ( dutyCycleBrakeUnwind > 0 && dutyCycleBrakeUnwind <= 255) {
-    dutyCycleBrakeUnwind = dutyCycleBrakeUnwind - 5;
-    pwm(brakeUnwindControl, dutyCycleBrakeUnwind);
-    //delay(150);
-  } else {
-    pwm(brakeUnwindControl, 0);
-  }
-
 */
