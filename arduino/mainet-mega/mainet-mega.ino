@@ -15,7 +15,7 @@ EasyNex myNex(Serial2);
 
 /* Definición de pines del Arduino Mega:
 
- */
+*/
 //Definición de pines digitales de entrada
 Button machineEnable = Button(30, PULLUP); // input sw button no
 Button runForward = Button(29, PULLUP);    // input push button no
@@ -24,7 +24,7 @@ Button jogForward = Button(27, PULLUP);    // input push button no
 Button clutchChuck = Button(26, PULLUP);   // input sw button no
 Button brakeChuck = Button(25, PULLUP);    // input sw button no
 // Entrada del generador de pulsos de rotación convertida a 5V
-int rotaryPulseInput = 24; // input
+int rotaryPulseInput = 21; // input
 
 //Definición de pines digitales de salida
 // (Entradas de las tarjetas MP1, MP2 y MP3)
@@ -159,15 +159,10 @@ void readFrequencyRefPot()
 
 void readRotaryPulse()
 {
-  Serial.println("readRotaryPulse is running...");
-  currentValue = digitalRead(rotaryPulseInput);
-  if (currentValue != lastValue)
-  {
-    numPulsos = numPulsos + 1;
-    lastValue = currentValue;
-    //    Serial.print("NP: ");
-    //    Serial.print(numPulsos);
-  }
+  numPulsos = numPulsos + 1;
+  Serial.print("numPulsos = ");
+  Serial.println(numPulsos);
+
   longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
   /*
     numPulsos = 14400; // debug
@@ -201,7 +196,7 @@ void checkRunForward()
   // Chequear pulsador RUN
   if (runForward.isPressed() == true)
   {
-    Serial.println("runForward  was pressed");
+    //Serial.println("runForward  was pressed");
     myNex.writeNum("E.t5.x", 300);
     digitalWrite(runForwardControl, LOW);
   }
@@ -212,7 +207,7 @@ void checkStopRun()
   // Chequear botón UP (subir el ciclo útil)
   if (stopRun.isPressed() == true)
   {
-    Serial.println("stopRun was pressed");
+    //Serial.println("stopRun was pressed");
     myNex.writeNum("E.t6.x", 300);
     digitalWrite(runForwardControl, HIGH);
   }
@@ -223,7 +218,7 @@ void checkJogForward()
   // Chequear botón DOWN (bajar el ciclo útil)
   if (jogForward.isPressed() == true)
   {
-    Serial.println("jogForward was pressed");
+    //Serial.println("jogForward was pressed");
     myNex.writeNum("E.t7.x", 300);
     digitalWrite(jogForwardControl, LOW);
   }
@@ -267,29 +262,22 @@ void checkBrakeClutch()
 
 void checkCountEnable()
 {
-  if (countEnable == 1)
+  Serial.print("countEnable: ");
+  Serial.println(countEnable);
+  /*
+  if (countEnable == true)
   {
-    readRotaryPulse();
+    
+    //readRotaryPulse();
+  } else {
+    Serial.println("Conteo OFF: ");
   }
+  */
 }
 
 void trigger1() // Habilita o deshabilita el conteo de etiquetas
 {
-
-  if (myNex.readNumber("B.sw0.val") == 1)
-  {
-    countEnable = true;
-//    Serial.print(countEnable);
-//    Serial.print("  ");
-//    Serial.println("Conteo ON: ");
-  }
-  else
-  {
-    countEnable = false;
- //   Serial.print(countEnable);
- //   Serial.print("--------");
- //   Serial.println("Conteo OFF: ");
-  }
+  countEnable = !countEnable;    
 }
 //ok
 
@@ -340,6 +328,7 @@ void setup()
   myNex.writeStr("C.t3.txt", "");
   myNex.writeStr("C.t4.txt", "");
 
+  //attachInterrupt(digitalPinToInterrupt(rotaryPulseInput), checkCountEnable, RISING);
   Serial.println("Ending setup()...");
 }
 
@@ -359,7 +348,7 @@ void loop()
   checkRunForward();  // OK
   checkStopRun();     // OK
   checkJogForward();  // OK
-  checkCountEnable(); // OK
+  //checkCountEnable(); // OK
 }
 
 /*
@@ -388,11 +377,11 @@ void loop()
   bool counterAutoStop = FALSE;
   bool batchCount = FALSE;
   bool counterMode = MANUAL;
-  
+
   counter
   tension //
   tensionOutput
   tensionCurrent
   DB // Dead Band value
- 
+
 */
