@@ -63,7 +63,7 @@ float T = 0;
 float f = 0;
 
 // Variables relacionadas con el conteo
-unsigned int numPulsos = 0;
+volatile unsigned int numPulsos = 0;
 int lastValue = LOW;
 int currentValue = LOW;
 float k = 4.23;
@@ -76,6 +76,7 @@ unsigned int numeroDeEtiquetas = 0;
 bool countEnable = false;
 
 // definición de funciones
+/*
 int calcularLongitudDelMaterial(int numPulsos)
 {
   longitudDelMaterial = k * numPulsos; // Longitud del material en mm
@@ -91,6 +92,7 @@ void calcularNumeroEtiquetas(float longitudDelMaterial, int longitudEtiqueta)
   //Serial.print("  NE: ");
   //Serial.println(numeroDeEtiquetas);
 }
+*/
 
 void calcularFrecuencia()
 {
@@ -157,24 +159,6 @@ void readFrequencyRefPot()
   pwm(frequencyRefControl, dutyCycleFrequencyRef);
 }
 
-void readRotaryPulse()
-{
-  numPulsos = numPulsos + 1;
-  Serial.print("numPulsos = ");
-  Serial.println(numPulsos);
-
-  longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
-  /*
-    numPulsos = 14400; // debug
-    Serial.print("NP: ");
-    Serial.println(numPulsos);
-    Serial.print("LE: ");
-    Serial.println(longitudDeEtiqueta);
-  */
-  longitudDelMaterial = calcularLongitudDelMaterial(numPulsos);
-  calcularNumeroEtiquetas(longitudDelMaterial, longitudDeEtiqueta);
-}
-
 void checkMachineEnable()
 {
   // Habilitar funcionamiento de Mainet
@@ -196,7 +180,6 @@ void checkRunForward()
   // Chequear pulsador RUN
   if (runForward.isPressed() == true)
   {
-    //Serial.println("runForward  was pressed");
     myNex.writeNum("E.t5.x", 300);
     digitalWrite(runForwardControl, LOW);
   }
@@ -207,7 +190,6 @@ void checkStopRun()
   // Chequear botón UP (subir el ciclo útil)
   if (stopRun.isPressed() == true)
   {
-    //Serial.println("stopRun was pressed");
     myNex.writeNum("E.t6.x", 300);
     digitalWrite(runForwardControl, HIGH);
   }
@@ -218,7 +200,6 @@ void checkJogForward()
   // Chequear botón DOWN (bajar el ciclo útil)
   if (jogForward.isPressed() == true)
   {
-    //Serial.println("jogForward was pressed");
     myNex.writeNum("E.t7.x", 300);
     digitalWrite(jogForwardControl, LOW);
   }
@@ -261,23 +242,30 @@ void checkBrakeClutch()
 }
 
 void checkCountEnable()
+/* Si esta función se está ejecutando es porque el Arduino recibió
+ * en el pin 21 (rotarPulseInput) un pulso del generador de pulsos
+ * rotacional por lo tanto si está habilitado el conteo se incrementa
+ * el contador numPulsos
+*/
 {
-  Serial.print("countEnable: ");
-  Serial.println(countEnable);
-  /*
   if (countEnable == true)
   {
-    
-    //readRotaryPulse();
-  } else {
-    Serial.println("Conteo OFF: ");
+    numPulsos = numPulsos + 1;
   }
-  */
+}
+
+void mostrarNumPulsos()
+{
+  longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
+  longitudDelMaterial = k * numPulsos;
+  numeroDeEtiquetas = int(longitudDelMaterial / (longitudEtiqueta));
+  myNex.writeNum("B.n0.val", numPulsos);
+  myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
 void trigger1() // Habilita o deshabilita el conteo de etiquetas
 {
-  countEnable = !countEnable;    
+  countEnable = !countEnable;
 }
 //ok
 
@@ -292,11 +280,10 @@ void trigger2() // Lee la longitud de la etiqueta y el No. de etiquetas por roll
 
 void setup()
 {
-  Serial.println("Running setup()...");
   Serial.begin(9600);
   myNex.begin(9600); // Begin the object with a baud rate of 9600
   // If no parameter was given in the begin(), the default baud rate of 9600 will be used
-
+  Serial.println("Running setup()...");
   // Declaración de pines digitales en modo salida
   // Pines de salida PWM
   pinMode(brakeUnwindControl, OUTPUT);
@@ -328,7 +315,7 @@ void setup()
   myNex.writeStr("C.t3.txt", "");
   myNex.writeStr("C.t4.txt", "");
 
-  //attachInterrupt(digitalPinToInterrupt(rotaryPulseInput), checkCountEnable, RISING);
+  attachInterrupt(digitalPinToInterrupt(rotaryPulseInput), checkCountEnable, RISING);
   Serial.println("Ending setup()...");
 }
 
@@ -345,10 +332,10 @@ void loop()
   readBrakeUnwindPot();  // OK
   readFrequencyRefPot(); // OK
 
-  checkRunForward();  // OK
-  checkStopRun();     // OK
-  checkJogForward();  // OK
-  //checkCountEnable(); // OK
+  checkRunForward(); // OK
+  checkStopRun();    // OK
+  checkJogForward(); // OK
+  mostrarNumPulsos();
 }
 
 /*
