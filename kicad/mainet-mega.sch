@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 22
 Title "Mainet-mega -- Diagrama de bloques"
-Date "2021-07-20"
+Date "2021-08-06"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -714,7 +714,7 @@ Wire Wire Line
 Wire Wire Line
 	6000 5950 6450 5950
 Text Label 6000 4550 2    50   ~ 0
-D24
+D21
 NoConn ~ 4800 4700
 NoConn ~ 4800 800 
 Text GLabel 5000 7300 1    50   Input ~ 0
