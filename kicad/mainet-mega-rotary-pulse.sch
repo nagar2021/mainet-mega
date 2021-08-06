@@ -384,5 +384,5 @@ Connection ~ 9450 3300
 Wire Wire Line
 	9450 3300 9450 3500
 Text Notes 10450 3600 0    50   ~ 0
-D24
+D21
 $EndSCHEMATC
