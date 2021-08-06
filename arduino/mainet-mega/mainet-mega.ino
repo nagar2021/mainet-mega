@@ -1,6 +1,6 @@
 /* Nelson A. García Rodríguez
-   30/07/2021
-   mainet-mega V1.00
+ * 06/08/2021
+ * mainet-mega V1.00
 */
 
 #include <Button.h>
@@ -63,12 +63,12 @@ float T = 0;
 float f = 0;
 
 // Variables relacionadas con el conteo
-volatile unsigned int numPulsos = 0;
+volatile unsigned long numPulsos = 0;
 int lastValue = LOW;
 int currentValue = LOW;
-float k = 4.23;
+float k = 2.54;
 
-unsigned int longitudDelMaterial = 0; // En mm.
+float longitudDelMaterial = 0; // En mm.
 unsigned int longitudDeEtiqueta = 0;  // En mm. Incluye el espacio entre etiquetas
 unsigned int EtiquetasPorRollo = 0;
 unsigned int iniciarFrenadoEn = 0;
@@ -256,9 +256,16 @@ void checkCountEnable()
 
 void mostrarNumPulsos()
 {
+  /*
+  if(countEnable) {
+    Serial.println("Conteo ON");
+  } else {
+    Serial.println("Conteo OFF");
+  }
+  */
   longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
   longitudDelMaterial = k * numPulsos;
-  numeroDeEtiquetas = int(longitudDelMaterial / (longitudEtiqueta));
+  numeroDeEtiquetas = int(longitudDelMaterial / (longitudDeEtiqueta));
   myNex.writeNum("B.n0.val", numPulsos);
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
@@ -266,6 +273,7 @@ void mostrarNumPulsos()
 void trigger1() // Habilita o deshabilita el conteo de etiquetas
 {
   countEnable = !countEnable;
+  Serial.println(countEnable);
 }
 //ok
 
@@ -275,7 +283,7 @@ void trigger2() // Lee la longitud de la etiqueta y el No. de etiquetas por roll
   // Lectura de etiquetas por rollo
   longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
   EtiquetasPorRollo = myNex.readStr("C.t4.txt").toInt();
-  myNex.writeNum("B.n0.val", EtiquetasPorRollo);
+  myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
 void setup()
@@ -308,8 +316,8 @@ void setup()
   digitalWrite(clutchChuckControl, HIGH);
   digitalWrite(brakeChuckControl, HIGH);
 
-  myNex.writeNum("B.sw0.val", 0);
-  myNex.writeStr("B.sw0.txt", "ON/OFF");
+  //myNex.writeNum("B.sw0.val", 0);
+ // myNex.writeStr("B.sw0.txt", "ON/OFF");
   myNex.writeNum("B.n0.val", 0);
   myNex.writeNum("B.n1.val", 0);
   myNex.writeStr("C.t3.txt", "");
