@@ -66,7 +66,8 @@ float f = 0;
 volatile unsigned long numPulsos = 0;
 int lastValue = LOW;
 int currentValue = LOW;
-float k = 2.54;
+float k = 2.54; // Corresponde a 100 pulsos/rev y a un cilindro de
+//radio igual a 4cm
 
 float longitudDelMaterial = 0; // En mm.
 unsigned int longitudDeEtiqueta = 0;  // En mm. Incluye el espacio entre etiquetas
@@ -276,7 +277,6 @@ void trigger1() // Habilita o deshabilita el conteo de etiquetas
   Serial.println(countEnable);
 }
 //ok
-
 void trigger2() // Lee la longitud de la etiqueta y el No. de etiquetas por rollo
 {
   // Lectura de longitud de etiqueta en mm. Incluye el espacio entre etiquetas
@@ -284,6 +284,12 @@ void trigger2() // Lee la longitud de la etiqueta y el No. de etiquetas por roll
   longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
   EtiquetasPorRollo = myNex.readStr("C.t4.txt").toInt();
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
+}
+
+void trigger3()
+{
+  numeroDeEtiquetas = 0;
+  numPulsos = 0;
 }
 
 void setup()
