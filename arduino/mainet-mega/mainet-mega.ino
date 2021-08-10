@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
- * 06/08/2021
+ * 10/08/2021
  * mainet-mega V1.00
 */
 
@@ -69,8 +69,8 @@ int currentValue = LOW;
 float k = 2.54; // Corresponde a 100 pulsos/rev y a un cilindro de
 //radio igual a 4cm
 
-float longitudDelMaterial = 0; // En mm.
-unsigned int longitudDeEtiqueta = 0;  // En mm. Incluye el espacio entre etiquetas
+float longitudDelMaterial = 0;       // En mm.
+unsigned int longitudDeEtiqueta = 0; // En mm. Incluye el espacio entre etiquetas
 unsigned int EtiquetasPorRollo = 0;
 unsigned int iniciarFrenadoEn = 0;
 unsigned int numeroDeEtiquetas = 0;
@@ -323,7 +323,7 @@ void setup()
   digitalWrite(brakeChuckControl, HIGH);
 
   //myNex.writeNum("B.sw0.val", 0);
- // myNex.writeStr("B.sw0.txt", "ON/OFF");
+  // myNex.writeStr("B.sw0.txt", "ON/OFF");
   myNex.writeNum("B.n0.val", 0);
   myNex.writeNum("B.n1.val", 0);
   myNex.writeStr("C.t3.txt", "");
