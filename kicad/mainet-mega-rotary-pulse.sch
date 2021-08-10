@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 22 22
 Title "Mainet-mega -- Convertidor de Voltaje: 24V a 5V"
-Date "2021-08-09"
+Date "2021-08-10"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -14,247 +14,23 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 7650 2500 2    50   Input ~ 0
+Text HLabel 7800 2350 2    50   Input ~ 0
 rotaryPulseOutput5V
-$Comp
-L Transistor_FET:IRLZ44N Q1
-U 1 1 5F98737A
-P 7450 2750
-AR Path="/5F98737A" Ref="Q1"  Part="1" 
-AR Path="/5F888A13/5F98737A" Ref="Q?"  Part="1" 
-AR Path="/5F984CFE/5F98737A" Ref="Q?"  Part="1" 
-AR Path="/5FC3A1C1/5F98737A" Ref="Q9"  Part="1" 
-F 0 "Q9" H 7654 2796 50  0000 L CNN
-F 1 "BUK9518-55" H 7654 2705 50  0000 L CNN
-F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 7700 2675 50  0001 L CIN
-F 3 "http://www.irf.com/product-info/datasheets/data/irlz44n.pdf" H 7450 2750 50  0001 L CNN
-	1    7450 2750
-	1    0    0    -1  
-$EndComp
-$Comp
-L Isolator:4N36 U1
-U 1 1 5F987380
-P 6150 2650
-AR Path="/5F987380" Ref="U1"  Part="1" 
-AR Path="/5F888A13/5F987380" Ref="U?"  Part="1" 
-AR Path="/5F984CFE/5F987380" Ref="U?"  Part="1" 
-AR Path="/5FC3A1C1/5F987380" Ref="U10"  Part="1" 
-F 0 "U10" H 6150 2975 50  0000 C CNN
-F 1 "4N38" H 6150 2884 50  0000 C CNN
-F 2 "Package_DIP:DIP-6_W7.62mm" H 5950 2450 50  0001 L CIN
-F 3 "https://www.vishay.com/docs/81181/4n35.pdf" H 6150 2650 50  0001 L CNN
-	1    6150 2650
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R3
-U 1 1 5F987386
-P 7250 3050
-AR Path="/5F987386" Ref="R3"  Part="1" 
-AR Path="/5F888A13/5F987386" Ref="R?"  Part="1" 
-AR Path="/5F984CFE/5F987386" Ref="R?"  Part="1" 
-AR Path="/5FC3A1C1/5F987386" Ref="R19"  Part="1" 
-F 0 "R19" V 7150 3050 50  0000 C CNN
-F 1 "100K" V 7250 3050 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal" V 7180 3050 50  0001 C CNN
-F 3 "~" H 7250 3050 50  0001 C CNN
-	1    7250 3050
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	7250 2750 7250 2900
-$Comp
-L Device:R R2
-U 1 1 5F987394
-P 6850 2750
-AR Path="/5F987394" Ref="R2"  Part="1" 
-AR Path="/5F888A13/5F987394" Ref="R?"  Part="1" 
-AR Path="/5F984CFE/5F987394" Ref="R?"  Part="1" 
-AR Path="/5FC3A1C1/5F987394" Ref="R18"  Part="1" 
-F 0 "R18" V 6950 2750 50  0000 C CNN
-F 1 "10K" V 6850 2750 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal" V 6780 2750 50  0001 C CNN
-F 3 "~" H 6850 2750 50  0001 C CNN
-	1    6850 2750
-	0    -1   -1   0   
-$EndComp
-Connection ~ 7250 2750
-Wire Wire Line
-	7000 2750 7250 2750
-Wire Wire Line
-	6550 2650 6450 2650
-$Comp
-L Device:R R1
-U 1 1 5F9873B0
-P 5850 2200
-AR Path="/5F9873B0" Ref="R1"  Part="1" 
-AR Path="/5F888A13/5F9873B0" Ref="R?"  Part="1" 
-AR Path="/5F984CFE/5F9873B0" Ref="R?"  Part="1" 
-AR Path="/5FC3A1C1/5F9873B0" Ref="R17"  Part="1" 
-F 0 "R17" V 5750 2200 50  0000 C CNN
-F 1 "470" V 5850 2200 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal" V 5780 2200 50  0001 C CNN
-F 3 "~" H 5850 2200 50  0001 C CNN
-	1    5850 2200
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	5850 2350 5850 2550
-Wire Wire Line
-	5850 1950 5850 2050
-NoConn ~ 6450 2550
-Wire Wire Line
-	9150 2500 8600 2500
-Wire Wire Line
-	7550 2500 7550 2550
-$Comp
-L Device:R R4
-U 1 1 5F9873EB
-P 7550 2100
-AR Path="/5F9873EB" Ref="R4"  Part="1" 
-AR Path="/5F888A13/5F9873EB" Ref="R?"  Part="1" 
-AR Path="/5F984CFE/5F9873EB" Ref="R?"  Part="1" 
-AR Path="/5FC3A1C1/5F9873EB" Ref="R20"  Part="1" 
-F 0 "R20" V 7650 2100 50  0000 C CNN
-F 1 "10K" V 7550 2100 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7480 2100 50  0001 C CNN
-F 3 "~" H 7550 2100 50  0001 C CNN
-	1    7550 2100
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7550 2250 7550 2500
-Connection ~ 7550 2500
-Wire Wire Line
-	6450 2750 6700 2750
-Wire Wire Line
-	7250 3200 7250 3350
-Wire Wire Line
-	7250 3350 7550 3350
-Wire Wire Line
-	7550 2950 7550 3350
-Connection ~ 7550 3350
-Text Label 7550 3350 0    50   ~ 0
-0V
-Text Notes 4400 3200 0    50   ~ 0
-Esta señal es la salida a colector abierto\ndel RPG (Rotary Pulse Generator),\ngenerador de pulsos por rotación,\na 24VDC\n
-Text Notes 9000 2950 0    50   ~ 0
-Out1- es la señal es la salida del generafor\nde pulsos por rotación trasladada a 5V.\nVa a la entrada D24 del Arduino-Mega
-$Comp
-L power:GNDD #PWR040
-U 1 1 601BAD38
-P 7550 3550
-F 0 "#PWR040" H 7550 3300 50  0001 C CNN
-F 1 "GNDD" H 7554 3395 50  0000 C CNN
-F 2 "" H 7550 3550 50  0001 C CNN
-F 3 "" H 7550 3550 50  0001 C CNN
-	1    7550 3550
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7550 3350 7550 3550
-$Comp
-L Device:LED D21
-U 1 1 60D6727F
-P 5700 2750
-F 0 "D21" H 5693 2966 50  0000 C CNN
-F 1 "LED" H 5693 2875 50  0000 C CNN
-F 2 "" H 5700 2750 50  0001 C CNN
-F 3 "~" H 5700 2750 50  0001 C CNN
-	1    5700 2750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4400 2750 5550 2750
-$Comp
-L Device:LED D22
-U 1 1 60D6B687
-P 7550 1800
-F 0 "D22" V 7589 1683 50  0000 R CNN
-F 1 "LED" V 7498 1683 50  0000 R CNN
-F 2 "" H 7550 1800 50  0001 C CNN
-F 3 "~" H 7550 1800 50  0001 C CNN
-	1    7550 1800
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Connector:Screw_Terminal_01x04 J66
-U 1 1 60D74FF0
-P 9350 2300
-F 0 "J66" H 9300 2550 50  0000 L CNN
-F 1 "Screw_Terminal_01x04" H 9430 2201 50  0001 L CNN
-F 2 "" H 9350 2300 50  0001 C CNN
-F 3 "~" H 9350 2300 50  0001 C CNN
-	1    9350 2300
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7550 1600 7550 1650
-Wire Wire Line
-	7550 1600 6550 1600
-Wire Wire Line
-	6550 1600 6550 2650
-Wire Wire Line
-	7550 1600 8600 1600
-Wire Wire Line
-	9150 1600 9150 2200
-Connection ~ 7550 1600
-Wire Wire Line
-	9150 2300 8850 2300
-Wire Wire Line
-	8850 2300 8850 3350
-Wire Wire Line
-	7550 3350 8850 3350
-Text Notes 9550 2200 0    50   ~ 0
-DC+
-Text Notes 9550 2300 0    50   ~ 0
-DC-
-Text Notes 9550 2400 0    50   ~ 0
-Out1+
-Text Notes 9550 2500 0    50   ~ 0
-Out1-
-Wire Wire Line
-	8600 1950 8600 1600
-Connection ~ 8600 1600
-Wire Wire Line
-	8600 1600 9150 1600
-Wire Wire Line
-	8600 2250 8600 2500
-Connection ~ 8600 2500
-Wire Wire Line
-	8600 2500 7550 2500
-Text Notes 4500 2650 0    50   ~ 0
-PWM
-Text Notes 4500 2750 0    50   ~ 0
-GND
+Text Notes 4700 3150 0    50   ~ 0
+Salida a colector abierto\ndel RPG (Rotary Pulse Generator),\ngenerador de pulsos rotacional,\na 24VDC\n
+Text Notes 9050 2550 0    50   ~ 0
+Salida del generafor de pulsos rotacional\ntrasladada a 5V.\nVa a la entrada D21 del Arduino-Mega
 $Comp
 L Connector:Screw_Terminal_01x02 J65
 U 1 1 60D9D767
-P 4200 2750
-F 0 "J65" H 4200 2500 50  0000 C CNN
-F 1 "Screw_Terminal_01x02" H 4118 2516 50  0001 C CNN
-F 2 "" H 4200 2750 50  0001 C CNN
-F 3 "~" H 4200 2750 50  0001 C CNN
-	1    4200 2750
+P 4450 2700
+F 0 "J65" H 4450 2450 50  0000 C CNN
+F 1 "Screw_Terminal_01x02" H 4368 2466 50  0001 C CNN
+F 2 "" H 4450 2700 50  0001 C CNN
+F 3 "~" H 4450 2700 50  0001 C CNN
+	1    4450 2700
 	-1   0    0    1   
 $EndComp
-$Comp
-L Diode:1N4148 D23
-U 1 1 60DBB39E
-P 8600 2100
-F 0 "D23" V 8554 2179 50  0000 L CNN
-F 1 "1N4148" V 8645 2179 50  0000 L CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8600 1925 50  0001 C CNN
-F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 8600 2100 50  0001 C CNN
-	1    8600 2100
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	5450 2650 5450 1950
-Wire Wire Line
-	4400 2650 5450 2650
-Wire Wire Line
-	5450 1950 5850 1950
 Text Notes 3550 2650 0    50   ~ 0
 +24V
 Text Notes 3550 2750 0    50   ~ 0
@@ -312,7 +88,7 @@ Wire Wire Line
 	2450 2650 3050 2650
 Text Notes 2650 2550 0    50   ~ 0
 Negro
-Text Notes 7550 1500 0    50   ~ 0
+Text Notes 6800 1550 0    50   ~ 0
 Puede ser cualquiera de las salidas de +5V del Arduino-Mega
 Text Notes 2650 2650 0    50   ~ 0
 Azul
@@ -364,29 +140,18 @@ Text Notes 3550 2550 0    50   ~ 0
 GNDREF\n
 Text Notes 850  2700 0    50   ~ 0
 Conecta al RPG
-Text Notes 4700 2650 0    50   ~ 0
-(+24V)
-Text Notes 4700 2750 0    50   ~ 0
-(RPG Output)
+Text Notes 4700 2600 0    50   ~ 0
++24V
+Text Notes 4700 2800 0    50   ~ 0
+RPG Output
 Wire Wire Line
 	1850 2850 3050 2850
-Text GLabel 10150 3350 2    50   Input ~ 0
+Text GLabel 8900 3600 2    50   Input ~ 0
 GNDD
-Text GLabel 10150 1600 2    50   Input ~ 0
+Text GLabel 8900 1650 2    50   Input ~ 0
 VCC
-Wire Wire Line
-	9150 1600 10150 1600
-Connection ~ 9150 1600
-Wire Wire Line
-	10150 3350 8850 3350
-Connection ~ 8850 3350
-Connection ~ 9150 2200
-Wire Wire Line
-	9150 2200 9150 2300
-Text Notes 10150 2500 0    50   ~ 0
-D21
 $Bitmap
-Pos 2550 4900
+Pos 2550 4850
 Scale 1.000000
 Data
 89 50 4E 47 0D 0A 1A 0A 00 00 00 0D 49 48 44 52 00 00 02 20 00 00 01 33 08 02 00 00 00 87 41 2F 
@@ -1599,11 +1364,8 @@ A4 A4 4C 99 32 85 4D 72 20 10 88 9F 0F 3C C9 8F 7E 8A 88 41 E0 4B B6 C2 DC DC DC
 06 81 40 20 10 43 C2 FF 01 CE 7A 40 07 4A E2 19 04 00 00 00 00 49 45 4E 44 AE 42 60 82 
 EndData
 $EndBitmap
-Connection ~ 9150 2300
-Wire Wire Line
-	9150 2300 9150 2400
 $Bitmap
-Pos 5250 4750
+Pos 5100 4650
 Scale 1.000000
 Data
 89 50 4E 47 0D 0A 1A 0A 00 00 00 0D 49 48 44 52 00 00 02 46 00 00 00 EE 08 02 00 00 00 53 6F 5F 
@@ -2076,7 +1838,7 @@ EB AF 87 BA F0 0A 3B 1E 01 00 00 00 16 98 34 00 00 00 01 01 26 0D 00 00 40 40 80
 EndData
 $EndBitmap
 $Bitmap
-Pos 5300 6000
+Pos 5150 5900
 Scale 1.000000
 Data
 89 50 4E 47 0D 0A 1A 0A 00 00 00 0D 49 48 44 52 00 00 02 43 00 00 00 EA 08 02 00 00 00 2E D7 D6 
@@ -2891,4 +2653,228 @@ B0 06 26 82 20 05 80 9A D1 08 82 20 48 89 81 9A D1 08 82 20 C8 75 05 46 32 04 41
 91 0C 41 10 04 29 6D FE 0F 83 EE 14 A1 5E 5C 7A 58 00 00 00 00 49 45 4E 44 AE 42 60 82 
 EndData
 $EndBitmap
+$Comp
+L Transistor_FET:IRLZ44N Q?
+U 1 1 611419A1
+P 7700 2700
+AR Path="/611419A1" Ref="Q?"  Part="1" 
+AR Path="/5F888A13/611419A1" Ref="Q?"  Part="1" 
+AR Path="/5FBD1D9A/611419A1" Ref="Q?"  Part="1" 
+AR Path="/5FBD1D9A/601ACD13/611419A1" Ref="Q?"  Part="1" 
+AR Path="/5FC3A1C1/611419A1" Ref="Q9"  Part="1" 
+F 0 "Q9" H 7950 2750 50  0000 L CNN
+F 1 "BUK9518" H 8100 2650 50  0000 C CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 7950 2625 50  0001 L CIN
+F 3 "http://www.irf.com/product-info/datasheets/data/irlz44n.pdf" H 7700 2700 50  0001 L CNN
+	1    7700 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Isolator:4N36 U?
+U 1 1 611419A7
+P 6400 2600
+AR Path="/611419A7" Ref="U?"  Part="1" 
+AR Path="/5F888A13/611419A7" Ref="U?"  Part="1" 
+AR Path="/5FBD1D9A/611419A7" Ref="U?"  Part="1" 
+AR Path="/5FBD1D9A/601ACD13/611419A7" Ref="U?"  Part="1" 
+AR Path="/5FC3A1C1/611419A7" Ref="U10"  Part="1" 
+F 0 "U10" H 6400 2925 50  0000 C CNN
+F 1 "4N38" H 6400 2800 50  0000 C CNN
+F 2 "Package_DIP:DIP-6_W7.62mm" H 6200 2400 50  0001 L CIN
+F 3 "https://www.vishay.com/docs/81181/4n35.pdf" H 6400 2600 50  0001 L CNN
+	1    6400 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 611419AD
+P 7500 3000
+AR Path="/611419AD" Ref="R?"  Part="1" 
+AR Path="/5F888A13/611419AD" Ref="R?"  Part="1" 
+AR Path="/5FBD1D9A/611419AD" Ref="R?"  Part="1" 
+AR Path="/5FBD1D9A/601ACD13/611419AD" Ref="R?"  Part="1" 
+AR Path="/5FC3A1C1/611419AD" Ref="R19"  Part="1" 
+F 0 "R19" V 7400 3000 50  0000 C CNN
+F 1 "1.5K" V 7500 3000 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 7430 3000 50  0001 C CNN
+F 3 "~" H 7500 3000 50  0001 C CNN
+	1    7500 3000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7500 2700 7500 2850
+$Comp
+L Device:R R?
+U 1 1 611419B4
+P 7100 2700
+AR Path="/611419B4" Ref="R?"  Part="1" 
+AR Path="/5F888A13/611419B4" Ref="R?"  Part="1" 
+AR Path="/5FBD1D9A/611419B4" Ref="R?"  Part="1" 
+AR Path="/5FBD1D9A/601ACD13/611419B4" Ref="R?"  Part="1" 
+AR Path="/5FC3A1C1/611419B4" Ref="R18"  Part="1" 
+F 0 "R18" V 7200 2700 50  0000 C CNN
+F 1 "1K" V 7100 2700 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 7030 2700 50  0001 C CNN
+F 3 "~" H 7100 2700 50  0001 C CNN
+	1    7100 2700
+	0    -1   -1   0   
+$EndComp
+Connection ~ 7500 2700
+Wire Wire Line
+	7250 2700 7500 2700
+Wire Wire Line
+	6800 2600 6700 2600
+$Comp
+L Device:LED D?
+U 1 1 611419BD
+P 6700 3300
+AR Path="/611419BD" Ref="D?"  Part="1" 
+AR Path="/5F888A13/611419BD" Ref="D?"  Part="1" 
+AR Path="/5FBD1D9A/611419BD" Ref="D?"  Part="1" 
+AR Path="/5FBD1D9A/601ACD13/611419BD" Ref="D?"  Part="1" 
+AR Path="/5FC3A1C1/611419BD" Ref="D22"  Part="1" 
+F 0 "D22" H 6693 3517 50  0000 C CNN
+F 1 "~" H 6700 3300 50  0001 C CNN
+F 2 "LED_THT:LED_D5.0mm" H 6700 3300 50  0001 C CNN
+F 3 "~" H 6700 3300 50  0001 C CNN
+	1    6700 3300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 611419C3
+P 6100 2150
+AR Path="/611419C3" Ref="R?"  Part="1" 
+AR Path="/5F888A13/611419C3" Ref="R?"  Part="1" 
+AR Path="/5FBD1D9A/611419C3" Ref="R?"  Part="1" 
+AR Path="/5FBD1D9A/601ACD13/611419C3" Ref="R?"  Part="1" 
+AR Path="/5FC3A1C1/611419C3" Ref="R17"  Part="1" 
+F 0 "R17" V 6000 2150 50  0000 C CNN
+F 1 "120" V 6100 2150 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 6030 2150 50  0001 C CNN
+F 3 "~" H 6100 2150 50  0001 C CNN
+	1    6100 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6100 2300 6100 2500
+Wire Wire Line
+	5500 1900 6100 1900
+Wire Wire Line
+	6100 1900 6100 2000
+Wire Wire Line
+	5500 1900 5500 2600
+$Comp
+L Device:R R?
+U 1 1 611419CD
+P 6700 3000
+AR Path="/611419CD" Ref="R?"  Part="1" 
+AR Path="/5F888A13/611419CD" Ref="R?"  Part="1" 
+AR Path="/5FBD1D9A/611419CD" Ref="R?"  Part="1" 
+AR Path="/5FBD1D9A/601ACD13/611419CD" Ref="R?"  Part="1" 
+AR Path="/5FC3A1C1/611419CD" Ref="R20"  Part="1" 
+F 0 "R20" V 6600 3000 50  0000 C CNN
+F 1 "~" H 6700 3000 50  0001 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 6630 3000 50  0001 C CNN
+F 3 "~" H 6700 3000 50  0001 C CNN
+	1    6700 3000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6700 2850 6700 2700
+$Comp
+L Connector:Screw_Terminal_01x03 J?
+U 1 1 611419D4
+P 8850 2450
+AR Path="/611419D4" Ref="J?"  Part="1" 
+AR Path="/5F888A13/611419D4" Ref="J?"  Part="1" 
+AR Path="/5FBD1D9A/611419D4" Ref="J?"  Part="1" 
+AR Path="/5FBD1D9A/601ACD13/611419D4" Ref="J?"  Part="1" 
+AR Path="/5FC3A1C1/611419D4" Ref="J66"  Part="1" 
+F 0 "J66" H 8850 2150 50  0000 C CNN
+F 1 "~" H 8850 2450 50  0001 C CNN
+F 2 "TerminalBlock_Altech:Altech_AK300_1x03_P5.00mm_45-Degree" H 8850 2450 50  0001 C CNN
+F 3 "~" H 8850 2450 50  0001 C CNN
+	1    8850 2450
+	1    0    0    1   
+$EndComp
+NoConn ~ 6700 2500
+Wire Wire Line
+	8650 2450 7800 2450
+Wire Wire Line
+	7800 2450 7800 2500
+Wire Wire Line
+	7800 1650 8650 1650
+Wire Wire Line
+	8650 1650 8650 2350
+Connection ~ 7800 1650
+Wire Wire Line
+	6800 1650 7800 1650
+$Comp
+L Device:R R?
+U 1 1 611419EA
+P 7800 2050
+AR Path="/611419EA" Ref="R?"  Part="1" 
+AR Path="/5F888A13/611419EA" Ref="R?"  Part="1" 
+AR Path="/5FBD1D9A/611419EA" Ref="R?"  Part="1" 
+AR Path="/5FBD1D9A/601ACD13/611419EA" Ref="R?"  Part="1" 
+AR Path="/5FC3A1C1/611419EA" Ref="R37"  Part="1" 
+F 0 "R37" V 7900 2050 50  0000 C CNN
+F 1 "~" H 7800 2050 50  0001 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 7730 2050 50  0001 C CNN
+F 3 "~" H 7800 2050 50  0001 C CNN
+	1    7800 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7800 1650 7800 1900
+Wire Wire Line
+	7800 2200 7800 2450
+Connection ~ 7800 2450
+Wire Wire Line
+	4650 2600 5500 2600
+Wire Wire Line
+	6700 2700 6950 2700
+Connection ~ 6700 2700
+Wire Wire Line
+	6800 1650 6800 2600
+Wire Wire Line
+	6700 3450 6700 3600
+Wire Wire Line
+	6700 3600 7500 3600
+Wire Wire Line
+	8650 3600 8650 2550
+Wire Wire Line
+	7800 2900 7800 3600
+Connection ~ 7800 3600
+Wire Wire Line
+	7800 3600 8650 3600
+Connection ~ 7500 3600
+Wire Wire Line
+	7500 3600 7800 3600
+Wire Wire Line
+	7500 3150 7500 3600
+Text Label 8450 3600 0    50   ~ 0
+0V
+$Comp
+L power:GNDD #PWR040
+U 1 1 6115522D
+P 7800 3750
+F 0 "#PWR040" H 7800 3500 50  0001 C CNN
+F 1 "GNDD" H 7804 3595 50  0000 C CNN
+F 2 "" H 7800 3750 50  0001 C CNN
+F 3 "" H 7800 3750 50  0001 C CNN
+	1    7800 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7800 3600 7800 3750
+Wire Wire Line
+	4650 2700 6100 2700
+Wire Wire Line
+	8650 1650 8900 1650
+Connection ~ 8650 1650
+Wire Wire Line
+	8650 3600 8900 3600
+Connection ~ 8650 3600
 $EndSCHEMATC
