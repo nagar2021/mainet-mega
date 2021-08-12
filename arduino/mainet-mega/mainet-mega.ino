@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
- * 10/08/2021
+ * 12/08/2021
  * mainet-mega V1.00
 */
 
@@ -286,16 +286,17 @@ void trigger2() // Lee la longitud de la etiqueta y el No. de etiquetas por roll
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
-void trigger3()
+void trigger3() // Reinicia el conteo de etiquetas
 {
   numeroDeEtiquetas = 0;
   numPulsos = 0;
+  myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
 void setup()
 {
-  Serial.begin(9600);
-  myNex.begin(9600); // Begin the object with a baud rate of 9600
+  Serial.begin(115200);
+  myNex.begin(115200); // Begin the object with a baud rate of 9600
   // If no parameter was given in the begin(), the default baud rate of 9600 will be used
   Serial.println("Running setup()...");
   // Declaración de pines digitales en modo salida
