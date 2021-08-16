@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 22
 Title "Mainet-mega -- Diagrama de bloques"
-Date "2021-08-06"
+Date "2021-08-16"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
