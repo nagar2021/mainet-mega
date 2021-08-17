@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
- * 16/08/2021
+ * 17/08/2021
  * mainet-mega V1.00
 */
 
@@ -101,8 +101,8 @@ void calcularFrecuencia()
   tOff = pulseIn(rotaryPulseInput, LOW);
   T = tOn + tOff;
   f = 1 / T;
-  Serial.print("f = ");
-  Serial.println(f);
+  //Serial.print("f = ");
+  //Serial.println(f);
 }
 
 void displayBoardsStatus()
@@ -243,10 +243,9 @@ void checkBrakeClutch()
 }
 
 void checkCountEnable()
-/* Si esta función se está ejecutando es porque el Arduino recibió
- * en el pin 21 (rotarPulseInput) un pulso del generador de pulsos
- * rotacional por lo tanto si está habilitado el conteo se incrementa
- * el contador numPulsos
+/* Si se ejecuta es porque el Arduino recibió en el pin 21 (rotarPulseInput)
+ * un pulso del generador de pulsos rotacional por lo tanto, si está habilitado 
+ *  el conteo,se incrementa el contador numPulsos
 */
 {
   if (countEnable == true)
@@ -257,13 +256,6 @@ void checkCountEnable()
 
 void mostrarNumPulsos()
 {
-  /*
-  if(countEnable) {
-    Serial.println("Conteo ON");
-  } else {
-    Serial.println("Conteo OFF");
-  }
-  */
   longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
   longitudDelMaterial = k * numPulsos;
   numeroDeEtiquetas = int(longitudDelMaterial / (longitudDeEtiqueta));
@@ -271,13 +263,23 @@ void mostrarNumPulsos()
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
-void trigger1() // Habilita o deshabilita el conteo de etiquetas
-{
+void trigger1() 
+/* Habilita o deshabilita el conteo de etiquetas
+ * Se ejecuta al liberar B.SW0  
+ */
+{  
   countEnable = !countEnable;
-  //Serial.println(countEnable);
+  if (countEnable) {
+    Serial.println("----->ON");
+  } else {
+    Serial.println("off");
+  }
 }
 //ok
-void trigger2() // Lee la longitud de la etiqueta y el No. de etiquetas por rollo
+void trigger2() 
+/* Lee la longitud de la etiqueta y el No. de etiquetas por rollo
+ * Se ejecuta al liberar C.b0 
+ */
 {
   // Lectura de longitud de etiqueta en mm. Incluye el espacio entre etiquetas
   // Lectura de etiquetas por rollo
@@ -286,7 +288,10 @@ void trigger2() // Lee la longitud de la etiqueta y el No. de etiquetas por roll
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
-void trigger3() // Reinicia el conteo de etiquetas
+void trigger3()
+/* Reinicia el conteo de etiquetas
+ * Se ejecuta al liberar B.b1 
+ */
 {
   numeroDeEtiquetas = 0;
   numPulsos = 0;
@@ -296,9 +301,13 @@ void trigger3() // Reinicia el conteo de etiquetas
 void setup()
 {
   Serial.begin(9600);
-  myNex.begin(9600); // Begin the object with a baud rate of 9600
-  // If no parameter was given in the begin(), the default baud rate of 9600 will be used
-  Serial.println("Running setup()...");
+  Serial2.begin(9600);
+  myNex.begin(9600); 
+  /* Begin the object with a baud rate of 9600
+   * If no parameter was given in the begin(), the default baud rate of 9600
+   * will be used
+  */
+  
   // Declaración de pines digitales en modo salida
   // Pines de salida PWM
   pinMode(brakeUnwindControl, OUTPUT);
@@ -322,16 +331,14 @@ void setup()
   digitalWrite(jogForwardControl, HIGH);
   digitalWrite(clutchChuckControl, HIGH);
   digitalWrite(brakeChuckControl, HIGH);
-
-  //myNex.writeNum("B.sw0.val", 0);
-  // myNex.writeStr("B.sw0.txt", "ON/OFF");
+ 
   myNex.writeNum("B.n0.val", 0);
   myNex.writeNum("B.n1.val", 0);
+  myNex.writeNum("B.sw0.val", 0);
   myNex.writeStr("C.t3.txt", "");
   myNex.writeStr("C.t4.txt", "");
 
   attachInterrupt(digitalPinToInterrupt(rotaryPulseInput), checkCountEnable, RISING);
-  Serial.println("Ending setup()...");
 }
 
 void loop()
