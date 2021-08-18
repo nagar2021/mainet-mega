@@ -5,13 +5,17 @@
 
 #include <Button.h>
 #include <EasyNextionLibrary.h>
-#include <LED.h>
-#include <trigger.h>
+//#include <LED.h>
+//#include <trigger.h>
 
 //#define Serial Serial   // Debug using default Serial over USB towards Arduino Serial Monitor
 //#define DEBUG           // Comment this out if you don't need to see what happens in the Serial Monitor
 
+const int GREEN = 2016; // Colores usados en la pantalla Nextion
+const int RED = 63488;
+
 EasyNex myNex(Serial2);
+
 
 /* Definición de pines del Arduino Mega:
 
@@ -71,30 +75,12 @@ float k = 2.54; // Corresponde a 100 pulsos/rev y a un cilindro de
 
 float longitudDelMaterial = 0;       // En mm.
 unsigned int longitudDeEtiqueta = 0; // En mm. Incluye el espacio entre etiquetas
-unsigned int EtiquetasPorRollo = 0;
-unsigned int iniciarFrenadoEn = 0;
+unsigned int etiquetasPorRollo = 0;
+unsigned int etiquetaDeFrenado = 0;
 unsigned int numeroDeEtiquetas = 0;
 bool countEnable = false;
 
-// definición de funciones
-/*
-int calcularLongitudDelMaterial(int numPulsos)
-{
-  longitudDelMaterial = k * numPulsos; // Longitud del material en mm
-  //Serial.print("    LM: ");
-  //Serial.print(longitudDelMaterial);
-  return longitudDelMaterial;
-}
-
-void calcularNumeroEtiquetas(float longitudDelMaterial, int longitudEtiqueta)
-{
-  numeroDeEtiquetas = int(longitudDelMaterial / (longitudEtiqueta));
-  myNex.writeNum("B.n1.val", numeroDeEtiquetas);
-  //Serial.print("  NE: ");
-  //Serial.println(numeroDeEtiquetas);
-}
-*/
-
+// Definición de funciones
 void calcularFrecuencia()
 {
   tOn = pulseIn(rotaryPulseInput, HIGH);
@@ -244,7 +230,7 @@ void checkBrakeClutch()
 
 void checkCountEnable()
 /* Si se ejecuta es porque el Arduino recibió en el pin 21 (rotarPulseInput)
- * un pulso del generador de pulsos rotacional por lo tanto, si está habilitado 
+ * un pulso del generador de pulsos rotacional por lo tanto, si está habilitado
  *  el conteo,se incrementa el contador numPulsos
 */
 {
@@ -263,34 +249,9 @@ void mostrarNumPulsos()
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
-void trigger1() 
-/* Habilita o deshabilita el conteo de etiquetas
- * Se ejecuta al liberar B.SW0  
- */
-{  
-  countEnable = !countEnable;
-  if (countEnable) {
-    Serial.println("----->ON");
-  } else {
-    Serial.println("off");
-  }
-}
-//ok
-void trigger2() 
-/* Lee la longitud de la etiqueta y el No. de etiquetas por rollo
- * Se ejecuta al liberar C.b0 
- */
-{
-  // Lectura de longitud de etiqueta en mm. Incluye el espacio entre etiquetas
-  // Lectura de etiquetas por rollo
-  longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
-  EtiquetasPorRollo = myNex.readStr("C.t4.txt").toInt();
-  myNex.writeNum("B.n1.val", numeroDeEtiquetas);
-}
-
-void trigger3()
-/* Reinicia el conteo de etiquetas
- * Se ejecuta al liberar B.b1 
+void trigger1() // Reinicia el conteo de etiquetas
+/*
+ * Se ejecuta al liberar B.b1
  */
 {
   numeroDeEtiquetas = 0;
@@ -298,16 +259,52 @@ void trigger3()
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
+void trigger2() // Habilita o deshabilita el conteo de etiquetas
+/*
+ * Se ejecuta al liberar B.SW0
+ */
+{
+  countEnable = !countEnable;
+  if (countEnable) {
+    Serial.println("----->ON");
+    myNex.writeNum("B.t6.pco", GREEN);
+  } else {
+    Serial.println("off");
+    myNex.writeNum("B.t6.pco", RED);
+  }
+}
+//ok
+void trigger3() // Lee parámetros de las etiquetas:
+/*
+ * Longitud de la etiqueta en mm. Incluye el espacio entre etiquetas
+ * Número de etiquetas por rollo
+ * Etiqueta de frenado. Por defecto es el 90% del número de etiquetas
+ * por rollo
+ * Se ejecuta al liberar C.b0
+ */
+{
+  // Lectura de longitud de etiqueta en mm. Incluye el espacio entre etiquetas
+  // Lectura de etiquetas por rollo
+  longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
+  etiquetasPorRollo = myNex.readStr("C.t4.txt").toInt();
+  etiquetaDeFrenado = myNex.readStr("C.t5.txt").toInt();
+  myNex.writeNum("B.n1.val", numeroDeEtiquetas);
+}
+
 void setup()
 {
-  Serial.begin(9600);
-  Serial2.begin(9600);
-  myNex.begin(9600); 
-  /* Begin the object with a baud rate of 9600
-   * If no parameter was given in the begin(), the default baud rate of 9600
-   * will be used
+  Serial.begin(115200);
+  myNex.begin(115200);
+  /* Begin the object with a baud rate of 115200
+   * Si no se especifica la rata de baudios en el método begin(), se usa
+   * la rata por defecto que es 9600 .
+   * IMPORTANTE: La pantalla Nextion debe ser inicializada para usar la
+   * misma rata de baudios. Se hace en la pestaña program.s del programa
+   * Nextion Editor, antes de las instrucciones de la página 0 y no se
+   * aconseja hacerlo en el evento de preinicialización de la página 0
+   * de el archibo .HMI
   */
-  
+
   // Declaración de pines digitales en modo salida
   // Pines de salida PWM
   pinMode(brakeUnwindControl, OUTPUT);
@@ -331,7 +328,7 @@ void setup()
   digitalWrite(jogForwardControl, HIGH);
   digitalWrite(clutchChuckControl, HIGH);
   digitalWrite(brakeChuckControl, HIGH);
- 
+
   myNex.writeNum("B.n0.val", 0);
   myNex.writeNum("B.n1.val", 0);
   myNex.writeNum("B.sw0.val", 0);
