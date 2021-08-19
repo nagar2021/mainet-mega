@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
- * 17/08/2021
+ * 19/08/2021
  * mainet-mega V1.00
 */
 
@@ -11,11 +11,12 @@
 //#define Serial Serial   // Debug using default Serial over USB towards Arduino Serial Monitor
 //#define DEBUG           // Comment this out if you don't need to see what happens in the Serial Monitor
 
+const int BLUE = 31;
+const int BROWN = 48192;
 const int GREEN = 2016; // Colores usados en la pantalla Nextion
 const int RED = 63488;
 
 EasyNex myNex(Serial2);
-
 
 /* Definición de pines del Arduino Mega:
 
@@ -75,9 +76,9 @@ float k = 2.54; // Corresponde a 100 pulsos/rev y a un cilindro de
 
 float longitudDelMaterial = 0;       // En mm.
 unsigned int longitudDeEtiqueta = 0; // En mm. Incluye el espacio entre etiquetas
-unsigned int etiquetasPorRollo = 0;
+unsigned int etiquetasPorRollo = 0512;
 unsigned int etiquetaDeFrenado = 0;
-unsigned int numeroDeEtiquetas = 0;
+unsigned int numeroDeEtiquetas = 2406;
 bool countEnable = false;
 
 // Definición de funciones
@@ -153,12 +154,13 @@ void checkMachineEnable()
   {
     //Habilitar funcionamiento
     digitalWrite(machineEnableControl, LOW);
-    myNex.writeNum("E.t4.x", 300);
+    //myNex.writeNum("E.t4.x", 300);
   }
   else
   {
     //Deshabilitar funcionamiento de Mainet
     digitalWrite(machineEnableControl, HIGH);
+    //myNex.writeNum("E.t4.x", 200);
   }
 }
 
@@ -167,18 +169,21 @@ void checkRunForward()
   // Chequear pulsador RUN
   if (runForward.isPressed() == true)
   {
-    myNex.writeNum("E.t5.x", 300);
+    //myNex.writeNum("E.t5.x", 300);
     digitalWrite(runForwardControl, LOW);
+  } else {
+    //myNex.writeNum("E.t5.x", 200);
   }
 }
 
 void checkStopRun()
 {
-  // Chequear botón UP (subir el ciclo útil)
   if (stopRun.isPressed() == true)
   {
-    myNex.writeNum("E.t6.x", 300);
+    //myNex.writeNum("E.t6.x", 300);
     digitalWrite(runForwardControl, HIGH);
+  } else {
+    //myNex.writeNum("E.t6.x", 200);
   }
 }
 
@@ -187,11 +192,12 @@ void checkJogForward()
   // Chequear botón DOWN (bajar el ciclo útil)
   if (jogForward.isPressed() == true)
   {
-    myNex.writeNum("E.t7.x", 300);
+    //myNex.writeNum("E.t7.x", 300);
     digitalWrite(jogForwardControl, LOW);
   }
   else
   {
+    //myNex.writeNum("E.t7.x", 200);
     digitalWrite(jogForwardControl, HIGH);
   }
 }
@@ -203,7 +209,6 @@ void checkChunkClutch()
   {
     //Activar válvula solenoide
     digitalWrite(clutchChuckControl, LOW);
-    myNex.writeNum("E.t8.x", 300);
   }
   else
   {
@@ -219,7 +224,6 @@ void checkBrakeClutch()
   {
     //Activar válvula solenoide
     digitalWrite(brakeChuckControl, LOW);
-    myNex.writeNum("E.t9.x", 300);
   }
   else
   {
@@ -240,12 +244,12 @@ void checkCountEnable()
   }
 }
 
-void mostrarNumPulsos()
+void mostrarConteo()
 {
-  longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
+  //longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
   longitudDelMaterial = k * numPulsos;
   numeroDeEtiquetas = int(longitudDelMaterial / (longitudDeEtiqueta));
-  myNex.writeNum("B.n0.val", numPulsos);
+  //myNex.writeNum("B.n0.val", etiquetasPorRollo);
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
@@ -254,6 +258,7 @@ void trigger1() // Reinicia el conteo de etiquetas
  * Se ejecuta al liberar B.b1
  */
 {
+  Serial.println("trigger1()");
   numeroDeEtiquetas = 0;
   numPulsos = 0;
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
@@ -265,11 +270,14 @@ void trigger2() // Habilita o deshabilita el conteo de etiquetas
  */
 {
   countEnable = !countEnable;
-  if (countEnable) {
-    Serial.println("----->ON");
+  if (countEnable)
+  {
+    Serial.println("                 ----->ON");
     myNex.writeNum("B.t6.pco", GREEN);
-  } else {
-    Serial.println("off");
+  }
+  else
+  {
+    Serial.println("                 off");
     myNex.writeNum("B.t6.pco", RED);
   }
 }
@@ -283,12 +291,13 @@ void trigger3() // Lee parámetros de las etiquetas:
  * Se ejecuta al liberar C.b0
  */
 {
+  Serial.println("                                           trigger3()");
   // Lectura de longitud de etiqueta en mm. Incluye el espacio entre etiquetas
   // Lectura de etiquetas por rollo
   longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
   etiquetasPorRollo = myNex.readStr("C.t4.txt").toInt();
   etiquetaDeFrenado = myNex.readStr("C.t5.txt").toInt();
-  myNex.writeNum("B.n1.val", numeroDeEtiquetas);
+  //myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
 void setup()
@@ -329,11 +338,13 @@ void setup()
   digitalWrite(clutchChuckControl, HIGH);
   digitalWrite(brakeChuckControl, HIGH);
 
-  myNex.writeNum("B.n0.val", 0);
-  myNex.writeNum("B.n1.val", 0);
+  myNex.writeNum("B.n0.val", 2406);
+  myNex.writeNum("B.n1.val", 0512);
+  myNex.writeNum("B.t6.pco", RED);
   myNex.writeNum("B.sw0.val", 0);
-  myNex.writeStr("C.t3.txt", "");
-  myNex.writeStr("C.t4.txt", "");
+  myNex.writeStr("C.t3.txt", "0");
+  myNex.writeStr("C.t4.txt", "0");
+  myNex.writeStr("C.t5.txt", "0");
 
   attachInterrupt(digitalPinToInterrupt(rotaryPulseInput), checkCountEnable, RISING);
 }
@@ -354,7 +365,8 @@ void loop()
   checkRunForward(); // OK
   checkStopRun();    // OK
   checkJogForward(); // OK
-  mostrarNumPulsos();
+  //mostrarConteo();
+
 }
 
 /*
