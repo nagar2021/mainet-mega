@@ -5,16 +5,11 @@
 
 #include <Button.h>
 #include <EasyNextionLibrary.h>
-//#include <LED.h>
-//#include <trigger.h>
 
-//#define Serial Serial   // Debug using default Serial over USB towards Arduino Serial Monitor
-//#define DEBUG           // Comment this out if you don't need to see what happens in the Serial Monitor
-
-const int BLUE = 31;
-const int BROWN = 48192;
-const int GREEN = 2016; // Colores usados en la pantalla Nextion
-const int RED = 63488;
+const uint32_t BLUE = 31;
+const uint32_t BROWN = 48192;
+const uint32_t GREEN = 2016; // Colores usados en la pantalla Nextion
+const uint32_t RED = 63488;
 
 EasyNex myNex(Serial2);
 
@@ -75,10 +70,10 @@ float k = 2.54; // Corresponde a 100 pulsos/rev y a un cilindro de
 //radio igual a 4cm
 
 float longitudDelMaterial = 0;       // En mm.
-unsigned int longitudDeEtiqueta = 0; // En mm. Incluye el espacio entre etiquetas
-unsigned int etiquetasPorRollo = 0512;
-unsigned int etiquetaDeFrenado = 0;
-unsigned int numeroDeEtiquetas = 2406;
+uint32_t longitudDeEtiqueta = 0; // En mm. Incluye el espacio entre etiquetas
+uint32_t etiquetasPorRollo = 0512;
+uint32_t etiquetaDeFrenado = 0;
+uint32_t numeroDeEtiquetas = 2406;
 bool countEnable = false;
 
 // Definición de funciones
