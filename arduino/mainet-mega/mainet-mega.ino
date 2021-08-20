@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
- * 19/08/2021
+ * 20/08/2021
  * mainet-mega V1.00
 */
 
@@ -71,7 +71,7 @@ float k = 2.54; // Corresponde a 100 pulsos/rev y a un cilindro de
 
 float longitudDelMaterial = 0;       // En mm.
 uint32_t longitudDeEtiqueta = 0; // En mm. Incluye el espacio entre etiquetas
-uint32_t etiquetasPorRollo = 0512;
+uint32_t etiquetasPorRollo = 512;
 uint32_t etiquetaDeFrenado = 0;
 uint32_t numeroDeEtiquetas = 2406;
 bool countEnable = false;
