@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
- * 20/08/2021
+ * 23/08/2021
  * mainet-mega V1.00
 */
 
@@ -251,13 +251,12 @@ void mostrarConteo()
   //myNex.writeNum("B.n0.val", etiquetasPorRollo);
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
-
 void trigger1() // Reinicia el conteo de etiquetas
 /*
  * Se ejecuta al liberar B.b1
  */
 {
-  Serial.println("trigger1()");
+  Serial.println("***Reiniciar OK***");
   numeroDeEtiquetas = 0;
   numPulsos = 0;
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
@@ -290,25 +289,48 @@ void trigger3() // Lee parámetros de las etiquetas:
  * Se ejecuta al liberar C.b0
  */
 {
-  Serial.println("*******************trigger3()");
+  Serial.println("--------------33333333333333333333333333--------------");
   // Lectura de longitud de etiqueta en mm. Incluye el espacio entre etiquetas
   // Lectura de etiquetas por rollo
- // longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
- // etiquetasPorRollo = myNex.readStr("C.t4.txt").toInt();
- // etiquetaDeFrenado = myNex.readStr("C.t5.txt").toInt();
-  //myNex.writeNum("B.n1.val", numeroDeEtiquetas);
+  longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
+  etiquetasPorRollo = myNex.readStr("C.t4.txt").toInt();
+  etiquetaDeFrenado = myNex.readStr("C.t5.txt").toInt();
+  myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
-void trigger4(){
+void trigger4()
+{
   Serial.println("44444");
 }
 
-void trigger5(){
+void trigger5()
+{
   Serial.println("     55555");
 }
 
-void trigger6(){
-  Serial.println("            666666666666");
+void trigger6()
+{
+  Serial.println("            666666");
+}
+
+void trigger7()
+{
+  Serial.println("            7777777");
+}
+
+void trigger8()
+{
+  Serial.println("            88888888");
+}
+
+void trigger9()
+{
+  Serial.println("            99999999");
+}
+
+void trigger10()
+{
+  Serial.println("XXXXXXXXXXXXXX");
 }
 
 void setup()
@@ -376,7 +398,7 @@ void loop()
   checkRunForward(); // OK
   checkStopRun();    // OK
   checkJogForward(); // OK
- // mostrarConteo();
+  mostrarConteo();
 }
 
 /*
