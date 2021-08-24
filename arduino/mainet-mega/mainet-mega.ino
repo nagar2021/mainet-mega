@@ -251,12 +251,13 @@ void mostrarConteo()
   //myNex.writeNum("B.n0.val", etiquetasPorRollo);
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
+
 void trigger1() // Reinicia el conteo de etiquetas
 /*
  * Se ejecuta al liberar B.b1
  */
 {
-  Serial.println("***Reiniciar OK***");
+  Serial.println("***Reiniciar***");
   numeroDeEtiquetas = 0;
   numPulsos = 0;
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
@@ -292,10 +293,14 @@ void trigger3() // Lee parámetros de las etiquetas:
   Serial.println("--------------33333333333333333333333333--------------");
   // Lectura de longitud de etiqueta en mm. Incluye el espacio entre etiquetas
   // Lectura de etiquetas por rollo
-  longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
-  etiquetasPorRollo = myNex.readStr("C.t4.txt").toInt();
+  etiquetasPorRollo = myNex.readStr("C.t4.txt");
+  myNex.writeStr("B.t7.txt", etiquetaPorRollo);
+  //longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
+
+  //etiquetasPorRollo = myNex.readStr("C.t4.txt").toInt();
+
   etiquetaDeFrenado = myNex.readStr("C.t5.txt").toInt();
-  myNex.writeNum("B.n1.val", numeroDeEtiquetas);
+  //myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
 void trigger4()
@@ -371,10 +376,12 @@ void setup()
   digitalWrite(clutchChuckControl, HIGH);
   digitalWrite(brakeChuckControl, HIGH);
 
-  myNex.writeNum("B.n0.val", 2510);
-  myNex.writeNum("B.n1.val", 1902);
+  myNex.writeNum("B.n1.val", 2510);
   myNex.writeNum("B.t6.pco", RED);
+
+  myNex.writeNum("B.t7.txt","?");
   myNex.writeNum("B.sw0.val", 0);
+
   myNex.writeStr("C.t3.txt", "0");
   myNex.writeStr("C.t4.txt", "0");
   myNex.writeStr("C.t5.txt", "0");
