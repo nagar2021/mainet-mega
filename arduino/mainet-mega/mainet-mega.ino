@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
- * 23/08/2021
+ * 24/08/2021
  * mainet-mega V1.00
 */
 
@@ -71,7 +71,7 @@ float k = 2.54; // Corresponde a 100 pulsos/rev y a un cilindro de
 
 float longitudDelMaterial = 0;   // En mm.
 uint32_t longitudDeEtiqueta = 0; // En mm. Incluye el espacio entre etiquetas
-uint32_t etiquetasPorRollo = 512;
+String etiquetasPorRollo = "2510";
 uint32_t etiquetaDeFrenado = 0;
 uint32_t numeroDeEtiquetas = 2406;
 bool countEnable = false;
@@ -272,12 +272,12 @@ void trigger2() // Habilita o deshabilita el conteo de etiquetas
   if (countEnable)
   {
     Serial.println("                 ----->ON");
-    myNex.writeNum("B.t6.pco", GREEN);
+    myNex.writeNum("B.t7.pco", GREEN);
   }
   else
   {
     Serial.println("                 off");
-    myNex.writeNum("B.t6.pco", RED);
+    myNex.writeNum("B.t7.pco", RED);
   }
 }
 //ok
@@ -293,13 +293,14 @@ void trigger3() // Lee parámetros de las etiquetas:
   Serial.println("--------------33333333333333333333333333--------------");
   // Lectura de longitud de etiqueta en mm. Incluye el espacio entre etiquetas
   // Lectura de etiquetas por rollo
-  etiquetasPorRollo = myNex.readStr("C.t4.txt");
-  myNex.writeStr("B.t7.txt", etiquetaPorRollo);
+  //etiquetasPorRollo = myNex.readStr("C.t4.txt");
+  //myNex.writeStr("B.t6..txt", etiquetasPorRollo);
   //longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
 
-  //etiquetasPorRollo = myNex.readStr("C.t4.txt").toInt();
+  etiquetasPorRollo = myNex.readStr("C.t4.txt");
+  myNex.writeStr("B.t6.txt", etiquetasPorRollo);
 
-  etiquetaDeFrenado = myNex.readStr("C.t5.txt").toInt();
+  //etiquetaDeFrenado = myNex.readStr("C.t5.txt").toInt();
   //myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
@@ -377,9 +378,9 @@ void setup()
   digitalWrite(brakeChuckControl, HIGH);
 
   myNex.writeNum("B.n1.val", 2510);
-  myNex.writeNum("B.t6.pco", RED);
+  myNex.writeNum("B.t7.pco", RED);
 
-  myNex.writeNum("B.t7.txt","?");
+  myNex.writeStr("B.t6.txt", "0");
   myNex.writeNum("B.sw0.val", 0);
 
   myNex.writeStr("C.t3.txt", "0");
@@ -405,7 +406,7 @@ void loop()
   checkRunForward(); // OK
   checkStopRun();    // OK
   checkJogForward(); // OK
-  mostrarConteo();
+  //mostrarConteo();
 }
 
 /*
