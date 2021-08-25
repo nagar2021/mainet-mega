@@ -144,18 +144,16 @@ void readFrequencyRefPot()
 
 void checkMachineEnable()
 {
-  // Habilitar funcionamiento de Mainet
+  // Verificar la habilitación del funcionamiento de Mainet
   if (machineEnable.isPressed() == true)
   {
     //Habilitar funcionamiento
     digitalWrite(machineEnableControl, LOW);
-    //myNex.writeNum("E.t4.x", 300);
   }
   else
   {
     //Deshabilitar funcionamiento de Mainet
     digitalWrite(machineEnableControl, HIGH);
-    //myNex.writeNum("E.t4.x", 200);
   }
 }
 
@@ -336,7 +334,24 @@ void trigger9()
 
 void trigger10()
 {
-  Serial.println("XXXXXXXXXXXXXX");
+  String diagnostico = myNex.readStr("E.va0.txt");
+
+  while (diagnostico == "1")
+  {
+    if (machineEnable.isPressed() == true)
+    {
+      //Habilitar funcionamiento
+      // Pulsador presionado
+      myNex.writeNum("E.t4.x", 300);
+    }
+    else
+    {
+      //Deshabilitar funcionamiento de Mainet
+      // Pulsador no presionado
+      myNex.writeNum("E.t4.x", 200);
+    }
+    diagnostico = myNex.readStr("E.va0.txt");
+  }
 }
 
 void setup()
