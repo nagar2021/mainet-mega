@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
- * 24/08/2021
+ * 25/08/2021
  * mainet-mega V1.00
 */
 
@@ -10,7 +10,7 @@ const uint32_t BLUE = 31;
 const uint32_t BROWN = 48192;
 const uint32_t GREEN = 2016; // Colores usados en la pantalla Nextion
 const uint32_t RED = 63488;
-
+const uint32_t YELLOW = 65504;
 EasyNex myNex(Serial2);
 
 /* Definición de pines del Arduino Mega:
@@ -69,11 +69,12 @@ int currentValue = LOW;
 float k = 2.54; // Corresponde a 100 pulsos/rev y a un cilindro de
 //radio igual a 4cm
 
-float longitudDelMaterial = 0;   // En mm.
-uint32_t longitudDeEtiqueta = 0; // En mm. Incluye el espacio entre etiquetas
+float longitudDelMaterial = 0; // En mm.
+String longitudDeEtiqueta = "0"; // En mm. Incluye el espacio entre etiquetas
 String etiquetasPorRollo = "2510";
-uint32_t etiquetaDeFrenado = 0;
+String etiquetaDeFrenado = "0";
 uint32_t numeroDeEtiquetas = 2406;
+uint32_t longitudDeEtiquetaNum = 0;
 bool countEnable = false;
 
 // Definición de funciones
@@ -241,21 +242,24 @@ void checkCountEnable()
   }
 }
 
+
+
 void mostrarConteo()
-{
-  //longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
+{  
   longitudDelMaterial = k * numPulsos;
-  numeroDeEtiquetas = int(longitudDelMaterial / (longitudDeEtiqueta));
+  numeroDeEtiquetas = int(longitudDelMaterial / (longitudDeEtiquetaNum));
   //myNex.writeNum("B.n0.val", etiquetasPorRollo);
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
+
+
 
 void trigger1() // Reinicia el conteo de etiquetas
 /*
  * Se ejecuta al liberar B.b1
  */
 {
-  Serial.println("***Reiniciar***");
+  Serial.println("Reiniciar");
   numeroDeEtiquetas = 0;
   numPulsos = 0;
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
@@ -269,12 +273,12 @@ void trigger2() // Habilita o deshabilita el conteo de etiquetas
   countEnable = !countEnable;
   if (countEnable)
   {
-    Serial.println("                 ----->ON");
+    Serial.println("ON");
     myNex.writeNum("B.t7.pco", GREEN);
   }
   else
   {
-    Serial.println("                 off");
+    Serial.println("OFF");
     myNex.writeNum("B.t7.pco", RED);
   }
 }
@@ -288,33 +292,47 @@ void trigger3() // Lee parámetros de las etiquetas:
  * Se ejecuta al liberar C.b0
  */
 {
-  Serial.println("--------------33333333333333333333333333--------------");
+  Serial.println("333");
   // Lectura de longitud de etiqueta en mm. Incluye el espacio entre etiquetas
   // Lectura de etiquetas por rollo
   //etiquetasPorRollo = myNex.readStr("C.t4.txt");
   //myNex.writeStr("B.t6..txt", etiquetasPorRollo);
   //longitudDeEtiqueta = myNex.readStr("C.t3.txt").toInt();
-
-  etiquetasPorRollo = myNex.readStr("C.t4.txt");
-  myNex.writeStr("B.t6.txt", etiquetasPorRollo);
+  //longitudDeEtiqueta = myNex.readStr("D.t12.txt");
+  //myNex.writeStr("C.t3.txt", longitudDeEtiqueta);
+  //myNex.writeStr("C.t3.txt", YELLOW);
+  //etiquetasPorRollo = myNex.readStr("C.t4.txt");
+  //myNex.writeStr("B.t6.txt", etiquetasPorRollo);
 
   //etiquetaDeFrenado = myNex.readStr("C.t5.txt").toInt();
   //myNex.writeNum("B.n1.val", numeroDeEtiquetas);
+  //C.t3.txt=D.t12.txt
+  //C.t3.pco=YELLOW
 }
 
 void trigger4()
 {
-  Serial.println("44444");
+  Serial.println("4444");
 }
 
 void trigger5()
 {
-  Serial.println("     55555");
+  Serial.println("55555");
 }
 
 void trigger6()
-{
-  Serial.println("            666666");
+{  
+  longitudDeEtiqueta = myNex.readStr("C.t3.txt");  
+  etiquetasPorRollo  = myNex.readStr("C.t4.txt");
+  etiquetaDeFrenado  = myNex.readStr("C.t5.txt");
+ 
+  myNex.writeStr("B.t6.txt", etiquetasPorRollo);
+  Serial.println("======");
+  Serial.println(longitudDeEtiqueta);
+  Serial.println(etiquetasPorRollo);
+  Serial.println(etiquetaDeFrenado);
+  longitudDeEtiquetaNum = myNex.readStr("C.t3.txt").toInt();
+  Serial.println(longitudDeEtiqueta);
 }
 
 void trigger7()
@@ -334,6 +352,7 @@ void trigger9()
 
 void trigger10()
 {
+  Serial.println("////////////10\\\\\\\\\\");
   String diagnostico = myNex.readStr("E.va0.txt");
 
   while (diagnostico == "1")
