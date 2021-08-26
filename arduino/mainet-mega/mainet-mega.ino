@@ -1,17 +1,17 @@
 /* Nelson A. García Rodríguez
- * 25/08/2021
+ * 26/08/2021
  * mainet-mega V1.00
 */
 
 #include <Button.h>
 #include <EasyNextionLibrary.h>
 
+const uint32_t BLUE = 31;
+const uint32_t BROWN = 48192;
+const uint32_t GREEN = 2016; // Colores usados en la pantalla Nextion
+const uint32_t RED = 63488;
+const uint32_t YELLOW = 65504;
 
-const unsigned long BLUE = 31;
-const unsigned long BROWN = 48192;
-const unsigned long GREEN = 2016; // Colores usados en la pantalla Nextion
-const unsigned long RED = 63488;
-const unsigned long YELLOW = 65504;
 EasyNex myNex(Serial2);
 
 /* Definición de pines del Arduino Mega:
@@ -70,11 +70,11 @@ int currentValue = LOW;
 float k = 2.54; // Corresponde a 100 pulsos/rev y a un cilindro de
 //radio igual a 4cm
 
-float longitudDelMaterial = 0; // En mm.
+float longitudDelMaterial = 0;   // En mm.
 String longitudDeEtiqueta = "0"; // En mm. Incluye el espacio entre etiquetas
 String etiquetasPorRollo = "2510";
 String etiquetaDeFrenado = "0";
-unsigned long numeroDeEtiquetas = 2406;
+uint32_t numeroDeEtiquetas = 2406;
 unsigned long longitudDeEtiquetaNum = 0;
 bool countEnable = false;
 
@@ -111,7 +111,7 @@ void pwm(int deviceToControl, int dutyCycle)
 void readUpperClutchPot()
 {
   int valorLeido2 = analogRead(upperClutchPot);
-  int valorMapeado2 = map(valorLeido2, 0, 1023, 0, 180);
+  uint32_t valorMapeado2 = map(valorLeido2, 0, 1023, 0, 180);
   myNex.writeNum("B.z2.val", valorMapeado2);
   dutyCycleUpperClutch = int(valorLeido2 * .249);
   pwm(upperClutchControl, dutyCycleUpperClutch);
@@ -120,7 +120,7 @@ void readUpperClutchPot()
 void readLowerClutchPot()
 {
   int valorLeido1 = analogRead(lowerClutchPot);
-  int valorMapeado1 = map(valorLeido1, 0, 1023, 0, 180);
+  uint32_t valorMapeado1 = map(valorLeido1, 0, 1023, 0, 180);
   myNex.writeNum("B.z1.val", valorMapeado1);
   dutyCycleLowerClutch = int(valorLeido1 * .249);
   pwm(lowerClutchControl, dutyCycleLowerClutch);
@@ -129,7 +129,7 @@ void readLowerClutchPot()
 void readBrakeUnwindPot()
 {
   int valorLeido0 = analogRead(brakeUnwindPot);
-  int valorMapeado0 = map(valorLeido0, 0, 1023, 0, 180);
+  uint32_t valorMapeado0 = map(valorLeido0, 0, 1023, 0, 180);
   myNex.writeNum("B.z0.val", valorMapeado0);
   dutyCycleBrakeUnwind = int(valorLeido0 * .249);
   pwm(brakeUnwindControl, dutyCycleBrakeUnwind);
@@ -138,7 +138,7 @@ void readBrakeUnwindPot()
 void readFrequencyRefPot()
 {
   int valorLeido3 = analogRead(frequencyRefPot);
-  int valorMapeado3 = map(valorLeido3, 0, 1023, 0, 180);
+  uint32_t valorMapeado3 = map(valorLeido3, 0, 1023, 0, 180);
   myNex.writeNum("B.z3.val", valorMapeado3);
   dutyCycleFrequencyRef = int(valorLeido3 * .249);
   pwm(frequencyRefControl, dutyCycleFrequencyRef);
@@ -243,8 +243,6 @@ void checkCountEnable()
   }
 }
 
-
-
 void mostrarConteo()
 {
   longitudDelMaterial = k * numPulsos;
@@ -252,8 +250,6 @@ void mostrarConteo()
   //myNex.writeNum("B.n0.val", etiquetasPorRollo);
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
-
-
 
 void trigger1() // Reinicia el conteo de etiquetas
 /*
@@ -323,9 +319,11 @@ void trigger5()
 
 void trigger6()
 {
+  Serial.println("666666");
+
   longitudDeEtiqueta = myNex.readStr("C.t3.txt");
-  etiquetasPorRollo  = myNex.readStr("C.t4.txt");
-  etiquetaDeFrenado  = myNex.readStr("C.t5.txt");
+  etiquetasPorRollo = myNex.readStr("C.t4.txt");
+  etiquetaDeFrenado = myNex.readStr("C.t5.txt");
 
   myNex.writeStr("B.t6.txt", etiquetasPorRollo);
   Serial.println("======");
@@ -338,22 +336,29 @@ void trigger6()
 
 void trigger7()
 {
-  Serial.println("            7777777");
+  Serial.println("7777777");
 }
 
 void trigger8()
 {
-  Serial.println("            88888888");
+  Serial.println("88888888");
 }
 
 void trigger9()
 {
-  Serial.println("            99999999");
+  Serial.println("999999999");
 }
 
 void trigger10()
 {
-  Serial.println("////////////10\\\\\\\\\\");
+  Serial.println("X");
+}
+
+void trigger11()
+{
+  Serial.println("XI");
+
+  /*
   String diagnostico = myNex.readStr("E.va0.txt");
 
   while (diagnostico == "1")
@@ -371,12 +376,13 @@ void trigger10()
       myNex.writeNum("E.t4.x", 200);
     }
     diagnostico = myNex.readStr("E.va0.txt");
-  }
+  }*/
 }
 
 void setup()
 {
   Serial.begin(115200);
+  Serial2.begin(115200);
   myNex.begin(115200);
   /* Begin the object with a baud rate of 115200
    * Si no se especifica la rata de baudios en el método begin(), se usa
