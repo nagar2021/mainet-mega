@@ -6,11 +6,12 @@
 #include <Button.h>
 #include <EasyNextionLibrary.h>
 
-const uint32_t BLUE = 31;
-const uint32_t BROWN = 48192;
-const uint32_t GREEN = 2016; // Colores usados en la pantalla Nextion
-const uint32_t RED = 63488;
-const uint32_t YELLOW = 65504;
+
+const unsigned long BLUE = 31;
+const unsigned long BROWN = 48192;
+const unsigned long GREEN = 2016; // Colores usados en la pantalla Nextion
+const unsigned long RED = 63488;
+const unsigned long YELLOW = 65504;
 EasyNex myNex(Serial2);
 
 /* Definición de pines del Arduino Mega:
@@ -73,8 +74,8 @@ float longitudDelMaterial = 0; // En mm.
 String longitudDeEtiqueta = "0"; // En mm. Incluye el espacio entre etiquetas
 String etiquetasPorRollo = "2510";
 String etiquetaDeFrenado = "0";
-uint32_t numeroDeEtiquetas = 2406;
-uint32_t longitudDeEtiquetaNum = 0;
+unsigned long numeroDeEtiquetas = 2406;
+unsigned long longitudDeEtiquetaNum = 0;
 bool countEnable = false;
 
 // Definición de funciones
@@ -245,7 +246,7 @@ void checkCountEnable()
 
 
 void mostrarConteo()
-{  
+{
   longitudDelMaterial = k * numPulsos;
   numeroDeEtiquetas = int(longitudDelMaterial / (longitudDeEtiquetaNum));
   //myNex.writeNum("B.n0.val", etiquetasPorRollo);
@@ -321,11 +322,11 @@ void trigger5()
 }
 
 void trigger6()
-{  
-  longitudDeEtiqueta = myNex.readStr("C.t3.txt");  
+{
+  longitudDeEtiqueta = myNex.readStr("C.t3.txt");
   etiquetasPorRollo  = myNex.readStr("C.t4.txt");
   etiquetaDeFrenado  = myNex.readStr("C.t5.txt");
- 
+
   myNex.writeStr("B.t6.txt", etiquetasPorRollo);
   Serial.println("======");
   Serial.println(longitudDeEtiqueta);
