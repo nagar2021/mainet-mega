@@ -75,8 +75,13 @@ String longitudDeEtiqueta = "0"; // En mm. Incluye el espacio entre etiquetas
 String etiquetasPorRollo = "2510";
 String etiquetaDeFrenado = "0";
 uint32_t numeroDeEtiquetas = 2406;
-unsigned long longitudDeEtiquetaNum = 0;
+int longitudDeEtiquetaNum = 0;
 bool countEnable = false;
+
+int ultimoValorLeido0 = 0;
+int ultimoValorLeido1 = 0;
+int ultimoValorLeido2 = 0;
+int ultimoValorLeido3 = 0;
 
 // Definición de funciones
 void calcularFrecuencia()
@@ -111,7 +116,11 @@ void pwm(int deviceToControl, int dutyCycle)
 void readUpperClutchPot()
 {
   int valorLeido2 = analogRead(upperClutchPot);
-  uint32_t valorMapeado2 = map(valorLeido2, 0, 1023, 0, 180);
+  if (abs(ultimoValorLeido2 - valorLeido2) >= 50)
+  {
+    ultimoValorLeido2 = valorLeido2;
+  }
+  uint32_t valorMapeado2 = map(ultimoValorLeido2, 0, 1023, 0, 180);
   myNex.writeNum("B.z2.val", valorMapeado2);
   dutyCycleUpperClutch = int(valorLeido2 * .249);
   pwm(upperClutchControl, dutyCycleUpperClutch);
@@ -120,7 +129,12 @@ void readUpperClutchPot()
 void readLowerClutchPot()
 {
   int valorLeido1 = analogRead(lowerClutchPot);
-  uint32_t valorMapeado1 = map(valorLeido1, 0, 1023, 0, 180);
+
+  if (abs(ultimoValorLeido1 - valorLeido1) >= 50)
+  {
+    ultimoValorLeido1 = valorLeido1;
+  }
+  uint32_t valorMapeado1 = map(ultimoValorLeido1, 0, 1023, 0, 180);
   myNex.writeNum("B.z1.val", valorMapeado1);
   dutyCycleLowerClutch = int(valorLeido1 * .249);
   pwm(lowerClutchControl, dutyCycleLowerClutch);
@@ -129,7 +143,12 @@ void readLowerClutchPot()
 void readBrakeUnwindPot()
 {
   int valorLeido0 = analogRead(brakeUnwindPot);
-  uint32_t valorMapeado0 = map(valorLeido0, 0, 1023, 0, 180);
+
+  if (abs(ultimoValorLeido0 - valorLeido0) >= 50)
+  {
+    ultimoValorLeido0 = valorLeido0;
+  }
+  uint32_t valorMapeado0 = map(ultimoValorLeido0, 0, 1023, 0, 180);
   myNex.writeNum("B.z0.val", valorMapeado0);
   dutyCycleBrakeUnwind = int(valorLeido0 * .249);
   pwm(brakeUnwindControl, dutyCycleBrakeUnwind);
@@ -138,7 +157,12 @@ void readBrakeUnwindPot()
 void readFrequencyRefPot()
 {
   int valorLeido3 = analogRead(frequencyRefPot);
-  uint32_t valorMapeado3 = map(valorLeido3, 0, 1023, 0, 180);
+
+  if (abs(ultimoValorLeido3 - valorLeido3) >= 50)
+  {
+    ultimoValorLeido3 = valorLeido3;
+  }
+  uint32_t valorMapeado3 = map(ultimoValorLeido3, 0, 1023, 0, 180);
   myNex.writeNum("B.z3.val", valorMapeado3);
   dutyCycleFrequencyRef = int(valorLeido3 * .249);
   pwm(frequencyRefControl, dutyCycleFrequencyRef);
@@ -447,7 +471,7 @@ void loop()
   checkRunForward(); // OK
   checkStopRun();    // OK
   checkJogForward(); // OK
-  //mostrarConteo();
+  mostrarConteo();
 }
 
 /*
