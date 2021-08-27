@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
- * 26/08/2021
+ * 27/08/2021
  * mainet-mega V1.00
 */
 
@@ -82,6 +82,9 @@ int ultimoValorLeido0 = 0;
 int ultimoValorLeido1 = 0;
 int ultimoValorLeido2 = 0;
 int ultimoValorLeido3 = 0;
+
+int velocidadManual = 0;
+int velocidadAuto = 0;
 
 // Definición de funciones
 void calcularFrecuencia()
@@ -275,6 +278,9 @@ void mostrarConteo()
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
 }
 
+void frenado()
+{
+}
 void trigger1() // Reinicia el conteo de etiquetas
 /*
  * Se ejecuta al liberar B.b1
