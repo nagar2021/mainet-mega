@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
- * 30/08/2021
+ * 31/08/2021
  * mainet-mega V1.00
 */
 
@@ -70,16 +70,20 @@ int currentValue = LOW;
 
 float k = 2.54; // Corresponde a 100 pulsos/rev y a un cilindro de
 //radio igual a 4cm
-float longitudDelMaterial = 0;   // En mm.
+float longitudDelMaterial = 0; // En mm.
 
 String longitudDeEtiqueta = "0"; // En mm. Incluye el espacio entre etiquetas
 String etiquetasPorRollo = "2510";
 String etiquetaDeFrenado = "0";
+String numeroDeRollos = "0";
 
-uint32_t numeroDeRollos = "0";
 uint32_t numeroDeEtiquetas = 2406;
 
 int longitudDeEtiquetaNum = 0;
+int numeroDeRollosNum = 0;
+int conteoDeRollos = 0;
+int etiquetaDeFrenadoNum = 999999;
+int etiquetasPorRolloNum = 999999;
 bool countEnable = false;
 
 int ultimoValorLeido0 = 0;
@@ -119,7 +123,6 @@ void pwm(int deviceToControl, int dutyCycle)
   //displayBoardsStatus();
   analogWrite(deviceToControl, dutyCycle);
 }
-
 
 void readUpperClutchPot()
 {
@@ -175,7 +178,6 @@ void readFrequencyRefPot()
   dutyCycleFrequencyRef = int(valorLeido3 * .249);
   pwm(frequencyRefControl, dutyCycleFrequencyRef);
 }
-
 
 void checkMachineEnable()
 {
@@ -276,18 +278,36 @@ void checkCountEnable()
   }
 }
 
-
 void mostrarConteo()
 {
   longitudDelMaterial = k * numPulsos;
   numeroDeEtiquetas = int(longitudDelMaterial / (longitudDeEtiquetaNum));
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
+  if (numeroDeEtiquetas == etiquetaDeFrenadoNum) {
+    iniciarFrenado();
+  }
+  if (numeroDeEtiquetas == etiquetasPorRolloNum) {
+    parar();    
+    conteoDeRollos+=1;
+    mostrarConteoDeRollos();
+  }
 }
 
-void frenado()
+void mostrarConteoDeRollos() {
+  myNex.writeNum("B.n0.txt", conteoDeRollos);
+  Serial.print("Número de rollos = ");
+  Serial.println(conteoDeRollos);
+}
+
+void iniciarFrenado()
 {
+  Serial.println("Frenando...");
+  
 }
 
+void parar() {
+  digitalWrite(runForwardControl, HIGH);
+}
 
 void trigger1() // Reinicia el conteo de etiquetas
 /*
@@ -308,12 +328,12 @@ void trigger2() // Habilita o deshabilita el conteo de etiquetas
   countEnable = !countEnable;
   if (countEnable)
   {
-    Serial.println("ON");
+    Serial.println("Conteo ON");
     myNex.writeNum("B.t7.pco", GREEN);
   }
   else
   {
-    Serial.println("OFF");
+    Serial.println("Conteo OFF");
     myNex.writeNum("B.t7.pco", RED);
   }
 }
@@ -332,8 +352,6 @@ void trigger3() // Lee parámetros de las etiquetas:
   //myNex.writeStr("C.t3.txt", YELLOW);
   //etiquetasPorRollo = myNex.readStr("C.t4.txt");
   //myNex.writeStr("B.t6.txt", etiquetasPorRollo);
-
-  //etiquetaDeFrenado = myNex.readStr("C.t5.txt").toInt();
   //myNex.writeNum("B.n1.val", numeroDeEtiquetas);
   //C.t3.txt=D.t12.txt
   //C.t3.pco=YELLOW
@@ -344,9 +362,15 @@ void trigger4()
   Serial.println("4444");
 }
 
-void trigger5()
+void trigger5() // Convertir a int la etiqueta de frenado y el número de
+//etiquetas por rollo
 {
-  Serial.println("55555");
+  etiquetasPorRolloNum = myNex.readStr("C.t4.txt").toInt();
+  etiquetaDeFrenadoNum = myNex.readStr("C.t5.txt").toInt();
+  Serial.print("Etiqueta de frenado = ");  
+  Serial.println(etiquetaDeFrenadoNum);
+  Serial.print("Etiqueta dpor rollo = ");  
+  Serial.println(etiquetasPorRolloNum);
 }
 
 void trigger6()
@@ -354,7 +378,7 @@ void trigger6()
   Serial.println("666666");
 }
 
-void trigger7()  // Validar page 1 (B)
+void trigger7() // Validar page 1 (B)
 /*
  * Número de rollos
  * Longitud de la etiqueta en mm. Incluye el espacio entre etiquetas
@@ -370,9 +394,10 @@ void trigger7()  // Validar page 1 (B)
   etiquetasPorRollo = myNex.readStr("C.t4.txt");
   etiquetaDeFrenado = myNex.readStr("C.t5.txt");
   numeroDeRollos = myNex.readStr("C.t7.txt");
-
+  numeroDeRollosNum = numeroDeRollos.toInt();
+  
   myNex.writeStr("B.t6.txt", etiquetasPorRollo);
-  myNex.writeStr("B.t13.txt", numeroDeRollos);
+  myNex.writeNum("B.no.txt", numeroDeRollosNum);
   Serial.println("======");
   Serial.println(longitudDeEtiqueta);
   Serial.println(etiquetasPorRollo);
@@ -386,10 +411,9 @@ void trigger7()  // Validar page 1 (B)
 
 void trigger8() // Reinicia el conteo de rollos
 {
- Serial.println("Reiniciar conteo de rollos");
-  numeroDeRollos = 0;
-  myNex.writeNum("B.n0.val", numeroDeRollos);
-}
+  Serial.println("Reiniciar conteo de rollos");
+  numeroDeRollosNum = 0;
+  myNex.writeNum("B.n0.val", numeroDeRollosNum);
 }
 
 void trigger9()
@@ -426,7 +450,6 @@ void trigger11()
     diagnostico = myNex.readStr("E.va0.txt");
   }*/
 }
-
 
 void setup()
 {
