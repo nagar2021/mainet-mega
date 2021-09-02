@@ -1,6 +1,6 @@
 /* Nelson A. García Rodríguez
- * 31/08/2021
- * mainet-mega V1.00
+   31/08/2021
+   mainet-mega V1.00
 */
 
 #include <Button.h>
@@ -75,7 +75,6 @@ float longitudDelMaterial = 0; // En mm.
 String longitudDeEtiqueta = "0"; // En mm. Incluye el espacio entre etiquetas
 String etiquetasPorRollo = "2510";
 String etiquetaDeFrenado = "0";
-//String numeroDeRollos = "0";
 
 uint32_t numeroDeEtiquetas = 2406;
 
@@ -83,16 +82,22 @@ int longitudDeEtiquetaNum = 0;
 uint32_t numeroDeRollos = 0;
 uint32_t conteoDeRollos = 0;
 int etiquetaDeFrenadoNum = 999999;
-int etiquetasPorRolloNum = 999999;
+uint32_t etiquetasPorRolloNum = 999999;
 bool countEnable = false;
+bool rollCountEnable = true;
+bool frenado = false;
 
 int ultimoValorLeido0 = 0;
 int ultimoValorLeido1 = 0;
 int ultimoValorLeido2 = 0;
 int ultimoValorLeido3 = 0;
 
-int velocidadManual = 0;
-int velocidadAuto = 0;
+int pwmManual = 0;
+int pwmAuto = 0;
+int delta = 0;
+int paso = 0;
+
+
 
 // Definición de funciones
 void calcularFrecuencia()
@@ -167,16 +172,18 @@ void readBrakeUnwindPot()
 
 void readFrequencyRefPot()
 {
-  int valorLeido3 = analogRead(frequencyRefPot);
+  if (!frenado) {
+    int valorLeido3 = analogRead(frequencyRefPot);
 
-  if (abs(ultimoValorLeido3 - valorLeido3) >= 50)
-  {
-    ultimoValorLeido3 = valorLeido3;
+    if (abs(ultimoValorLeido3 - valorLeido3) >= 50)
+    {
+      ultimoValorLeido3 = valorLeido3;
+    }
+    uint32_t valorMapeado3 = map(ultimoValorLeido3, 0, 1023, 0, 180);
+    myNex.writeNum("B.z3.val", valorMapeado3);
+    dutyCycleFrequencyRef = int(valorLeido3 * .249);
+    pwm(frequencyRefControl, dutyCycleFrequencyRef);
   }
-  uint32_t valorMapeado3 = map(ultimoValorLeido3, 0, 1023, 0, 180);
-  myNex.writeNum("B.z3.val", valorMapeado3);
-  dutyCycleFrequencyRef = int(valorLeido3 * .249);
-  pwm(frequencyRefControl, dutyCycleFrequencyRef);
 }
 
 void checkMachineEnable()
@@ -268,8 +275,8 @@ void checkBrakeClutch()
 
 void checkCountEnable()
 /* Si se ejecuta es porque el Arduino recibió en el pin 21 (rotarPulseInput)
- * un pulso del generador de pulsos rotacional por lo tanto, si está habilitado
- *  el conteo,se incrementa el contador numPulsos
+   un pulso del generador de pulsos rotacional por lo tanto, si está habilitado
+    el conteo,se incrementa el contador numPulsos
 */
 {
   if (countEnable == true)
@@ -284,17 +291,24 @@ void mostrarConteo()
   numeroDeEtiquetas = int(longitudDelMaterial / (longitudDeEtiquetaNum));
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
   if (numeroDeEtiquetas == etiquetaDeFrenadoNum) {
+    //frenado = true;
     iniciarFrenado();
   }
   if (numeroDeEtiquetas == etiquetasPorRolloNum) {
     parar();
-    conteoDeRollos+=1;
-    mostrarConteoDeRollos();
+    Serial.println(rollCountEnable);
+    if (rollCountEnable == true) {
+      conteoDeRollos += 1;
+      rollCountEnable = false;
+      Serial.println(rollCountEnable);
+      mostrarConteoDeRollos();
+    }
+
   }
 }
 
 void mostrarConteoDeRollos() {
-  myNex.writeNum("B.n0.txt", conteoDeRollos);
+  myNex.writeNum("B.n0.val", conteoDeRollos);
   Serial.print("Número de rollos = ");
   Serial.println(conteoDeRollos);
 }
@@ -309,8 +323,23 @@ void mostrarNumeroDeEtiquetasPorRollo() {
 
 void iniciarFrenado()
 {
-  Serial.println("Frenando...");
+  pwmAuto = dutyCycleFrequencyRef;
+  /*
+  Serial.print("pwm auto =");
+  Serial.println(dutyCycleFrequencyRef);
+  delta = etiquetasPorRolloNum - myNex.readStr("C.t5.txt").toInt();
+  paso = pwmAuto / delta;
 
+  Serial.print("delta = ");
+  Serial.println(delta);
+
+  Serial.print("paso =");
+  Serial.println(paso);
+
+  dutyCycleFrequencyRef -= paso;
+  Serial.println(dutyCycleFrequencyRef);
+  pwm(frequencyRefControl, dutyCycleFrequencyRef);
+*/
 }
 
 void parar() {
@@ -319,19 +348,20 @@ void parar() {
 
 void trigger1() // Reinicia el conteo de etiquetas
 /*
- * Se ejecuta al liberar B.b1
- */
+   Se ejecuta al liberar B.b1
+*/
 {
   Serial.println("Reiniciar conteo de etiquetas");
   numeroDeEtiquetas = 0;
   numPulsos = 0;
   myNex.writeNum("B.n1.val", numeroDeEtiquetas);
+  rollCountEnable = true;
 }
 
 void trigger2() // Habilita o deshabilita el conteo de etiquetas
 /*
- * Se ejecuta al liberar B.SW0
- */
+   Se ejecuta al liberar B.SW0
+*/
 {
   countEnable = !countEnable;
   if (countEnable)
@@ -348,9 +378,11 @@ void trigger2() // Habilita o deshabilita el conteo de etiquetas
 //ok
 void trigger3() // Lee el número de rollos:
 /*
- * Se ejecuta al liberar D.b12 siendo D.va0.txt = "0"
- */
+   Se ejecuta al liberar D.b12 siendo D.va0.txt = "0"
+*/
 {
+  Serial.println("3333333333333333333333333333");
+  Serial.println("============================");
   numeroDeRollos = myNex.readStr("C.t7.txt").toInt();
   Serial.print("NumeroDeRollos = ");
   Serial.println(numeroDeRollos);
@@ -358,18 +390,21 @@ void trigger3() // Lee el número de rollos:
 
 void trigger4()
 {
-  Serial.println("4444");
+  Serial.println("4444444444444444444444444444");
+  Serial.println("============================");
 }
 
 void trigger5() // Convertir a int la etiqueta de frenado y el número de
 //etiquetas por rollo
 {
+  Serial.println("5555555555555555555555555555");
+  Serial.println("============================");
   etiquetasPorRolloNum = myNex.readStr("C.t4.txt").toInt();
   etiquetaDeFrenadoNum = myNex.readStr("C.t5.txt").toInt();
+  Serial.print("Etiquetas por rollo = ");
+  Serial.println(etiquetasPorRolloNum);
   Serial.print("Etiqueta de frenado = ");
   Serial.println(etiquetaDeFrenadoNum);
-  Serial.print("Etiqueta por rollo = ");
-  Serial.println(etiquetasPorRolloNum);
 }
 
 void trigger6()
@@ -379,40 +414,41 @@ void trigger6()
 
 void trigger7() // Validar page 1 (B)
 /*
- * Número de rollos
- * Longitud de la etiqueta en mm. Incluye el espacio entre etiquetas
- * Número de etiquetas por rollo
- * Etiqueta de frenado. Por defecto es el 90% del número de etiquetas
- * por rollo
- * Se ejecuta al liberar C.b0
- */
+   Número de rollos
+   Longitud de la etiqueta en mm. Incluye el espacio entre etiquetas
+   Número de etiquetas por rollo
+   Etiqueta de frenado. Por defecto es el 90% del número de etiquetas
+   por rollo
+   Se ejecuta al liberar C.b0
+*/
 {
-  Serial.println("7777777");
-
+  Serial.println("7777777777777777777777777777");
+  Serial.println("============================");
   longitudDeEtiqueta = myNex.readStr("C.t3.txt");
   etiquetasPorRollo = myNex.readStr("C.t4.txt");
   etiquetaDeFrenado = myNex.readStr("C.t5.txt");
-  //numeroDeRollos = myNex.readStr("C.t7.txt");
-  //numeroDeRollosNum = numeroDeRollos.toInt();
-
   myNex.writeStr("B.t6.txt", etiquetasPorRollo);
-  myNex.writeNum("B.no.txt", numeroDeRollos);
-  Serial.println("======");
+
+  Serial.print("numeroDeRollos = ");
+  Serial.println(numeroDeRollos);
+
+  Serial.print("longitudDeEtiqueta = ");
   Serial.println(longitudDeEtiqueta);
+
+  Serial.print("etiquetasPorRollo = ");
   Serial.println(etiquetasPorRollo);
+
+  Serial.print("etiquetaDeFrenado = ");
   Serial.println(etiquetaDeFrenado);
-  Serial.println(numeroDeRollos);
+
   longitudDeEtiquetaNum = myNex.readStr("C.t3.txt").toInt();
-  numeroDeRollos += myNex.readStr("C.t7.txt").toInt();
-  Serial.println(longitudDeEtiqueta);
-  Serial.println(numeroDeRollos);
 }
 
 void trigger8() // Reinicia el conteo de rollos
 {
   Serial.println("Reiniciar conteo de rollos");
-  numeroDeRollos = 0;
-  myNex.writeNum("B.n0.val", numeroDeRollos);
+  conteoDeRollos = 0;
+  myNex.writeNum("B.n0.val", conteoDeRollos);
 }
 
 void trigger9()
@@ -430,10 +466,10 @@ void trigger11()
   Serial.println("XI");
 
   /*
-  String diagnostico = myNex.readStr("E.va0.txt");
+    String diagnostico = myNex.readStr("E.va0.txt");
 
-  while (diagnostico == "1")
-  {
+    while (diagnostico == "1")
+    {
     if (machineEnable.isPressed() == true)
     {
       //Habilitar funcionamiento
@@ -447,7 +483,7 @@ void trigger11()
       myNex.writeNum("E.t4.x", 200);
     }
     diagnostico = myNex.readStr("E.va0.txt");
-  }*/
+    }*/
 }
 
 void setup()
@@ -456,13 +492,13 @@ void setup()
   Serial2.begin(115200);
   myNex.begin(115200);
   /* Begin the object with a baud rate of 115200
-   * Si no se especifica la rata de baudios en el método begin(), se usa
-   * la rata por defecto que es 9600 .
-   * IMPORTANTE: La pantalla Nextion debe ser inicializada para usar la
-   * misma rata de baudios. Se hace en la pestaña program.s del programa
-   * Nextion Editor, antes de las instrucciones de la página 0 y no se
-   * aconseja hacerlo en el evento de preinicialización de la página 0
-   * de el archibo .HMI
+     Si no se especifica la rata de baudios en el método begin(), se usa
+     la rata por defecto que es 9600 .
+     IMPORTANTE: La pantalla Nextion debe ser inicializada para usar la
+     misma rata de baudios. Se hace en la pestaña program.s del programa
+     Nextion Editor, antes de las instrucciones de la página 0 y no se
+     aconseja hacerlo en el evento de preinicialización de la página 0
+     de el archibo .HMI
   */
 
   // Declaración de pines digitales en modo salida
@@ -489,7 +525,8 @@ void setup()
   digitalWrite(clutchChuckControl, HIGH);
   digitalWrite(brakeChuckControl, HIGH);
 
-  myNex.writeNum("B.n1.val", 2510);
+  myNex.writeNum("B.n0.val", 0);
+  myNex.writeNum("B.n1.val", 0);
   myNex.writeNum("B.t7.pco", RED);
 
   myNex.writeStr("B.t6.txt", "0");
@@ -498,7 +535,7 @@ void setup()
   myNex.writeStr("C.t3.txt", "0");
   myNex.writeStr("C.t4.txt", "0");
   myNex.writeStr("C.t5.txt", "0");
-
+  myNex.writeStr("C.t7.txt", "0");
   attachInterrupt(digitalPinToInterrupt(rotaryPulseInput), checkCountEnable, RISING);
 }
 
