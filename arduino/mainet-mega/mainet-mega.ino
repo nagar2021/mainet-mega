@@ -81,8 +81,9 @@ uint32_t conteoDeEtiquetas = 2406;
 int longitudDeEtiquetaNum = 0;
 uint32_t numeroDeRollos = 0;
 uint32_t conteoDeRollos = 0;
-int etiquetaDeFrenadoNum = 999999;
+uint32_t etiquetaDeFrenadoNum = 999999;
 uint32_t etiquetasPorRolloNum = 999999;
+
 bool countEnable = false;
 bool rollCountEnable = true;
 bool frenadoAuto = false;
@@ -292,16 +293,17 @@ void mostrarConteo()
   myNex.writeNum("B.n1.val", conteoDeEtiquetas);
 
   Serial.print("***conteoDeEtiquetas = ");
-    Serial.println(conteoDeEtiquetas);
-    
-    Serial.print("***etiquetaDeFrenadoNum = ");
-    Serial.println(etiquetaDeFrenadoNum);
-    
+  Serial.println(conteoDeEtiquetas);
+
+  Serial.print("***etiquetaDeFrenadoNum = ");
+  Serial.println(etiquetaDeFrenadoNum);
+
   if (conteoDeEtiquetas >= etiquetaDeFrenadoNum)
   {
-    readFrequencyEnable = false;   
+    readFrequencyEnable = false;
     iniciarFrenado();
   }
+
   if (conteoDeEtiquetas == etiquetasPorRolloNum)
   {
     parar();
@@ -338,7 +340,7 @@ void iniciarFrenado()
 
   Serial.print("pwm auto =");
   Serial.println(dutyCycleFrequencyRef);
-  
+
   delta = etiquetasPorRolloNum - myNex.readStr("C.t5.txt").toInt();
   paso = (pwmAuto / delta) * 100;
 
