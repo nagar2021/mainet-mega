@@ -1,13 +1,11 @@
 /* Nelson A. García Rodríguez
-   06/09/2021
+   07/09/2021
    mainet-mega V1.00
 */
 
 #include <Button.h>
 #include <EasyNextionLibrary.h>
 
-const uint32_t BLUE = 31;
-const uint32_t BROWN = 48192;
 const uint32_t GREEN = 2016; // Colores usados en la pantalla Nextion
 const uint32_t RED = 63488;
 const uint32_t YELLOW = 65504;
@@ -57,6 +55,8 @@ int dutyCycleLowerClutch = 0;
 int dutyCycleBrakeUnwind = 0;
 int dutyCycleFrequencyRef = 0;
 
+int lastDutyCycle = 0;
+
 int tOn = 0;
 int tOff = 0;
 
@@ -82,6 +82,10 @@ int longitudDeEtiquetaNum = 0;
 uint32_t numeroDeRollos = 0;
 uint32_t conteoDeRollos = 0;
 uint32_t etiquetaDeFrenadoNum = 999999;
+uint32_t etiquetaDeFrenado85 = 999999;
+uint32_t etiquetaDeFrenado90 = 999999;
+uint32_t etiquetaDeFrenado95 = 999999;
+
 uint32_t etiquetasPorRolloNum = 999999;
 
 bool countEnable = false;
@@ -295,7 +299,8 @@ void mostrarConteo()
   if (conteoDeEtiquetas >= etiquetaDeFrenadoNum)
   {
     readFrequencyEnable = false;
-    iniciarFrenado();
+    lastDutyCycle = dutyCycleFrequencyRef;
+    frenar(lastDutyCycle);
   }
 
   if (conteoDeEtiquetas == etiquetasPorRolloNum)
@@ -327,31 +332,20 @@ void mostrarNumeroDeEtiquetasPorRollo()
 {
 }
 
-void iniciarFrenado()
+void frenar(int lastDutyCycle)
 {
-  //Serial.print("Frenando...");
-  //Serial.print("***conteoDeEtiquetas = ");
-  //Serial.print(conteoDeEtiquetas);
-
-  //Serial.print("***etiquetaDeFrenadoNum = ");
-  //Serial.println(etiquetaDeFrenadoNum);
-
-  //dutyCycleFrequencyRef = dutyCycleFrequencyRef * .5;
-
-  delta = etiquetasPorRolloNum - myNex.readStr("C.t5.txt").toInt();
-  paso = (dutyCycleFrequencyRef / delta);
-
-  Serial.print("delta = ");
-  Serial.println(delta);
-
-  Serial.print("paso =");
-  Serial.println(paso);
-
-  dutyCycleFrequencyRef -= paso;
-  Serial.print("DutyCycleFrequencyref = ");
-  Serial.println(dutyCycleFrequencyRef);
-
-  pwm(frequencyRefControl, dutyCycleFrequencyRef);
+  if (conteoDeEtiquetas >= etiquetaDeFrenado85 && conteoDeEtiquetas <= etiquetaDeFrenado90) {
+    dutyCycleFrequencyRef = lastDutyCycle * .75;
+    pwm(frequencyRefControl, dutyCycleFrequencyRef);
+  }
+  if (conteoDeEtiquetas >= etiquetaDeFrenado90 && conteoDeEtiquetas <= etiquetaDeFrenado95) {
+    dutyCycleFrequencyRef = lastDutyCycle * .5;
+    pwm(frequencyRefControl, dutyCycleFrequencyRef);
+  }
+  if (conteoDeEtiquetas >= etiquetaDeFrenado95) {
+    dutyCycleFrequencyRef = lastDutyCycle * .25;
+    pwm(frequencyRefControl, dutyCycleFrequencyRef);
+  }
 }
 
 void parar()
@@ -365,7 +359,10 @@ void trigger1() // Reinicia el conteo de etiquetas
    Se ejecuta al liberar B.b1
 */
 {
+  Serial.println("=============================");
   Serial.println("Reiniciar conteo de etiquetas");
+  Serial.println("=============================");
+
   conteoDeEtiquetas = 0;
   numPulsos = 0;
   myNex.writeNum("B.n1.val", conteoDeEtiquetas);
@@ -381,12 +378,18 @@ void trigger2() // Habilita o deshabilita el conteo de etiquetas
   countEnable = !countEnable;
   if (countEnable)
   {
+    Serial.println("=============");
     Serial.println("Conteo     ON");
+    Serial.println("=============");
+
     myNex.writeNum("B.t7.pco", GREEN);
   }
   else
   {
+    Serial.println("==========");
     Serial.println("Conteo OFF");
+    Serial.println("==========");
+
     myNex.writeNum("B.t7.pco", RED);
   }
 }
@@ -416,10 +419,24 @@ void trigger5() // Convertir a int la etiqueta de frenado y el no. de etiquetas/
   Serial.println("============================");
   etiquetasPorRolloNum = myNex.readStr("C.t4.txt").toInt();
   etiquetaDeFrenadoNum = myNex.readStr("C.t5.txt").toInt();
+
+  etiquetaDeFrenado85 = etiquetaDeFrenadoNum * .85;
+  etiquetaDeFrenado90 = etiquetaDeFrenadoNum * .90;
+  etiquetaDeFrenado95 = etiquetaDeFrenadoNum * .95;
+
   Serial.print("Etiquetas por rollo = ");
   Serial.println(etiquetasPorRolloNum);
-  Serial.print("Etiqueta de frenado = ");
-  Serial.println(etiquetaDeFrenadoNum);
+
+  Serial.print("Etiquetas de frenado = ");
+  Serial.print(etiquetaDeFrenadoNum);
+  Serial.print(" / ");
+  Serial.print(etiquetaDeFrenado85);
+  Serial.print(" / ");
+  Serial.print(etiquetaDeFrenado90);
+  Serial.print(" / ");
+  Serial.println(etiquetaDeFrenado95);
+
+
 }
 
 void trigger6()
@@ -470,7 +487,9 @@ void trigger7() // Validar page 1 (B)
 
 void trigger8() // Reinicia el conteo de rollos
 {
+  Serial.println("==========================");
   Serial.println("Reiniciar conteo de rollos");
+  Serial.println("==========================");
   conteoDeRollos = 0;
   myNex.writeNum("B.n0.val", conteoDeRollos);
 }
@@ -483,12 +502,18 @@ void trigger9() // Habilita o deshabilita el frenado automático
   frenadoAuto = !frenadoAuto;
   if (frenadoAuto)
   {
+    Serial.println("================");
     Serial.println("Frenado      AUT");
+    Serial.println("================");
+
     myNex.writeNum("C.t8.pco", GREEN);
   }
   else
   {
+    Serial.println("===========");
     Serial.println("Frenado MAN");
+    Serial.println("===========");
+
     myNex.writeNum("C.t8.pco", RED);
   }
 }
@@ -553,7 +578,7 @@ void setup()
   pinMode(clutchChuckControl, OUTPUT);
   pinMode(brakeChuckControl, OUTPUT);
 
-  //Establecer valores iniciales
+  //Establecer valores iniciales pines Arduino
   digitalWrite(machineEnableControl, HIGH);
   digitalWrite(runForwardControl, HIGH);
   digitalWrite(runReverseControl, HIGH);
@@ -562,6 +587,7 @@ void setup()
   digitalWrite(clutchChuckControl, HIGH);
   digitalWrite(brakeChuckControl, HIGH);
 
+  //Establecer valores iniciales HMI Nextion
   myNex.writeNum("B.n0.val", 0);
   myNex.writeNum("B.n1.val", 0);
   myNex.writeNum("B.t7.pco", RED);
@@ -575,6 +601,8 @@ void setup()
   myNex.writeStr("C.t7.txt", "0");
   myNex.writeNum("C.t8.pco", GREEN);
   myNex.writeNum("C.sw0.val", 1);
+
+  // ISR
   attachInterrupt(digitalPinToInterrupt(rotaryPulseInput), checkCountEnable, RISING);
 }
 
