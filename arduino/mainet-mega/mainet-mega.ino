@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
-   07/09/2021
+   09/09/2021
    mainet-mega V1.00
 */
 
@@ -113,8 +113,8 @@ void calcularFrecuencia()
   tOff = pulseIn(rotaryPulseInput, LOW);
   T = tOn + tOff;
   f = 1 / T;
-  //Serial.print("f = ");
-  //Serial.println(f);
+  Serial.print("f = ");
+  Serial.println(f);
 }
 
 void displayBoardsStatus()
@@ -316,7 +316,7 @@ void mostrarConteo()
     {
       conteoDeRollos += 1;
       rollCountEnable = false;
-      Serial.println(rollCountEnable);
+      //Serial.println(rollCountEnable);
       mostrarConteoDeRollos();
     }
   }
@@ -649,12 +649,10 @@ void loop()
   checkStopRun();    // OK
   checkJogForward(); // OK
   mostrarConteo();
+  calcularFrecuencia();
 }
 
 /*
-
-    calcularFrecuencia();
-
     float calcularTensionRebobinado(T, To, Tc, Sc, Sl, DB, G)
     {
     if ((Sc - Sl) > DB) {
