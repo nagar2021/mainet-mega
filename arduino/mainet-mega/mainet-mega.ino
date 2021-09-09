@@ -104,7 +104,7 @@ int pwmManual = 0;
 int pwmAuto = 0;
 int delta = 0;
 int paso = 0;
-int dutyCycleMin = 10;
+int dutyCycleMin = 15;
 
 // Definición de funciones
 void calcularFrecuencia()
