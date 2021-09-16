@@ -65,6 +65,8 @@ unsigned long t2 = 0;
 float velocidad = 0;
 float tiempo = 0;
 
+String tempString = "";
+
 /*
 int tOn = 0;
 int tOff = 0;
@@ -313,8 +315,10 @@ float calcularVelocidad()
   t2 = t1 - t0;
   t0 = t1;
   tiempo = float(t2);
-  velocidad = longitudDelMaterial / tiempo; // mm/us
-  velocidad *= 60000;                       // m/min
+  velocidad = longitudDelMaterial / tiempo; // mm/ms
+  velocidad *= 60;                          // m/min
+  tempString = String(velocidad, 1);
+  myNex.writeStr("B.t11.txt", tempString);
   return velocidad;
 }
 
