@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
-   09/09/2021
+   16/09/2021
    mainet-mega V1.00
 */
 
@@ -57,11 +57,21 @@ int dutyCycleFrequencyRef = 0;
 
 int lastDutyCycle = 0;
 
+// Variables relacionadas con la velocidad
+unsigned long t0 = 0;
+unsigned long t1 = 0;
+unsigned long t2 = 0;
+
+float velocidad = 0;
+float tiempo = 0;
+
+/*
 int tOn = 0;
 int tOff = 0;
 
 float T = 0;
 float f = 0;
+*/
 
 // Variables relacionadas con el conteo
 volatile unsigned long numPulsos = 0;
@@ -107,6 +117,8 @@ int paso = 0;
 int dutyCycleMin = 15;
 
 // Definición de funciones
+
+/*
 void calcularFrecuencia()
 {
   tOn = pulseIn(rotaryPulseInput, HIGH);
@@ -116,6 +128,7 @@ void calcularFrecuencia()
   Serial.print("f = ");
   Serial.println(f);
 }
+*/
 
 void displayBoardsStatus()
 {
@@ -294,9 +307,21 @@ void checkCountEnable()
   }
 }
 
+float calcularVelocidad()
+{
+  t1 = millis();
+  t2 = t1 - t0;
+  t0 = t1;
+  tiempo = float(t2);
+  velocidad = longitudDelMaterial / tiempo; // mm/us
+  velocidad *= 60000;                       // m/min
+  return velocidad;
+}
+
 void mostrarConteo()
 {
   longitudDelMaterial = k * numPulsos;
+  velocidad = calcularVelocidad();
   conteoDeEtiquetas = int(longitudDelMaterial / (longitudDeEtiquetaNum));
   myNex.writeNum("B.n1.val", conteoDeEtiquetas);
 
@@ -649,7 +674,7 @@ void loop()
   checkStopRun();    // OK
   checkJogForward(); // OK
   mostrarConteo();
-  calcularFrecuencia();
+  //calcularFrecuencia();
 }
 
 /*
