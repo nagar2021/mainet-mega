@@ -1,5 +1,6 @@
+
 /* Nelson A. García Rodríguez
-   16/09/2021
+   21/09/2021
    mainet-mega V1.00
 */
 
@@ -62,17 +63,24 @@ unsigned long t0 = 0;
 unsigned long t1 = 0;
 unsigned long t2 = 0;
 
+unsigned long l0 = 0;
+unsigned long l1 = 0;
+unsigned long l2 = 0;
+
+float metros = 0;
+
+
 float velocidad = 0;
 float tiempo = 0;
 
 String tempString = "";
 
 /*
-int tOn = 0;
-int tOff = 0;
+  int tOn = 0;
+  int tOff = 0;
 
-float T = 0;
-float f = 0;
+  float T = 0;
+  float f = 0;
 */
 
 // Variables relacionadas con el conteo
@@ -116,98 +124,27 @@ int pwmManual = 0;
 int pwmAuto = 0;
 int delta = 0;
 int paso = 0;
-int dutyCycleMin = 15;
+int dutyCycleMin = 10;
+
+//Variables de depuración:
+bool debugTrigger1 = false;
+bool debugTrigger2 = false;
+bool debugTrigger3 = false;
+bool debugTrigger4 = false;
+bool debugTrigger5 = false;
+bool debugTrigger6 = false;
+bool debugTrigger7 = false;
+bool debugTrigger8 = false;
+bool debugTrigger9 = false;
+bool debugTrigger10 = false;
+bool debugTrigger11 = false;
+bool debugCalcularVelocidad = true;
+bool debugMostrarConteoDeRollos = false;
+bool debugFrenar = false;
+bool debugParar = false;
+
 
 // Definición de funciones
-
-/*
-void calcularFrecuencia()
-{
-  tOn = pulseIn(rotaryPulseInput, HIGH);
-  tOff = pulseIn(rotaryPulseInput, LOW);
-  T = tOn + tOff;
-  f = 1 / T;
-  Serial.print("f = ");
-  Serial.println(f);
-}
-*/
-
-void displayBoardsStatus()
-{
-  Serial.println("UpperClutch  LowerClutch  BrakeUnwind  FrequencyRef");
-  Serial.print("     ");
-  Serial.print(dutyCycleUpperClutch);
-  Serial.print("           ");
-  Serial.print(dutyCycleLowerClutch);
-  Serial.print("           ");
-  Serial.print(dutyCycleBrakeUnwind);
-  Serial.print("           ");
-  Serial.println(dutyCycleFrequencyRef);
-}
-
-void pwm(int deviceToControl, int dutyCycle)
-{
-  //displayBoardsStatus();
-  analogWrite(deviceToControl, dutyCycle);
-}
-
-void readUpperClutchPot()
-{
-  int valorLeido2 = analogRead(upperClutchPot);
-  if (abs(ultimoValorLeido2 - valorLeido2) >= 50)
-  {
-    ultimoValorLeido2 = valorLeido2;
-  }
-  uint32_t valorMapeado2 = map(ultimoValorLeido2, 0, 1023, 0, 180);
-  myNex.writeNum("B.z2.val", valorMapeado2);
-  dutyCycleUpperClutch = int(valorLeido2 * .249);
-  pwm(upperClutchControl, dutyCycleUpperClutch);
-}
-
-void readLowerClutchPot()
-{
-  int valorLeido1 = analogRead(lowerClutchPot);
-
-  if (abs(ultimoValorLeido1 - valorLeido1) >= 50)
-  {
-    ultimoValorLeido1 = valorLeido1;
-  }
-  uint32_t valorMapeado1 = map(ultimoValorLeido1, 0, 1023, 0, 180);
-  myNex.writeNum("B.z1.val", valorMapeado1);
-  dutyCycleLowerClutch = int(valorLeido1 * .249);
-  pwm(lowerClutchControl, dutyCycleLowerClutch);
-}
-
-void readBrakeUnwindPot()
-{
-  int valorLeido0 = analogRead(brakeUnwindPot);
-
-  if (abs(ultimoValorLeido0 - valorLeido0) >= 50)
-  {
-    ultimoValorLeido0 = valorLeido0;
-  }
-  uint32_t valorMapeado0 = map(ultimoValorLeido0, 0, 1023, 0, 180);
-  myNex.writeNum("B.z0.val", valorMapeado0);
-  dutyCycleBrakeUnwind = int(valorLeido0 * .249);
-  pwm(brakeUnwindControl, dutyCycleBrakeUnwind);
-}
-
-void readFrequencyRefPot()
-{
-  if (readFrequencyEnable)
-  {
-    int valorLeido3 = analogRead(frequencyRefPot);
-
-    if (abs(ultimoValorLeido3 - valorLeido3) >= 50)
-    {
-      ultimoValorLeido3 = valorLeido3;
-    }
-    uint32_t valorMapeado3 = map(ultimoValorLeido3, 0, 1023, 0, 180);
-    myNex.writeNum("B.z3.val", valorMapeado3);
-    dutyCycleFrequencyRef = int(valorLeido3 * .249);
-    pwm(frequencyRefControl, dutyCycleFrequencyRef);
-  }
-}
 
 void checkMachineEnable()
 {
@@ -309,23 +246,40 @@ void checkCountEnable()
   }
 }
 
-float calcularVelocidad()
+
+void calcularVelocidad()
 {
   t1 = millis();
+  l1 = longitudDelMaterial;
   t2 = t1 - t0;
+  l2 = l1 - l0;
   t0 = t1;
+  l0 = l1;
+  
   tiempo = float(t2);
-  velocidad = longitudDelMaterial / tiempo; // mm/ms
+  metros = float(l2);
+  
+  velocidad = metros / tiempo; // mm/ms
   velocidad *= 60;                          // m/min
+  velocidad /= 1000; 
   tempString = String(velocidad, 1);
+  tempString += " m/min";
   myNex.writeStr("B.t11.txt", tempString);
-  return velocidad;
+
+  if (debugCalcularVelocidad) {
+    Serial.print("longitudDelMaterial = ");
+    Serial.print(longitudDelMaterial);
+    Serial.print(" / tiempo = ");
+    Serial.println(tiempo);
+  }
+
 }
+
 
 void mostrarConteo()
 {
   longitudDelMaterial = k * numPulsos;
-  velocidad = calcularVelocidad();
+  calcularVelocidad();
   conteoDeEtiquetas = int(longitudDelMaterial / (longitudDeEtiquetaNum));
   myNex.writeNum("B.n1.val", conteoDeEtiquetas);
 
@@ -340,7 +294,7 @@ void mostrarConteo()
   if (conteoDeEtiquetas == etiquetasPorRolloNum)
   {
     parar();
-    Serial.println(rollCountEnable);
+    //Serial.println(rollCountEnable);
     if (rollCountEnable == true)
     {
       conteoDeRollos += 1;
@@ -354,8 +308,11 @@ void mostrarConteo()
 void mostrarConteoDeRollos()
 {
   myNex.writeNum("B.n0.val", conteoDeRollos);
-  Serial.print("Número de rollos = ");
-  Serial.println(conteoDeRollos);
+
+  if (debugMostrarConteoDeRollos) {
+    Serial.print("Número de rollos = ");
+    Serial.println(conteoDeRollos);
+  }
 }
 
 void mostrarConteoEtiquetas()
@@ -366,55 +323,116 @@ void mostrarNumeroDeEtiquetasPorRollo()
 {
 }
 
+void pwm(int deviceToControl, int dutyCycle)
+{
+  analogWrite(deviceToControl, dutyCycle);
+}
+
 void frenar(int lastDutyCycle)
 {
-  //  do {
-  Serial.println("===========");
-  Serial.println("Frenando...");
-  Serial.println("===========");
-
-  Serial.print("lastDutyCycle = ");
-  Serial.println(lastDutyCycle);
-
-  if (conteoDeEtiquetas >= etiquetaDeFrenadoNum)
+  if (lastDutyCycle > dutyCycleMin)
   {
-    if (lastDutyCycle > dutyCycleMin)
-    {
-      dutyCycleFrequencyRef = lastDutyCycle * .5;
-      pwm(frequencyRefControl, dutyCycleFrequencyRef);
-    }
-    else
-    {
-      dutyCycleFrequencyRef = dutyCycleMin;
-      pwm(frequencyRefControl, dutyCycleFrequencyRef);
-    }
+    dutyCycleFrequencyRef = lastDutyCycle * .4;
+    pwm(frequencyRefControl, dutyCycleFrequencyRef);
+  }
+  else
+  {
+    dutyCycleFrequencyRef = dutyCycleMin;
+    pwm(frequencyRefControl, dutyCycleFrequencyRef);
+  }
 
+  if (debugFrenar) {
+    Serial.println("===========");
+    Serial.println("Frenando...");
+    Serial.println("===========");
+
+    Serial.print("lastDutyCycle = ");
+    Serial.println(lastDutyCycle);
     Serial.print("dutyCycleFrequencyRef = ");
     Serial.println(dutyCycleFrequencyRef);
   }
-
-  //  } while (!paradaAlcanzada);
 }
 
 void parar()
 {
-  Serial.println("===========");
-  Serial.println("Parada...");
-  Serial.println("===========");
   digitalWrite(runForwardControl, HIGH);
   readFrequencyEnable = true;
   paradaAlcanzada = true;
+  if (debugParar) {
+    Serial.println("===========");
+    Serial.println("Parada...");
+    Serial.println("===========");
+  }
+}
+
+void readUpperClutchPot()
+{
+  int valorLeido2 = analogRead(upperClutchPot);
+  if (abs(ultimoValorLeido2 - valorLeido2) >= 50)
+  {
+    ultimoValorLeido2 = valorLeido2;
+  }
+  uint32_t valorMapeado2 = map(ultimoValorLeido2, 0, 1023, 0, 180);
+  myNex.writeNum("B.z2.val", valorMapeado2);
+  dutyCycleUpperClutch = int(valorLeido2 * .249);
+  pwm(upperClutchControl, dutyCycleUpperClutch);
+}
+
+void readLowerClutchPot()
+{
+  int valorLeido1 = analogRead(lowerClutchPot);
+
+  if (abs(ultimoValorLeido1 - valorLeido1) >= 50)
+  {
+    ultimoValorLeido1 = valorLeido1;
+  }
+  uint32_t valorMapeado1 = map(ultimoValorLeido1, 0, 1023, 0, 180);
+  myNex.writeNum("B.z1.val", valorMapeado1);
+  dutyCycleLowerClutch = int(valorLeido1 * .249);
+  pwm(lowerClutchControl, dutyCycleLowerClutch);
+}
+
+void readBrakeUnwindPot()
+{
+  int valorLeido0 = analogRead(brakeUnwindPot);
+
+  if (abs(ultimoValorLeido0 - valorLeido0) >= 50)
+  {
+    ultimoValorLeido0 = valorLeido0;
+  }
+  uint32_t valorMapeado0 = map(ultimoValorLeido0, 0, 1023, 0, 180);
+  myNex.writeNum("B.z0.val", valorMapeado0);
+  dutyCycleBrakeUnwind = int(valorLeido0 * .249);
+  pwm(brakeUnwindControl, dutyCycleBrakeUnwind);
+}
+
+void readFrequencyRefPot()
+{
+  if (readFrequencyEnable)
+  {
+    int valorLeido3 = analogRead(frequencyRefPot);
+
+    if (abs(ultimoValorLeido3 - valorLeido3) >= 50)
+    {
+      ultimoValorLeido3 = valorLeido3;
+    }
+    uint32_t valorMapeado3 = map(ultimoValorLeido3, 0, 1023, 0, 180);
+    myNex.writeNum("B.z3.val", valorMapeado3);
+    dutyCycleFrequencyRef = int(valorLeido3 * .249);
+    pwm(frequencyRefControl, dutyCycleFrequencyRef);
+  }
 }
 
 void trigger1() // Reinicia el conteo de etiquetas
 /*
      Se ejecuta al liberar B.b1
-  */
+*/
 {
-  Serial.println("================================");
-  Serial.println("1. Reiniciar conteo de etiquetas");
-  Serial.println("================================");
-
+  if (debugTrigger1) {
+    Serial.println("================================");
+    Serial.println("1. Reiniciar conteo de etiquetas");
+    Serial.println("================================");
+  }
   conteoDeEtiquetas = 0;
   numPulsos = 0;
   myNex.writeNum("B.n1.val", conteoDeEtiquetas);
@@ -426,23 +444,25 @@ void trigger1() // Reinicia el conteo de etiquetas
 void trigger2() // Habilita o deshabilita el conteo de etiquetas
 /*
      Se ejecuta al liberar B.SW0
-  */
+*/
 {
   countEnable = !countEnable;
   if (countEnable)
   {
-    Serial.println("================");
-    Serial.println("2. Conteo     ON");
-    Serial.println("================");
-
+    if (debugTrigger2) {
+      Serial.println("================");
+      Serial.println("2. Conteo     ON");
+      Serial.println("================");
+    }
     myNex.writeNum("B.t7.pco", GREEN);
   }
   else
   {
-    Serial.println("================");
-    Serial.println("2. Conteo OFF");
-    Serial.println("================");
-
+    if (debugTrigger2) {
+      Serial.println("================");
+      Serial.println("2. Conteo OFF");
+      Serial.println("================");
+    }
     myNex.writeNum("B.t7.pco", RED);
   }
 }
@@ -450,53 +470,59 @@ void trigger2() // Habilita o deshabilita el conteo de etiquetas
 void trigger3() // Lee el número de rollos:
 /*
      Se ejecuta al liberar D.b12 siendo D.va0.txt = "0"
-  */
+*/
 {
-  Serial.println("===============================");
-  Serial.println("3. Lectura del número de rollos");
-  Serial.println("===============================");
   numeroDeRollos = myNex.readStr("C.t7.txt").toInt();
-  Serial.print("NumeroDeRollos = ");
-  Serial.println(numeroDeRollos);
+  if (debugTrigger3) {
+    Serial.println("===============================");
+    Serial.println("3. Lectura del número de rollos");
+    Serial.println("===============================");
+    Serial.print("NumeroDeRollos = ");
+    Serial.println(numeroDeRollos);
+  }
 }
 
 void trigger4()
 {
-  Serial.println("===============================");
-  Serial.println("44444444");
-  Serial.println("===============================");
+  if (debugTrigger4) {
+    Serial.println("===============================");
+    Serial.println("44444444");
+    Serial.println("===============================");
+  }
 }
 
 void trigger5() // Convertir a int la etiqueta de frenado y el no. de etiquetas/rollo
 {
-  Serial.println("==========================================================");
-  Serial.println("5. Calcular las etiquetas de frenado y No. etiquetas/rollo");
-  Serial.println("==========================================================");
   etiquetasPorRolloNum = myNex.readStr("C.t4.txt").toInt();
   etiquetaDeFrenadoNum = myNex.readStr("C.t5.txt").toInt();
 
-  delta = (etiquetasPorRolloNum - etiquetaDeFrenadoNum) / 3;
+  //delta = (etiquetasPorRolloNum - etiquetaDeFrenadoNum) / 3;
 
-  etiquetaDeFrenado1 = etiquetaDeFrenadoNum + delta;
-  etiquetaDeFrenado2 = etiquetaDeFrenado1 + delta;
-  //etiquetaDeFrenado3 = etiquetaDeFrenado2 + delta;
+  //etiquetaDeFrenado1 = etiquetaDeFrenadoNum + delta;
+  //etiquetaDeFrenado2 = etiquetaDeFrenado1 + delta;
 
-  Serial.print("Etiquetas por rollo = ");
-  Serial.println(etiquetasPorRolloNum);
+  if (debugTrigger5) {
+    Serial.println("==========================================================");
+    Serial.println("5. Calcular las etiquetas de frenado y No. etiquetas/rollo");
+    Serial.println("==========================================================");
 
-  Serial.print("Etiquetas de frenado = ");
-  Serial.print(etiquetaDeFrenadoNum);
-  Serial.print(" / ");
-  Serial.print(etiquetaDeFrenado1);
-  Serial.print(" / ");
-  Serial.println(etiquetaDeFrenado2);
-  //Serial.print(" / ");
-  //Serial.println(etiquetaDeFrenado3);
+    Serial.print("Etiquetas por rollo = ");
+    Serial.println(etiquetasPorRolloNum);
+
+    Serial.print("Etiquetas de frenado = ");
+    Serial.print(etiquetaDeFrenadoNum);
+    Serial.print(" / ");
+    Serial.print(etiquetaDeFrenado1);
+    Serial.print(" / ");
+    Serial.println(etiquetaDeFrenado2);
+  }
 }
 
 void trigger6()
 {
-  Serial.println("666666");
+  if (debugTrigger6) {
+    Serial.println("666666");
+  }
 }
 
 void trigger7() // Validar page 1 (B)
@@ -507,12 +533,8 @@ void trigger7() // Validar page 1 (B)
      Etiqueta de frenado. Por defecto es el 90% del número de etiquetas
      por rollo
      Se ejecuta al liberar C.b0
-  */
+*/
 {
-  Serial.println("============================");
-  Serial.println("7777777777777777777777777777");
-  Serial.println("============================");
-
   numeroDeRollos = myNex.readStr("C.t7.txt").toInt();
   longitudDeEtiqueta = myNex.readStr("C.t3.txt");
   etiquetasPorRollo = myNex.readStr("C.t4.txt");
@@ -523,28 +545,36 @@ void trigger7() // Validar page 1 (B)
 
   myNex.writeStr("B.t6.txt", etiquetasPorRollo);
 
-  Serial.print("numeroDeRollos = ");
-  Serial.println(numeroDeRollos);
+  if (debugTrigger7) {
+    Serial.println("============================");
+    Serial.println("7777777777777777777777777777");
+    Serial.println("============================");
 
-  Serial.print("longitudDeEtiqueta = ");
-  Serial.print(longitudDeEtiqueta);
-  Serial.print(" / ");
-  Serial.println(longitudDeEtiquetaNum);
+    Serial.print("numeroDeRollos = ");
+    Serial.println(numeroDeRollos);
 
-  Serial.print("etiquetasPorRollo = ");
-  Serial.println(etiquetasPorRollo);
+    Serial.print("longitudDeEtiqueta = ");
+    Serial.print(longitudDeEtiqueta);
+    Serial.print(" / ");
+    Serial.println(longitudDeEtiquetaNum);
 
-  Serial.print("etiquetaDeFrenado = ");
-  Serial.print(etiquetaDeFrenado);
-  Serial.print(" / ");
-  Serial.println(etiquetaDeFrenadoNum);
+    Serial.print("etiquetasPorRollo = ");
+    Serial.println(etiquetasPorRollo);
+
+    Serial.print("etiquetaDeFrenado = ");
+    Serial.print(etiquetaDeFrenado);
+    Serial.print(" / ");
+    Serial.println(etiquetaDeFrenadoNum);
+  }
 }
 
 void trigger8() // Reinicia el conteo de rollos
 {
-  Serial.println("==========================");
-  Serial.println("Reiniciar conteo de rollos");
-  Serial.println("==========================");
+  if (debugTrigger8) {
+    Serial.println("==========================");
+    Serial.println("Reiniciar conteo de rollos");
+    Serial.println("==========================");
+  }
   conteoDeRollos = 0;
   myNex.writeNum("B.n0.val", conteoDeRollos);
 }
@@ -552,24 +582,26 @@ void trigger8() // Reinicia el conteo de rollos
 void trigger9() // Habilita o deshabilita el frenado automático
 /*
      Se ejecuta al liberar C.SW0
-  */
+*/
 {
   frenadoAuto = !frenadoAuto;
   if (frenadoAuto)
   {
-    Serial.println("================");
-    Serial.println("Frenado      AUT");
-    Serial.println("================");
-
     myNex.writeNum("C.t8.pco", GREEN);
+    if (debugTrigger9) {
+      Serial.println("================");
+      Serial.println("Frenado      AUT");
+      Serial.println("================");
+    }
   }
   else
   {
-    Serial.println("===========");
-    Serial.println("Frenado MAN");
-    Serial.println("===========");
-
     myNex.writeNum("C.t8.pco", RED);
+    if (debugTrigger9) {
+      Serial.println("===========");
+      Serial.println("Frenado MAN");
+      Serial.println("===========");
+    }
   }
 }
 
@@ -585,7 +617,7 @@ void trigger11()
   /*
       String diagnostico = myNex.readStr("E.va0.txt");
 
-      while (diagnostico == "1")
+      if (diagnostico == "1")
       {
       if (machineEnable.isPressed() == true)
       {
@@ -616,7 +648,7 @@ void setup()
        Nextion Editor, antes de las instrucciones de la página 0 y no se
        aconseja hacerlo en el evento de preinicialización de la página 0
        de el archibo .HMI
-    */
+  */
 
   // Declaración de pines digitales en modo salida
   // Pines de salida PWM
@@ -646,7 +678,7 @@ void setup()
   myNex.writeNum("B.n0.val", 0);
   myNex.writeNum("B.n1.val", 0);
   myNex.writeNum("B.t7.pco", RED);
-  myNex.writeStr("B.t11.txt", "0");
+  myNex.writeStr("B.t11.txt", "0 m/min");
   myNex.writeStr("B.t6.txt", "0");
   myNex.writeNum("B.sw0.val", 0);
 
@@ -678,7 +710,7 @@ void loop()
   checkStopRun();    // OK
   checkJogForward(); // OK
   mostrarConteo();
-  //calcularFrecuencia();
+
 }
 
 /*
@@ -711,4 +743,4 @@ void loop()
     tensionCurrent
     DB // Dead Band value
 
-  */
+*/
