@@ -13,7 +13,7 @@ SyncToy*.dat
 # Ignore all local history of files
 **/.history
 .ionide
-
+build/*
 ########################################
 ### .gitignore for KiCAD 24/03/2021: ###
 ########################################
