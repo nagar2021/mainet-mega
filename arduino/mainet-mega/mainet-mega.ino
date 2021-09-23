@@ -1,6 +1,6 @@
 
 /* Nelson A. García Rodríguez
-   21/09/2021
+   22/09/2021
    mainet-mega V1.00
 */
 
@@ -68,7 +68,6 @@ unsigned long l1 = 0;
 unsigned long l2 = 0;
 
 float metros = 0;
-
 
 float velocidad = 0;
 float tiempo = 0;
@@ -138,11 +137,10 @@ bool debugTrigger8 = false;
 bool debugTrigger9 = false;
 bool debugTrigger10 = false;
 bool debugTrigger11 = false;
-bool debugCalcularVelocidad = true;
+bool debugCalcularVelocidad = false;
 bool debugMostrarConteoDeRollos = false;
 bool debugFrenar = false;
 bool debugParar = false;
-
 
 // Definición de funciones
 
@@ -246,35 +244,39 @@ void checkCountEnable()
   }
 }
 
-
 void calcularVelocidad()
 {
   t1 = millis();
   l1 = longitudDelMaterial;
-  t2 = t1 - t0;
-  l2 = l1 - l0;
+  t2 = t1 - t0; // min
+  l2 = l1 - l0; // m
   t0 = t1;
   l0 = l1;
-  
-  tiempo = float(t2);
-  metros = float(l2);
-  
-  velocidad = metros / tiempo; // mm/ms
-  velocidad *= 60;                          // m/min
-  velocidad /= 1000; 
+
+  tiempo = float(t2) / 60000;
+  metros = float(l2) / 1000;
+
+  velocidad = metros / tiempo; // m/min
   tempString = String(velocidad, 1);
   tempString += " m/min";
-  myNex.writeStr("B.t11.txt", tempString);
 
-  if (debugCalcularVelocidad) {
-    Serial.print("longitudDelMaterial = ");
-    Serial.print(longitudDelMaterial);
-    Serial.print(" / tiempo = ");
-    Serial.println(tiempo);
+  if (debugCalcularVelocidad)
+  {
+    Serial.print(l2);
+    Serial.print(" - ");
+    Serial.print(l1);
+    Serial.print(" - ");
+    Serial.print(l0);
+    Serial.print(" - ");
+    Serial.print(metros);
+    Serial.print(" - ");
+    Serial.print(tiempo);
+    Serial.print(" - ");     
+    Serial.println(tempString);
   }
-
+  
+  myNex.writeStr("B.t11.txt", tempString);
 }
-
 
 void mostrarConteo()
 {
@@ -309,7 +311,8 @@ void mostrarConteoDeRollos()
 {
   myNex.writeNum("B.n0.val", conteoDeRollos);
 
-  if (debugMostrarConteoDeRollos) {
+  if (debugMostrarConteoDeRollos)
+  {
     Serial.print("Número de rollos = ");
     Serial.println(conteoDeRollos);
   }
@@ -341,7 +344,8 @@ void frenar(int lastDutyCycle)
     pwm(frequencyRefControl, dutyCycleFrequencyRef);
   }
 
-  if (debugFrenar) {
+  if (debugFrenar)
+  {
     Serial.println("===========");
     Serial.println("Frenando...");
     Serial.println("===========");
@@ -358,7 +362,8 @@ void parar()
   digitalWrite(runForwardControl, HIGH);
   readFrequencyEnable = true;
   paradaAlcanzada = true;
-  if (debugParar) {
+  if (debugParar)
+  {
     Serial.println("===========");
     Serial.println("Parada...");
     Serial.println("===========");
@@ -428,7 +433,8 @@ void trigger1() // Reinicia el conteo de etiquetas
      Se ejecuta al liberar B.b1
 */
 {
-  if (debugTrigger1) {
+  if (debugTrigger1)
+  {
     Serial.println("================================");
     Serial.println("1. Reiniciar conteo de etiquetas");
     Serial.println("================================");
@@ -449,7 +455,8 @@ void trigger2() // Habilita o deshabilita el conteo de etiquetas
   countEnable = !countEnable;
   if (countEnable)
   {
-    if (debugTrigger2) {
+    if (debugTrigger2)
+    {
       Serial.println("================");
       Serial.println("2. Conteo     ON");
       Serial.println("================");
@@ -458,7 +465,8 @@ void trigger2() // Habilita o deshabilita el conteo de etiquetas
   }
   else
   {
-    if (debugTrigger2) {
+    if (debugTrigger2)
+    {
       Serial.println("================");
       Serial.println("2. Conteo OFF");
       Serial.println("================");
@@ -473,7 +481,8 @@ void trigger3() // Lee el número de rollos:
 */
 {
   numeroDeRollos = myNex.readStr("C.t7.txt").toInt();
-  if (debugTrigger3) {
+  if (debugTrigger3)
+  {
     Serial.println("===============================");
     Serial.println("3. Lectura del número de rollos");
     Serial.println("===============================");
@@ -484,7 +493,8 @@ void trigger3() // Lee el número de rollos:
 
 void trigger4()
 {
-  if (debugTrigger4) {
+  if (debugTrigger4)
+  {
     Serial.println("===============================");
     Serial.println("44444444");
     Serial.println("===============================");
@@ -501,7 +511,8 @@ void trigger5() // Convertir a int la etiqueta de frenado y el no. de etiquetas/
   //etiquetaDeFrenado1 = etiquetaDeFrenadoNum + delta;
   //etiquetaDeFrenado2 = etiquetaDeFrenado1 + delta;
 
-  if (debugTrigger5) {
+  if (debugTrigger5)
+  {
     Serial.println("==========================================================");
     Serial.println("5. Calcular las etiquetas de frenado y No. etiquetas/rollo");
     Serial.println("==========================================================");
@@ -520,7 +531,8 @@ void trigger5() // Convertir a int la etiqueta de frenado y el no. de etiquetas/
 
 void trigger6()
 {
-  if (debugTrigger6) {
+  if (debugTrigger6)
+  {
     Serial.println("666666");
   }
 }
@@ -545,7 +557,8 @@ void trigger7() // Validar page 1 (B)
 
   myNex.writeStr("B.t6.txt", etiquetasPorRollo);
 
-  if (debugTrigger7) {
+  if (debugTrigger7)
+  {
     Serial.println("============================");
     Serial.println("7777777777777777777777777777");
     Serial.println("============================");
@@ -570,7 +583,8 @@ void trigger7() // Validar page 1 (B)
 
 void trigger8() // Reinicia el conteo de rollos
 {
-  if (debugTrigger8) {
+  if (debugTrigger8)
+  {
     Serial.println("==========================");
     Serial.println("Reiniciar conteo de rollos");
     Serial.println("==========================");
@@ -588,7 +602,8 @@ void trigger9() // Habilita o deshabilita el frenado automático
   if (frenadoAuto)
   {
     myNex.writeNum("C.t8.pco", GREEN);
-    if (debugTrigger9) {
+    if (debugTrigger9)
+    {
       Serial.println("================");
       Serial.println("Frenado      AUT");
       Serial.println("================");
@@ -597,7 +612,8 @@ void trigger9() // Habilita o deshabilita el frenado automático
   else
   {
     myNex.writeNum("C.t8.pco", RED);
-    if (debugTrigger9) {
+    if (debugTrigger9)
+    {
       Serial.println("===========");
       Serial.println("Frenado MAN");
       Serial.println("===========");
@@ -710,7 +726,6 @@ void loop()
   checkStopRun();    // OK
   checkJogForward(); // OK
   mostrarConteo();
-
 }
 
 /*
