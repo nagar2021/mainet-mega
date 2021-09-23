@@ -271,10 +271,10 @@ void calcularVelocidad()
     Serial.print(metros);
     Serial.print(" - ");
     Serial.print(tiempo);
-    Serial.print(" - ");     
+    Serial.print(" - ");
     Serial.println(tempString);
   }
-  
+
   myNex.writeStr("B.t11.txt", tempString);
 }
 
