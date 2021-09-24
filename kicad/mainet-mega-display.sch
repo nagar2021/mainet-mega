@@ -19,9 +19,11 @@ TX
 Text HLabel 1800 5150 0    50   Input ~ 0
 RX
 $Comp
-L nagar-power:+5V_Nextion #PWR048
+L mainet-mega-rescue:+5V_Nextion-nagar-power #PWR048
 U 1 1 60DDFF96
 P 6250 1250
+AR Path="/60DDFF96" Ref="#PWR048"  Part="1" 
+AR Path="/5FC2C325/60DDFF96" Ref="#PWR048"  Part="1" 
 F 0 "#PWR048" H 6250 1100 50  0001 C CNN
 F 1 "+5V_Nextion" H 6265 1423 50  0000 C CNN
 F 2 "" H 6250 1250 50  0001 C CNN
@@ -322,9 +324,11 @@ F 3 "" H 1800 5400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L nagar-power:+5V_Nextion #PWR0112
+L mainet-mega-rescue:+5V_Nextion-nagar-power #PWR0112
 U 1 1 60E37DCC
 P 1800 4650
+AR Path="/60E37DCC" Ref="#PWR0112"  Part="1" 
+AR Path="/5FC2C325/60E37DCC" Ref="#PWR0112"  Part="1" 
 F 0 "#PWR0112" H 1800 4500 50  0001 C CNN
 F 1 "+5V_Nextion" H 1815 4823 50  0000 C CNN
 F 2 "" H 1800 4650 50  0001 C CNN

@@ -4,9 +4,9 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 22
+Sheet 5 22
 Title "Mainet-mega -- Diagrama de bloques-Relés de Control-M400"
-Date "2021-07-20"
+Date "2021-09-23"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
