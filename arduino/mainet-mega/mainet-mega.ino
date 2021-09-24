@@ -1,6 +1,6 @@
 
 /* Nelson A. García Rodríguez
-   22/09/2021
+   23/09/2021
    mainet-mega V1.00
 */
 
@@ -18,12 +18,15 @@ EasyNex myNex(Serial2);
 */
 //Definición de pines digitales de entrada
 Button machineEnable = Button(30, PULLUP); // input sw button no
-Button runForward = Button(29, PULLUP);    // input push button no
+Button startRun = Button(29, PULLUP);      // input push button no
 Button stopRun = Button(28, PULLUP);       // input push button no
 Button jogForward = Button(27, PULLUP);    // input push button no
 Button clutchChuck = Button(26, PULLUP);   // input sw button no
 Button brakeChuck = Button(25, PULLUP);    // input sw button no
 // Entrada del generador de pulsos de rotación convertida a 5V
+Button runForward = Button(24, PULLUP); // input push button no
+Button runReverse = Button(23, PULLUP); // input push button no
+
 int rotaryPulseInput = 21; // input
 
 //Definición de pines digitales de salida
@@ -159,17 +162,24 @@ void checkMachineEnable()
   }
 }
 
-void checkRunForward()
+void checkStartRun()
 {
   // Chequear pulsador RUN
-  if (runForward.isPressed() == true)
+  if (startRun.isPressed() == true && runForward.isPressed() == true)
   {
     //myNex.writeNum("E.t5.x", 300);
+    digitalWrite(runReverseControl, HIGH);
+
     digitalWrite(runForwardControl, LOW);
   }
-  else
+  else if (startRun.isPressed() == true && runReverse.isPressed() == true)
   {
-    //myNex.writeNum("E.t5.x", 200);
+    digitalWrite(runForwardControl, HIGH);
+
+    digitalWrite(runReverseControl, LOW);
+  } else {
+    digitalWrite(runForwardControl, HIGH);
+    digitalWrite(runReverseControl, HIGH);
   }
 }
 
@@ -179,6 +189,7 @@ void checkStopRun()
   {
     //myNex.writeNum("E.t6.x", 300);
     digitalWrite(runForwardControl, HIGH);
+    digitalWrite(runReverseControl, HIGH);
   }
   else
   {
@@ -722,7 +733,8 @@ void loop()
   readBrakeUnwindPot();  // OK
   readFrequencyRefPot(); // OK
 
-  checkRunForward(); // OK
+  checkStartRun();   // OK
+                     //  checkRunReverse(); // OK
   checkStopRun();    // OK
   checkJogForward(); // OK
   mostrarConteo();
