@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
-   28/09/2021
+   29/09/2021
    mainet-mega V1.00
 */
 
@@ -163,25 +163,39 @@ void checkMachineEnable()
   }
 }
 
-void checkStartRun()
+void checkRunReverse()
 {
-  // Chequear pulsador RUN
-  if (startRun.isPressed() == true && runForward.isPressed() == true)
-  {
-    //myNex.writeNum("E.t5.x", 300);
-    digitalWrite(runReverseControl, HIGH);
-    myNex.writeNum("B.p0.pic", 9);
-    myNex.writeNum("B.p0.aph", 127);
-    digitalWrite(runForwardControl, LOW);
-  }
-  else if (startRun.isPressed() == true && runReverse.isPressed() == true)
+  // Chequear sw runReverse
+  if (runReverse.isPressed() == true)
   {
     digitalWrite(runForwardControl, HIGH);
     myNex.writeNum("B.p0.pic", 10);
     myNex.writeNum("B.p0.aph", 127);
-    digitalWrite(runReverseControl, LOW);
+    if (startRun.isPressed())
+    {
+      digitalWrite(runReverseControl, LOW);
+    }
   }
-  else
+}
+
+void checkRunForward()
+{
+  // Chequear sw runForward
+  if (runForward.isPressed() == true)
+  {
+    digitalWrite(runReverseControl, HIGH);
+    myNex.writeNum("B.p0.pic", 9);
+    myNex.writeNum("B.p0.aph", 127);
+    if (startRun.isPressed())
+    {
+      digitalWrite(runForwardControl, LOW);
+    }
+  }
+}
+
+void checkRunOff()
+{
+  if (!runForward.isPressed() && !runReverse.isPressed())
   {
     myNex.writeNum("B.p0.aph", 0);
     digitalWrite(runForwardControl, HIGH);
@@ -735,9 +749,14 @@ void loop()
   checkBrakeClutch(); // OK
 
   checkMachineEnable(); // OK
-  checkStartRun();      // OK
-  checkStopRun();       // OK
-  checkJogForward();    // OK
+
+  checkRunReverse();
+  checkRunOff();
+  checkRunForward();
+
+  //checkStartRun();      // OK
+  checkStopRun();    // OK
+  checkJogForward(); // OK
 
   readUpperClutchPot();  // OK
   readLowerClutchPot();  // OK
