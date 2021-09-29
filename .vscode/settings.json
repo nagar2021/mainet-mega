@@ -2,5 +2,5 @@
   "cmake.configureOnOpen": false,
   "C_Cpp.errorSquiggles": "Disabled",
   "arduino.logLevel": "verbose",
-  "arduino.defaultBaudRate": 11200
+  "arduino.defaultBaudRate": 115200
 }
