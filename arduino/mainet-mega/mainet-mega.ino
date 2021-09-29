@@ -1,11 +1,12 @@
-
 /* Nelson A. García Rodríguez
-   23/09/2021
+   28/09/2021
    mainet-mega V1.00
 */
 
 #include <Button.h>
 #include <EasyNextionLibrary.h>
+//#include <app_api.h>
+//#include <avr8-stub.h>
 
 const uint32_t GREEN = 2016; // Colores usados en la pantalla Nextion
 const uint32_t RED = 63488;
@@ -169,15 +170,20 @@ void checkStartRun()
   {
     //myNex.writeNum("E.t5.x", 300);
     digitalWrite(runReverseControl, HIGH);
-
+    myNex.writeNum("B.p0.pic", 9);
+    myNex.writeNum("B.p0.aph", 127);
     digitalWrite(runForwardControl, LOW);
   }
   else if (startRun.isPressed() == true && runReverse.isPressed() == true)
   {
     digitalWrite(runForwardControl, HIGH);
-
+    myNex.writeNum("B.p0.pic", 10);
+    myNex.writeNum("B.p0.aph", 127);
     digitalWrite(runReverseControl, LOW);
-  } else {
+  }
+  else
+  {
+    myNex.writeNum("B.p0.aph", 0);
     digitalWrite(runForwardControl, HIGH);
     digitalWrite(runReverseControl, HIGH);
   }
@@ -664,6 +670,7 @@ void trigger11()
 
 void setup()
 {
+  //debug_init();
   Serial.begin(115200);
   Serial2.begin(115200);
   myNex.begin(115200);
@@ -724,19 +731,19 @@ void loop()
 {
   myNex.NextionListen(); // OK
 
+  checkChunkClutch(); // OK
+  checkBrakeClutch(); // OK
+
   checkMachineEnable(); // OK
-  checkChunkClutch();   // OK
-  checkBrakeClutch();   // OK
+  checkStartRun();      // OK
+  checkStopRun();       // OK
+  checkJogForward();    // OK
 
   readUpperClutchPot();  // OK
   readLowerClutchPot();  // OK
   readBrakeUnwindPot();  // OK
   readFrequencyRefPot(); // OK
 
-  checkStartRun();   // OK
-                     //  checkRunReverse(); // OK
-  checkStopRun();    // OK
-  checkJogForward(); // OK
   mostrarConteo();
 }
 
