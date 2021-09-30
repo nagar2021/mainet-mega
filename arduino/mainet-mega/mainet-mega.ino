@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
-   29/09/2021
+   30/09/2021
    mainet-mega V1.00
 */
 
@@ -171,7 +171,7 @@ void checkRunReverse()
     digitalWrite(runForwardControl, HIGH);
     myNex.writeNum("B.p0.pic", 10);
     myNex.writeNum("B.p0.aph", 127);
-    if (startRun.isPressed())  // Iniciar rotación antihoraria
+    if (startRun.isPressed()) // Iniciar rotación antihoraria
     {
       digitalWrite(runReverseControl, LOW);
     }
@@ -186,7 +186,7 @@ void checkRunForward()
     digitalWrite(runReverseControl, HIGH);
     myNex.writeNum("B.p0.pic", 9);
     myNex.writeNum("B.p0.aph", 127);
-    if (startRun.isPressed())  // Iniciar rotación horaria
+    if (startRun.isPressed()) // Iniciar rotación horaria
     {
       digitalWrite(runForwardControl, LOW);
     }
@@ -222,12 +222,10 @@ void checkJogForward()
   // Chequear botón DOWN (bajar el ciclo útil)
   if (jogForward.isPressed() == true)
   {
-    //myNex.writeNum("E.t7.x", 300);
     digitalWrite(jogForwardControl, LOW);
   }
   else
   {
-    //myNex.writeNum("E.t7.x", 200);
     digitalWrite(jogForwardControl, HIGH);
   }
 }
@@ -238,12 +236,15 @@ void checkChunkClutch()
   if (clutchChuck.isPressed() == true)
   {
     //Activar válvula solenoide
+    //myNex.writeNum("B.t12.pco", GREEN);
     digitalWrite(clutchChuckControl, LOW);
   }
   else
   {
     //Desactivar válvula solenoide
     digitalWrite(clutchChuckControl, HIGH);
+    //myNex.writeNum("B.t12.pco", RED);
+    // Reiniciar el conteo de etiquetas
     trigger1();
   }
 }
@@ -255,11 +256,13 @@ void checkBrakeClutch()
   {
     //Activar válvula solenoide
     digitalWrite(brakeChuckControl, LOW);
+    //myNex.writeNum("B.t0.pco", GREEN);
   }
   else
   {
     //Desactivar válvula solenoide
     digitalWrite(brakeChuckControl, HIGH);
+    //myNex.writeNum("B.t0.pco", RED);
   }
 }
 
