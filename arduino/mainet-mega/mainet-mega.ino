@@ -127,7 +127,7 @@ int pwmManual = 0;
 int pwmAuto = 0;
 int delta = 0;
 int paso = 0;
-int dutyCycleMin = 10;
+int dutyCycleMin = 15;
 
 //Variables de depuración:
 bool debugTrigger1 = false;
