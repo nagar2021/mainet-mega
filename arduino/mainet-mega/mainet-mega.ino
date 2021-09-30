@@ -171,7 +171,7 @@ void checkRunReverse()
     digitalWrite(runForwardControl, HIGH);
     myNex.writeNum("B.p0.pic", 10);
     myNex.writeNum("B.p0.aph", 127);
-    if (startRun.isPressed())
+    if (startRun.isPressed())  // Iniciar rotación antihoraria
     {
       digitalWrite(runReverseControl, LOW);
     }
@@ -186,7 +186,7 @@ void checkRunForward()
     digitalWrite(runReverseControl, HIGH);
     myNex.writeNum("B.p0.pic", 9);
     myNex.writeNum("B.p0.aph", 127);
-    if (startRun.isPressed())
+    if (startRun.isPressed())  // Iniciar rotación horaria
     {
       digitalWrite(runForwardControl, LOW);
     }
@@ -391,6 +391,8 @@ void frenar(int lastDutyCycle)
 void parar()
 {
   digitalWrite(runForwardControl, HIGH);
+  digitalWrite(runReverseControl, HIGH);
+
   readFrequencyEnable = true;
   paradaAlcanzada = true;
   if (debugParar)
