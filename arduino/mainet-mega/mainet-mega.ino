@@ -236,14 +236,14 @@ void checkChunkClutch()
   if (clutchChuck.isPressed() == true)
   {
     //Activar válvula solenoide
-    //myNex.writeNum("B.t12.pco", GREEN);
+    myNex.writeNum("B.t12.pco", GREEN);
     digitalWrite(clutchChuckControl, LOW);
   }
   else
   {
     //Desactivar válvula solenoide
     digitalWrite(clutchChuckControl, HIGH);
-    //myNex.writeNum("B.t12.pco", RED);
+    myNex.writeNum("B.t12.pco", RED);
     // Reiniciar el conteo de etiquetas
     trigger1();
   }
@@ -256,13 +256,13 @@ void checkBrakeClutch()
   {
     //Activar válvula solenoide
     digitalWrite(brakeChuckControl, LOW);
-    //myNex.writeNum("B.t0.pco", GREEN);
+    myNex.writeNum("B.t0.pco", GREEN);
   }
   else
   {
     //Desactivar válvula solenoide
     digitalWrite(brakeChuckControl, HIGH);
-    //myNex.writeNum("B.t0.pco", RED);
+    myNex.writeNum("B.t0.pco", RED);
   }
 }
 
