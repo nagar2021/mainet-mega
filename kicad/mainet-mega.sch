@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 22
 Title "Mainet-mega -- Diagrama de bloques"
-Date "2021-08-16"
+Date "2021-09-23"
 Rev "1.0"
 Comp "Tovenca"
 Comment1 ""
@@ -70,31 +70,31 @@ F 3 "~" H 1800 6200 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Sheet
-S 6450 2400 1500 750 
+S 6450 2700 1500 750 
 U 5FBE3FFB
 F0 "mainet-mega-potenciómetros" 50
 F1 "mainet-mega-potenciómetros.sch" 50
-F2 "brakeUnwindPot" I L 6450 2550 50 
-F3 "lowerClutchPot" I L 6450 2700 50 
-F4 "upperClutchPot" I L 6450 2850 50 
-F5 "frequencyRefPot" I L 6450 3000 50 
+F2 "brakeUnwindPot" I L 6450 2850 50 
+F3 "lowerClutchPot" I L 6450 3000 50 
+F4 "upperClutchPot" I L 6450 3150 50 
+F5 "frequencyRefPot" I L 6450 3300 50 
 $EndSheet
-Text Label 6000 2550 2    50   ~ 0
-A15
-Text Label 6000 2700 2    50   ~ 0
-A14
 Text Label 6000 2850 2    50   ~ 0
-A13
+A15
 Text Label 6000 3000 2    50   ~ 0
+A14
+Text Label 6000 3150 2    50   ~ 0
+A13
+Text Label 6000 3300 2    50   ~ 0
 A12
-Wire Wire Line
-	6000 2700 6450 2700
 Wire Wire Line
 	6000 3000 6450 3000
 Wire Wire Line
-	6000 2850 6450 2850
+	6000 3300 6450 3300
 Wire Wire Line
-	6000 2550 6450 2550
+	6000 3150 6450 3150
+Wire Wire Line
+	6000 2850 6450 2850
 $Comp
 L Connector:Screw_Terminal_01x03 J8
 U 1 1 5FA2D862
@@ -713,7 +713,7 @@ Wire Wire Line
 	6000 5750 6450 5750
 Wire Wire Line
 	6000 5950 6450 5950
-Text Label 6000 4550 2    50   ~ 0
+Text Label 6000 4750 2    50   ~ 0
 D21
 NoConn ~ 4800 4700
 NoConn ~ 4800 800 
@@ -751,33 +751,15 @@ VCC
 Text GLabel 2100 2250 2    50   Input ~ 0
 GNDD
 $Sheet
-S 6450 3500 1500 300 
+S 6450 3750 1500 300 
 U 5FF9030A
 F0 "mainet-mega-emergencyStopRelay" 50
 F1 "mainet-mega-emergencyStopRelay.sch" 50
-$EndSheet
-$Sheet
-S 6450 900  1500 1150
-U 5FC1C2EF
-F0 "mainet-mega-botones" 50
-F1 "mainet-mega-botones.sch" 50
-F2 "runForward" I L 6450 1200 50 
-F3 "stopRun" I L 6450 1350 50 
-F4 "jogForward" I L 6450 1500 50 
-F5 "machineEnable" I L 6450 1050 50 
-F6 "clutchChuck" I L 6450 1650 50 
-F7 "brakeChuck" I L 6450 1800 50 
 $EndSheet
 Wire Notes Line
 	8250 600  5550 600 
 Text Notes 5650 750  0    50   ~ 0
 Botonera de Control
-Wire Notes Line
-	5550 3950 8250 3950
-Wire Notes Line
-	5550 600  5550 3950
-Wire Notes Line
-	8250 600  8250 3950
 Text Label 8600 2900 2    50   ~ 0
 D4
 Wire Wire Line
@@ -799,7 +781,7 @@ D1
 Text Label 8600 2300 2    50   ~ 0
 D0
 $Sheet
-S 9100 2100 1500 1400
+S 9100 2100 1450 1300
 U 5FC25793
 F0 "mainet-mega-control-relay " 50
 F1 "mainet-mega-control-relay.sch" 50
@@ -868,7 +850,7 @@ Wire Wire Line
 Wire Wire Line
 	6000 1800 6450 1800
 Wire Wire Line
-	6000 4550 6450 4550
+	6000 4750 6450 4750
 $Sheet
 S 9100 4900 1500 500 
 U 60D1F41B
@@ -876,11 +858,11 @@ F0 "mainet-mega-regleta-conexiones-motores" 50
 F1 "mainet-mega-regleta-conexiones-motores.sch" 50
 $EndSheet
 $Sheet
-S 6450 4300 1500 500 
+S 6450 4500 1500 500 
 U 5FC3A1C1
 F0 "mainet-mega-rotary-pulse" 50
 F1 "mainet-mega-rotary-pulse.sch" 50
-F2 "rotaryPulseOutput5V" I L 6450 4550 50 
+F2 "rotaryPulseOutput5V" I L 6450 4750 50 
 $EndSheet
 Text GLabel 5200 7300 1    50   Input ~ 0
 VIN
@@ -1004,4 +986,32 @@ Text Notes 800  1350 0    50   ~ 0
 Text GLabel 2750 2200 0    50   Input ~ 0
 GNDD
 NoConn ~ 2750 2100
+$Sheet
+S 6450 900  1500 1350
+U 5FC1C2EF
+F0 "mainet-mega-botones" 50
+F1 "mainet-mega-botones.sch" 50
+F2 "runForward" I L 6450 1950 50 
+F3 "stopRun" I L 6450 1350 50 
+F4 "jogForward" I L 6450 1500 50 
+F5 "machineEnable" I L 6450 1050 50 
+F6 "clutchChuck" I L 6450 1650 50 
+F7 "brakeChuck" I L 6450 1800 50 
+F8 "startRun" I L 6450 1200 50 
+F9 "runReverse" I L 6450 2100 50 
+$EndSheet
+Wire Wire Line
+	6000 1950 6450 1950
+Wire Wire Line
+	6000 2100 6450 2100
+Wire Notes Line
+	5550 4250 8250 4250
+Wire Notes Line
+	5550 600  5550 4250
+Wire Notes Line
+	8250 600  8250 4250
+Text Label 6000 2100 2    50   ~ 0
+D23
+Text Label 6000 1950 2    50   ~ 0
+D24
 $EndSCHEMATC

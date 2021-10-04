@@ -1,11 +1,12 @@
-
 /* Nelson A. García Rodríguez
-   22/09/2021
+   30/09/2021
    mainet-mega V1.00
 */
 
 #include <Button.h>
 #include <EasyNextionLibrary.h>
+//#include <app_api.h>
+//#include <avr8-stub.h>
 
 const uint32_t GREEN = 2016; // Colores usados en la pantalla Nextion
 const uint32_t RED = 63488;
@@ -18,12 +19,15 @@ EasyNex myNex(Serial2);
 */
 //Definición de pines digitales de entrada
 Button machineEnable = Button(30, PULLUP); // input sw button no
-Button runForward = Button(29, PULLUP);    // input push button no
+Button startRun = Button(29, PULLUP);      // input push button no
 Button stopRun = Button(28, PULLUP);       // input push button no
 Button jogForward = Button(27, PULLUP);    // input push button no
 Button clutchChuck = Button(26, PULLUP);   // input sw button no
 Button brakeChuck = Button(25, PULLUP);    // input sw button no
 // Entrada del generador de pulsos de rotación convertida a 5V
+Button runForward = Button(24, PULLUP); // input push button no
+Button runReverse = Button(23, PULLUP); // input push button no
+
 int rotaryPulseInput = 21; // input
 
 //Definición de pines digitales de salida
@@ -123,7 +127,7 @@ int pwmManual = 0;
 int pwmAuto = 0;
 int delta = 0;
 int paso = 0;
-int dutyCycleMin = 10;
+int dutyCycleMin = 15;
 
 //Variables de depuración:
 bool debugTrigger1 = false;
@@ -159,17 +163,43 @@ void checkMachineEnable()
   }
 }
 
+void checkRunReverse()
+{
+  // Chequear sw runReverse
+  if (runReverse.isPressed() == true)
+  {
+    digitalWrite(runForwardControl, HIGH);
+    myNex.writeNum("B.p0.pic", 10);
+    myNex.writeNum("B.p0.aph", 127);
+    if (startRun.isPressed()) // Iniciar rotación antihoraria
+    {
+      digitalWrite(runReverseControl, LOW);
+    }
+  }
+}
+
 void checkRunForward()
 {
-  // Chequear pulsador RUN
+  // Chequear sw runForward
   if (runForward.isPressed() == true)
   {
-    //myNex.writeNum("E.t5.x", 300);
-    digitalWrite(runForwardControl, LOW);
+    digitalWrite(runReverseControl, HIGH);
+    myNex.writeNum("B.p0.pic", 9);
+    myNex.writeNum("B.p0.aph", 127);
+    if (startRun.isPressed()) // Iniciar rotación horaria
+    {
+      digitalWrite(runForwardControl, LOW);
+    }
   }
-  else
+}
+
+void checkRunOff()
+{
+  if (!runForward.isPressed() && !runReverse.isPressed())
   {
-    //myNex.writeNum("E.t5.x", 200);
+    myNex.writeNum("B.p0.aph", 0);
+    digitalWrite(runForwardControl, HIGH);
+    digitalWrite(runReverseControl, HIGH);
   }
 }
 
@@ -179,6 +209,7 @@ void checkStopRun()
   {
     //myNex.writeNum("E.t6.x", 300);
     digitalWrite(runForwardControl, HIGH);
+    digitalWrite(runReverseControl, HIGH);
   }
   else
   {
@@ -191,12 +222,10 @@ void checkJogForward()
   // Chequear botón DOWN (bajar el ciclo útil)
   if (jogForward.isPressed() == true)
   {
-    //myNex.writeNum("E.t7.x", 300);
     digitalWrite(jogForwardControl, LOW);
   }
   else
   {
-    //myNex.writeNum("E.t7.x", 200);
     digitalWrite(jogForwardControl, HIGH);
   }
 }
@@ -207,12 +236,15 @@ void checkChunkClutch()
   if (clutchChuck.isPressed() == true)
   {
     //Activar válvula solenoide
+    myNex.writeNum("B.t12.pco", GREEN);
     digitalWrite(clutchChuckControl, LOW);
   }
   else
   {
     //Desactivar válvula solenoide
     digitalWrite(clutchChuckControl, HIGH);
+    myNex.writeNum("B.t12.pco", RED);
+    // Reiniciar el conteo de etiquetas
     trigger1();
   }
 }
@@ -224,11 +256,13 @@ void checkBrakeClutch()
   {
     //Activar válvula solenoide
     digitalWrite(brakeChuckControl, LOW);
+    myNex.writeNum("B.t0.pco", GREEN);
   }
   else
   {
     //Desactivar válvula solenoide
     digitalWrite(brakeChuckControl, HIGH);
+    myNex.writeNum("B.t0.pco", RED);
   }
 }
 
@@ -360,6 +394,8 @@ void frenar(int lastDutyCycle)
 void parar()
 {
   digitalWrite(runForwardControl, HIGH);
+  digitalWrite(runReverseControl, HIGH);
+
   readFrequencyEnable = true;
   paradaAlcanzada = true;
   if (debugParar)
@@ -653,6 +689,7 @@ void trigger11()
 
 void setup()
 {
+  //debug_init();
   Serial.begin(115200);
   Serial2.begin(115200);
   myNex.begin(115200);
@@ -713,18 +750,24 @@ void loop()
 {
   myNex.NextionListen(); // OK
 
+  checkChunkClutch(); // OK
+  checkBrakeClutch(); // OK
+
   checkMachineEnable(); // OK
-  checkChunkClutch();   // OK
-  checkBrakeClutch();   // OK
+
+  checkRunReverse();
+  checkRunOff();
+  checkRunForward();
+
+  //checkStartRun();      // OK
+  checkStopRun();    // OK
+  checkJogForward(); // OK
 
   readUpperClutchPot();  // OK
   readLowerClutchPot();  // OK
   readBrakeUnwindPot();  // OK
   readFrequencyRefPot(); // OK
 
-  checkRunForward(); // OK
-  checkStopRun();    // OK
-  checkJogForward(); // OK
   mostrarConteo();
 }
 
