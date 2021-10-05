@@ -1,5 +1,5 @@
 /* Nelson A. García Rodríguez
-   30/09/2021
+   04/10/2021
    mainet-mega V1.00
 */
 
@@ -657,34 +657,24 @@ void trigger9() // Habilita o deshabilita el frenado automático
   }
 }
 
-void trigger10()
+void trigger10() // Fija el ciclo útil mínimo en 10 %
 {
-  Serial.println("X");
+  dutyCycleMin = 10;
 }
 
-void trigger11()
+void trigger11() // Fija el ciclo útil mínimo en 15 %
 {
-  Serial.println("XI");
+  dutyCycleMin = 15;
+}
 
-  /*
-      String diagnostico = myNex.readStr("E.va0.txt");
+void trigger12() // Fija el ciclo útil mínimo en 20 %
+{
+  dutyCycleMin = 20;
+}
 
-      if (diagnostico == "1")
-      {
-      if (machineEnable.isPressed() == true)
-      {
-        //Habilitar funcionamiento
-        // Pulsador presionado
-        myNex.writeNum("E.t4.x", 300);
-      }
-      else
-      {
-        //Deshabilitar funcionamiento de Mainet
-        // Pulsador no presionado
-        myNex.writeNum("E.t4.x", 200);
-      }
-      diagnostico = myNex.readStr("E.va0.txt");
-      }*/
+void trigger13() // Fija el ciclo útil mínimo en 25 %
+{
+  dutyCycleMin = 25;
 }
 
 void setup()
