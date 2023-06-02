@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 15 22
+Sheet 14 22
 Title "Mainet-mega -- Convertidores de Voltaje: 5V a 10V"
 Date "2021-07-20"
 Rev "1.0"

@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 16 22
+Sheet 15 22
 Title "Mainet-mega -- upperClutchControl"
 Date "2021-07-29"
 Rev "1.0"
@@ -149,7 +149,7 @@ F 1 "~" H 8400 3550 50  0001 C CNN
 F 2 "TerminalBlock_Altech:Altech_AK300_1x03_P5.00mm_45-Degree" H 8400 3550 50  0001 C CNN
 F 3 "~" H 8400 3550 50  0001 C CNN
 	1    8400 3550
-	1    0    0    1   
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	5650 3800 5650 4000

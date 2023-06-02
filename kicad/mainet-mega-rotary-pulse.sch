@@ -1,9 +1,10 @@
 EESchema Schematic File Version 4
+LIBS:mainet-mega-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 1
+Sheet 1 22
 Title "Mainet-mega -- Convertidor de Voltaje: 24V a 5V"
 Date "2021-08-10"
 Rev "1.0"

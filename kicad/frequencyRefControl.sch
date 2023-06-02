@@ -4,7 +4,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 18 22
+Sheet 17 22
 Title "Mainet-mega -- frequencyRefControl"
 Date "2021-08-12"
 Rev "1.0"
@@ -493,7 +493,7 @@ F 1 "~" H 8000 3600 50  0001 C CNN
 F 2 "TerminalBlock_Altech:Altech_AK300_1x03_P5.00mm_45-Degree" H 8000 3600 50  0001 C CNN
 F 3 "~" H 8000 3600 50  0001 C CNN
 	1    8000 3600
-	1    0    0    1   
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	5250 3850 5250 4050
