@@ -65,3 +65,6 @@ fp-info-cache
 
 # Reports
 *.rpt
+
+# *-cache.lib
+*-cache.lib
