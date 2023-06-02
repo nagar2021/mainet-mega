@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:mainet-mega-5V-to-mp-10v-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -133,7 +132,7 @@ F 1 "Screw_Terminal_01x03" H 7968 3666 50  0001 C CNN
 F 2 "TerminalBlock_Altech:Altech_AK300_1x03_P5.00mm_45-Degree" H 8050 3900 50  0001 C CNN
 F 3 "~" H 8050 3900 50  0001 C CNN
 	1    8050 3900
-	1    0    0    1   
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	5300 4150 5300 4350
